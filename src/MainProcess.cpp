@@ -2,7 +2,7 @@
 #include "CommandLineInterface.hpp"
 #include "OperationExecutor.hpp"
 #include <iostream>
-
+#include "print_help_and_info.hpp"
 
 int main(int argc, char* argv[]){
     BmpImage bmp;
@@ -10,9 +10,14 @@ int main(int argc, char* argv[]){
 
     CLI(argc,argv,args);
 
-    BMPerror error = bmp.readBmp(args.inputName);
+    if (args.flag == flags::FLAG_HELP){
+        print_help();
+        return 0;
+    }
 
-    if (error != BMPerror::ERR_OK){
+    error_marker_t error = bmp.readBmp(args.inputName);
+
+    if (error != error_marker_t::ERR_OK){
         return static_cast<int>(error);
     }
 
@@ -20,7 +25,7 @@ int main(int argc, char* argv[]){
 
     error = bmp.saveBmp(args.outputName);
 
-    if (error != BMPerror::ERR_OK){
+    if (error != error_marker_t::ERR_OK){
         return static_cast<int>(error);
     }
 

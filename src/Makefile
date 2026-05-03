@@ -20,6 +20,7 @@ $(PREF_OBJ)%.o: $(PREF_SRC)%.cpp | $(PREF_OBJ)
 
 clean:
 	rm -f $(TARGET) $(PREF_OBJ)*.o $(PREF_OBJ)*.d
+	rm -d obj 
 
 .PHONY: run clean
 

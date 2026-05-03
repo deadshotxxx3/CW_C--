@@ -4,6 +4,7 @@
 #include <sstream>
 #include <vector>
 #include <cctype>
+#include "Error.hpp"
 
 const int MAX_VALUE_COMPONENTS = 255;
 const char DELIMETER = '.';
@@ -46,7 +47,7 @@ bool check_valid_value (std::string values)
     return true;
 }
 
-Coordinate getCoordinate(std::string str)
+std::pair <Coordinate,error_marker_t> getCoordinate(const std::string &str)
 {
     std::stringstream sub_string(str);
     std::string token;
@@ -54,45 +55,49 @@ Coordinate getCoordinate(std::string str)
 
     while(std::getline(sub_string,token,DELIMETER)){
         if (!check_valid_value(token)){
-            std::cerr << "YOU IDIOT" << std::endl;
-            exit(42);
+            std::cerr << "Invalid coordinate format: non-numeric character\n";
+            return {Coordinate(),error_marker_t::ERR_INCORRECTARG};
         }
         values.push_back(std::stoi(token));
     }
 
     if (values.size() != 2){
-        throw std::invalid_argument("Invalid coordinate format");
+        std::cerr << "Invalid coordinate format: expected x.y\n";
+        return {Coordinate(),error_marker_t::ERR_INCORRECTARG};
     }
 
-    return Coordinate(values[0],values[1]);
+    return {Coordinate(values[0],values[1]),error_marker_t::ERR_OK};
 }
 
-Pixel getPixel(std::string str){
+std::pair<Pixel,error_marker_t> getPixel(const std::string &str)
+{
     std::stringstream sub_string(str);
     std::string token;
     std::vector<int> values;
 
     while(std::getline(sub_string,token,DELIMETER)){
         if (!check_valid_value(token)){
-            std::cerr << "YOU IDIOT" << std::endl;
-            exit(42);
+            std::cerr << "Invalid color format: non-numeric character\n";
+            return {Pixel(), error_marker_t::ERR_INCORRECTARG};
         }
         values.push_back(std::stoi(token));
     }
 
     if (values.size() != 3){
-        throw std::invalid_argument("Invalid color format");
+        std::cerr << "Invalid color format: expected r.g.b\n";
+        return {Pixel(), error_marker_t::ERR_INCORRECTARG};
     }
 
     int r = values[0],g = values[1],b = values[2];
 
     if (!check_range_component(r) || !check_range_component(g) || !check_range_component(b)){
-        throw std::invalid_argument("Component out of range");
+        std::cerr << "Color component out of range (0-255)\n";
+        return {Pixel(), error_marker_t::ERR_INCORRECTARG};
     }
-    return Pixel(r,g,b);
+    return {Pixel(r, g, b), error_marker_t::ERR_OK};
 }
 
-int setInputFileIfNeeded(struct argument& arguments, int argc, char* argv[]) 
+error_marker_t setInputFileIfNeeded(struct argument& arguments, int argc, char* argv[]) 
 {
     if (arguments.inputName.empty() && optind < argc) {
         arguments.inputName = argv[optind];
@@ -101,33 +106,36 @@ int setInputFileIfNeeded(struct argument& arguments, int argc, char* argv[])
 
     if (arguments.inputName.empty()) {
         std::cerr << "Error: No input file specified\n";
-        return 1;
+        return error_marker_t::ERR_INCORRECTARG;
     }
-    return 0;
+    return error_marker_t::ERR_OK;
 }
 
-int CLI(int argc, char* argv[],struct argument& arguments)
+
+error_marker_t CLI(int argc, char* argv[], struct argument &arguments)
 {
     int options_index = 0;
     int c;
 
     arguments.flag = flags::NO_FLAG;
 
-    while((c = getopt_long(argc,argv,"i:o:h",options,&options_index)) != -1) {
+    while((c = getopt_long(argc, argv, "i:o:h", options, &options_index)) != -1) {
         switch(c){
             case 0:
             {
                 std::string opt_name = options[options_index].name;
 
-                process_all_flags(opt_name,optarg,arguments);
+                error_marker_t error = process_all_flags(opt_name, optarg, arguments);
+                if (error != error_marker_t::ERR_OK) {
+                    return error;
+                }
 
                 break;
-
             }
             case 'o':
                 if (!optarg){
                     std::cerr << "Error: output no argument" << std::endl;
-                    exit(41);
+                    return error_marker_t::ERR_INCORRECTARG;
                 }
 
                 arguments.outputName = optarg;
@@ -135,19 +143,24 @@ int CLI(int argc, char* argv[],struct argument& arguments)
             case 'i':
                 if (!optarg){
                     std::cerr << "Error: input no argument" << std::endl;
+                    return error_marker_t::ERR_INCORRECTARG;
                 }
                 arguments.inputName = optarg;
                 break;
             case 'h':
                 arguments.flag = flags::FLAG_HELP;
-                return 0;
+                return error_marker_t::ERR_OK;
 
             default:
                 std::cerr << "Error: Unknown command" << std::endl;
-                return 1;
+                return error_marker_t::ERR_INCORRECTARG;
         }
-
     }
-    setInputFileIfNeeded(arguments,argc,argv);
-    return 0;
+
+    error_marker_t result = setInputFileIfNeeded(arguments, argc, argv);
+    if (result != error_marker_t::ERR_OK) {
+        return result;
+    }
+
+    return error_marker_t::ERR_OK;
 }

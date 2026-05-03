@@ -2,6 +2,8 @@
 #include <getopt.h>
 #include "BmpImage.hpp"
 #include "Error.hpp"
+#include "utility"
+
 enum class flags{
     NO_FLAG, 
     FLAG_HELP,
@@ -50,10 +52,10 @@ struct argument{
     Pixel color_split;
 };
 
-Coordinate getCoordinate(std::string str);
-Pixel getPixel(std::string str);
+std::pair <Coordinate,error_marker_t> getCoordinate(const std::string &str);
+std::pair<Pixel,error_marker_t> getPixel(const std::string &str);
 
 bool check_range_component(int values);
 bool check_valid_value (std::string values);
 
-int CLI(int argc, char* argv[],struct argument& arguments);
+error_marker_t CLI(int argc, char* argv[], struct argument &arguments);

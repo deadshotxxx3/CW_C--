@@ -3,11 +3,11 @@
 #include <fstream>
 #include "Error.hpp"
 
-BMPerror BmpImage::saveBmp(const std::string& filename){
+error_marker_t BmpImage::saveBmp(const std::string& filename){
     std::ofstream file(filename,std::ios::binary); 
     if (!file){
         std::cerr << "Error: Cannot write file" << std::endl;
-        return BMPerror::ERR_WRITING;
+        return error_marker_t::ERR_WRITING;
     }
 
     int row_stride = getRowStride();
@@ -18,13 +18,13 @@ BMPerror BmpImage::saveBmp(const std::string& filename){
     file.write(reinterpret_cast<const char*>(&m_file_header),sizeof(m_file_header));
     if (!file){
         std::cerr << "Error: Failed to write BMP file header." << std::endl;
-        return BMPerror::ERR_WRITING;
+        return error_marker_t::ERR_WRITING;
     }
 
     file.write(reinterpret_cast<const char*>(&m_info_header),sizeof(m_info_header));
     if (!file) {
         std::cerr << "Error: Failed to write BMP info header." << std::endl;
-        return BMPerror::ERR_WRITING;
+        return error_marker_t::ERR_WRITING;
     }
 
     uint32_t H = abs(m_info_header.height);
@@ -39,5 +39,5 @@ BMPerror BmpImage::saveBmp(const std::string& filename){
 
     file.close();
 
-    return BMPerror::ERR_OK;
+    return error_marker_t::ERR_OK;
 }

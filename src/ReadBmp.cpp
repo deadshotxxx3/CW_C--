@@ -5,23 +5,23 @@
 
 const int BMPSIGNATURE = 0x4D42;
 
-BMPerror checkValidBmp(BitmapFileHeader& m_file_header,BitmapInfoHeader& m_info_header)
+error_marker_t checkValidBmp(BitmapFileHeader& m_file_header,BitmapInfoHeader& m_info_header)
 {
   if (m_file_header.signature != BMPSIGNATURE){
     std::cerr << "Error: Invalid BMP signature. File is not a valid BMP image." << std::endl;
-    return BMPerror::ERR_NOTBMP;
+    return error_marker_t::ERR_NOTBMP;
   }
   else if (m_info_header.bitsPerPixel != 24){
     std::cerr << "Error: Unsupported color depth. Only 24-bit BMP files are supported (found " 
               << m_info_header.bitsPerPixel << "-bit)." << std::endl;
-    return BMPerror::ERR_NOTBMP;
+    return error_marker_t::ERR_NOTBMP;
   }
   else if (m_info_header.compression != 0){
     std::cerr << "Error: Compressed BMP files are not supported. Expected uncompressed (compression = 0)." << std::endl;
-    return BMPerror::ERR_NOTBMP;
+    return error_marker_t::ERR_NOTBMP;
   }
 
-  return BMPerror::ERR_OK;
+  return error_marker_t::ERR_OK;
 }
 
 
@@ -30,12 +30,12 @@ int BmpImage::getRowStride() const
     return (m_info_header.bitsPerPixel * m_info_header.width + 31) / 32 * 4;
 }
 
-BMPerror BmpImage::readBmp(const std::string& filename)
+error_marker_t BmpImage::readBmp(const std::string& filename)
 {
   std::ifstream file(filename,std::ios::binary); 
   if (!file){
     std::cerr << "Error: Cannot open file '" << filename << "' for reading." << std::endl;
-    return BMPerror::ERR_READING;
+    return error_marker_t::ERR_READING;
   }
 
 
@@ -44,12 +44,12 @@ BMPerror BmpImage::readBmp(const std::string& filename)
 
   if (!file) {
     std::cerr << "Error: Failed to read BMP headers. File might be corrupted or too short." << std::endl;
-    return BMPerror::ERR_READING;
+    return error_marker_t::ERR_READING;
   }
 
-  BMPerror result = checkValidBmp(m_file_header,m_info_header);
+  error_marker_t result = checkValidBmp(m_file_header,m_info_header);
 
-  if (result != BMPerror::ERR_OK) return result;
+  if (result != error_marker_t::ERR_OK) return result;
 
   uint32_t H = abs(m_info_header.height);
   uint32_t W = m_info_header.width;
@@ -59,7 +59,7 @@ BMPerror BmpImage::readBmp(const std::string& filename)
   file.seekg(m_file_header.pixelArrOffset,std::ios::beg);
   if (!file) {
       std::cerr << "Error: Failed to seek to pixel data offset." << std::endl;
-      return BMPerror::ERR_READING;
+      return error_marker_t::ERR_READING;
   }
 
   int row_stride = getRowStride();
@@ -68,7 +68,7 @@ BMPerror BmpImage::readBmp(const std::string& filename)
     file.read(reinterpret_cast<char*>(arr_pixels[i].data()),m_info_header.width * 3);
     if (!file){
       std::cerr << "Error: Unexpected end of file while reading pixel data at row " << i << "." << std::endl;
-      return BMPerror::ERR_READING;
+      return error_marker_t::ERR_READING;
     }
 
     file.ignore(row_stride - W * 3);
@@ -76,7 +76,6 @@ BMPerror BmpImage::readBmp(const std::string& filename)
 
   file.close();
   
-  return BMPerror::ERR_OK;
-
+  return error_marker_t::ERR_OK;
 
 }
