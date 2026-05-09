@@ -1,9 +1,9 @@
 #pragma once
 #include <cstdint>
 
-#pragma pack(push,1)
+#pragma pack(push, 1)
 
-struct BitmapFileHeader{
+struct BitmapFileHeader {
     uint16_t signature;
     uint32_t filesize;
     uint16_t reserved1;
@@ -11,7 +11,7 @@ struct BitmapFileHeader{
     uint32_t pixelArrOffset;
 };
 
-struct BitmapInfoHeader{
+struct BitmapInfoHeader {
     uint32_t headerSize;
     int32_t width;
     int32_t height;
@@ -25,14 +25,16 @@ struct BitmapInfoHeader{
     uint32_t importantColorCount;
 };
 
-struct Pixel{
+struct Pixel {
     uint8_t b;
     uint8_t g;
     uint8_t r;
 
     Pixel() : b(0), g(0), r(0) {}
-    Pixel(uint8_t r,uint8_t g, uint8_t b): b(b),g(g),r(r){}
-    Pixel& operator=(const Pixel& other)
+
+    Pixel(uint8_t r, uint8_t g, uint8_t b) : b(b), g(g), r(r) {}
+
+    Pixel &operator=(const Pixel &other)
     {
         if (this != &other) {
             r = other.r;
@@ -41,18 +43,26 @@ struct Pixel{
         }
         return *this;
     }
+
+    bool operator==(const Pixel &other)
+    {
+        if ((*this).r == other.r && (*this).g == other.g && (*this).b == other.b)
+            return true;
+        return false;
+    }
 };
 
 #pragma pack(pop)
 
-struct Coordinate{
+struct Coordinate {
     int x;
     int y;
 
-    Coordinate(): x(0), y(0){}
-    Coordinate(int x,int y): x(x),y(y){}
+    Coordinate() : x(0), y(0) {}
 
-    Coordinate& operator=(const Coordinate& other)
+    Coordinate(int x, int y) : x(x), y(y) {}
+
+    Coordinate &operator=(const Coordinate &other)
     {
         if (this != &other) {
             x = other.x;

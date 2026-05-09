@@ -1,8 +1,9 @@
 #include "print_help_and_info.hpp"
-#include <iostream>
 #include "BmpImage.hpp"
+#include <iostream>
 
-void print_help(){
+void print_help()
+{
     std::cout << "Course work for option 5.2, created by Andrei Pushin\n";
     std::cout << "Usage: program [OPTIONS]\n";
     std::cout << "Options:\n";
@@ -29,7 +30,8 @@ void print_help(){
     std::cout << std::endl;
 }
 
-void BmpImage::print_info() const {
+void BmpImage::print_info() const
+{
     std::cout << "Image Information:\n";
     std::cout << "  File Size: " << m_file_header.filesize << " bytes\n";
     std::cout << "  Width: " << m_info_header.width << " pixels\n";

@@ -2,4 +2,4 @@
 #include "BmpImage.hpp"
 #include "CommandLineInterface.hpp"
 
-void operationExecutor(BmpImage& bmp,struct argument arguments);
+void operationExecutor(BmpImage &bmp, struct argument arguments);
