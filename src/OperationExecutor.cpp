@@ -15,6 +15,5 @@ void operationExecutor(BmpImage &bmp, struct argument arguments)
         print_help();
     } else if (arguments.flag == flags::FLAG_INFO) {
         bmp.print_info();
-
-    } 
+    }
 }

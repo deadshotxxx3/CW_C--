@@ -5,14 +5,13 @@
 #include "utility"
 #include <getopt.h>
 
-enum class flags 
-{ 
-    NO_FLAG, 
-    FLAG_HELP, 
-    FLAG_INFO, 
-    FLAG_MIRROR, 
+enum class flags {
+    NO_FLAG,
+    FLAG_HELP,
+    FLAG_INFO,
+    FLAG_MIRROR,
     FLAG_COPY,
-    FLAG_COLOR_REPLACE, 
+    FLAG_COLOR_REPLACE,
     FLAG_SPLIT,
 };
 
