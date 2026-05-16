@@ -14,29 +14,6 @@ enum class flags {
     FLAG_COLOR_REPLACE,
     FLAG_SPLIT,
 };
-
-namespace OptionNames
-{
-constexpr const char *INPUT = "input";
-constexpr const char *OUTPUT = "output";
-constexpr const char *COLOR_REPLACE = "color_replace";
-constexpr const char *OLD_COLOR = "old_color";
-constexpr const char *NEW_COLOR = "new_color";
-constexpr const char *COPY = "copy";
-constexpr const char *LEFT_UP = "left_up";
-constexpr const char *RIGHT_DOWN = "right_down";
-constexpr const char *DEST_LEFT_UP = "dest_left_up";
-constexpr const char *SPLIT = "split";
-constexpr const char *NUMBER_X = "number_x";
-constexpr const char *NUMBER_Y = "number_y";
-constexpr const char *THICKNESS = "thickness";
-constexpr const char *COLOR = "color";
-constexpr const char *MIRROR = "mirror";
-constexpr const char *AXIS = "axis";
-constexpr const char *INFO = "info";
-constexpr const char *HELP = "help";
-} // namespace OptionNames
-
 struct argument {
     error_t error;
     flags flag;
