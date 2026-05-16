@@ -1,5 +1,5 @@
-#include "print_help_and_info.hpp"
 #include "BmpImage.hpp"
+#include "PrintHelpAndInfo.hpp"
 #include <iostream>
 
 void print_help()

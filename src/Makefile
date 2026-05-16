@@ -2,7 +2,7 @@ TARGET = cw
 
 GXX = g++
 
-PREF_SRC = ./
+PREF_SRC = ./source/
 PREF_OBJ = ./obj/
 
 SRC = $(wildcard $(PREF_SRC)*.cpp)

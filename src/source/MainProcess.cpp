@@ -1,7 +1,7 @@
 #include "BmpImage.hpp"
 #include "CommandLineInterface.hpp"
 #include "OperationExecutor.hpp"
-#include "print_help_and_info.hpp"
+#include "PrintHelpAndInfo.hpp"
 #include <iostream>
 
 int main(int argc, char *argv[])

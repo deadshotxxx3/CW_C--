@@ -1,5 +1,5 @@
 #include "OperationExecutor.hpp"
-#include "print_help_and_info.hpp"
+#include "PrintHelpAndInfo.hpp"
 
 void operationExecutor(BmpImage &bmp, struct argument arguments)
 {
