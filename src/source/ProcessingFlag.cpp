@@ -1,129 +1,93 @@
-#include "processing_flag.hpp"
+#include "ProcessingFlag.hpp"
 #include <cstring>
 #include <iostream>
 
-#define CHECK_RESULT(result, flag_found)                                                                     \
-    if (result != error_marker_t::ERR_OK)                                                                    \
-        return result;                                                                                       \
-    if (flag_found)                                                                                          \
-        return error_marker_t::ERR_OK;
-
-error_marker_t process_coordinate_flag(const std::string &opt_name, const char *optarg,
-                                       struct argument &arguments, bool &flag_found)
+error_marker_t process_coordinate_flag(char short_opt, const char *optarg, struct argument &arguments)
 {
-    if (opt_name == OptionNames::LEFT_UP) {
+    if (short_opt == 'l') {
         auto result = getCoordinate(optarg);
         if (result.second != error_marker_t::ERR_OK) {
             return result.second;
         }
         arguments.left_up = result.first;
-        flag_found = true;
         return error_marker_t::ERR_OK;
-    }
-
-    else if (opt_name == OptionNames::RIGHT_DOWN) {
+    } else if (short_opt == 'r') {
         auto result = getCoordinate(optarg);
         if (result.second != error_marker_t::ERR_OK) {
             return result.second;
         }
         arguments.right_down = result.first;
-        flag_found = true;
         return error_marker_t::ERR_OK;
     }
-
     return error_marker_t::ERR_OK;
 }
 
-error_marker_t processing_color_flags(const std::string &opt_name, const char *optarg,
-                                      struct argument &arguments, bool &flag_found)
+error_marker_t processing_color_flags(char short_opt, const char *optarg, struct argument &arguments)
 {
-    if (opt_name == OptionNames::COLOR_REPLACE) {
+    if (short_opt == 'c') {
         arguments.flag = flags::FLAG_COLOR_REPLACE;
-        flag_found = true;
         return error_marker_t::ERR_OK;
-    }
-
-    else if (opt_name == OptionNames::OLD_COLOR) {
+    } else if (short_opt == 'O') {
         auto result = getPixel(optarg);
         if (result.second != error_marker_t::ERR_OK) {
             return result.second;
         }
         arguments.old_color = result.first;
-        flag_found = true;
         return error_marker_t::ERR_OK;
-    }
-
-    else if (opt_name == OptionNames::NEW_COLOR) {
+    } else if (short_opt == 'N') {
         auto result = getPixel(optarg);
         if (result.second != error_marker_t::ERR_OK) {
             return result.second;
         }
         arguments.new_color = result.first;
-        flag_found = true;
         return error_marker_t::ERR_OK;
     }
-
     return error_marker_t::ERR_OK;
 }
 
-error_marker_t processing_copy_flags(const std::string &opt_name, const char *optarg,
-                                     struct argument &arguments, bool &flag_found)
+error_marker_t processing_copy_flags(char short_opt, const char *optarg, struct argument &arguments)
 {
-    if (opt_name == OptionNames::COPY) {
+    if (short_opt == 'b') {
         arguments.flag = flags::FLAG_COPY;
-        flag_found = true;
         return error_marker_t::ERR_OK;
-    }
-
-    else if (opt_name == OptionNames::DEST_LEFT_UP) {
+    } else if (short_opt == 'd') {
         auto result = getCoordinate(optarg);
         if (result.second != error_marker_t::ERR_OK) {
             return result.second;
         }
         arguments.dest_left_up = result.first;
-        flag_found = true;
         return error_marker_t::ERR_OK;
     }
-
-    error_marker_t coord_result = process_coordinate_flag(opt_name, optarg, arguments, flag_found);
+    error_marker_t coord_result = process_coordinate_flag(short_opt, optarg, arguments);
     if (coord_result != error_marker_t::ERR_OK) {
         return coord_result;
     }
-
     return error_marker_t::ERR_OK;
 }
 
-error_marker_t processing_mirror_flag(const std::string &opt_name, const char *optarg,
-                                      struct argument &arguments, bool &flag_found)
+error_marker_t processing_mirror_flag(char short_opt, const char *optarg, struct argument &arguments)
 {
-    if (opt_name == OptionNames::MIRROR) {
+    if (short_opt == 'm') {
         arguments.flag = flags::FLAG_MIRROR;
-        flag_found = true;
         return error_marker_t::ERR_OK;
-    }
-
-    else if (opt_name == OptionNames::AXIS) {
+    } else if (short_opt == 'a') {
         if (strcmp(optarg, "x") != 0 && strcmp(optarg, "y") != 0) {
             std::cerr << "Error: axis must be 'x' or 'y'\n";
             return error_marker_t::ERR_INCORRECTARG;
         }
         arguments.axis = optarg;
-        flag_found = true;
         return error_marker_t::ERR_OK;
     }
-
-    error_marker_t coord_result = process_coordinate_flag(opt_name, optarg, arguments, flag_found);
+    error_marker_t coord_result = process_coordinate_flag(short_opt, optarg, arguments);
     if (coord_result != error_marker_t::ERR_OK) {
         return coord_result;
     }
-
     return error_marker_t::ERR_OK;
 }
 
-error_marker_t processing_number_line_flag(const std::string &opt_name, const char *optarg,
-                                           struct argument &arguments, bool &flag_found)
+error_marker_t processing_number_line_flag(char short_opt, const char *optarg, struct argument &arguments)
 {
-    if (opt_name == OptionNames::NUMBER_X) {
+    if (short_opt == 'x') {
         try {
             int value = std::stoi(optarg);
             if (value <= 1) {
@@ -139,11 +103,8 @@ error_marker_t processing_number_line_flag(const std::string &opt_name, const ch
             std::cerr << "Error: invalid number for number_x\n";
             return error_marker_t::ERR_INCORRECTARG;
         }
-        flag_found = true;
         return error_marker_t::ERR_OK;
-    }
-
-    else if (opt_name == OptionNames::NUMBER_Y) {
+    } else if (short_opt == 'y') {
         try {
             int value = std::stoi(optarg);
             if (value <= 1) {
@@ -159,25 +120,20 @@ error_marker_t processing_number_line_flag(const std::string &opt_name, const ch
             std::cerr << "Error: invalid number for number_y\n";
             return error_marker_t::ERR_INCORRECTARG;
         }
-        flag_found = true;
         return error_marker_t::ERR_OK;
     }
     return error_marker_t::ERR_OK;
 }
 
-error_marker_t processing_split_flag(const std::string &opt_name, const char *optarg,
-                                     struct argument &arguments, bool &flag_found)
+error_marker_t processing_split_flag(char short_opt, const char *optarg, struct argument &arguments)
 {
-    if (opt_name == OptionNames::SPLIT) {
+    if (short_opt == 's') {
         arguments.flag = flags::FLAG_SPLIT;
-        flag_found = true;
         return error_marker_t::ERR_OK;
-    }
-
-    else if (opt_name == OptionNames::THICKNESS) {
+    } else if (short_opt == 't') {
         try {
             int value = std::stoi(optarg);
-            if (value < 0) {
+            if (value <= 0) {
                 std::cerr << "Error: thickness must be greater than 0\n";
                 return error_marker_t::ERR_INCORRECTARG;
             }
@@ -186,56 +142,22 @@ error_marker_t processing_split_flag(const std::string &opt_name, const char *op
             std::cerr << "Error: invalid number for thickness\n";
             return error_marker_t::ERR_INCORRECTARG;
         }
-        flag_found = true;
         return error_marker_t::ERR_OK;
-    }
-
-    else if (opt_name == OptionNames::COLOR) {
+    } else if (short_opt == 'C') {
         auto result = getPixel(optarg);
         if (result.second != error_marker_t::ERR_OK) {
             return result.second;
         }
         arguments.color_split = result.first;
-        flag_found = true;
         return error_marker_t::ERR_OK;
     }
-    error_marker_t number_line_result = processing_number_line_flag(opt_name, optarg, arguments, flag_found);
+    error_marker_t number_line_result = processing_number_line_flag(short_opt, optarg, arguments);
     if (number_line_result != error_marker_t::ERR_OK) {
         return number_line_result;
     }
-    error_marker_t coord_result = process_coordinate_flag(opt_name, optarg, arguments, flag_found);
+    error_marker_t coord_result = process_coordinate_flag(short_opt, optarg, arguments);
     if (coord_result != error_marker_t::ERR_OK) {
         return coord_result;
     }
-
     return error_marker_t::ERR_OK;
-}
-
-error_marker_t process_all_flags(const std::string &opt_name, const char *optarg, struct argument &arguments)
-{
-    bool flag_found = false;
-
-    error_marker_t result;
-
-    result = processing_color_flags(opt_name, optarg, arguments, flag_found);
-    CHECK_RESULT(result, flag_found);
-
-    result = processing_copy_flags(opt_name, optarg, arguments, flag_found);
-    CHECK_RESULT(result, flag_found);
-
-    result = processing_mirror_flag(opt_name, optarg, arguments, flag_found);
-    CHECK_RESULT(result, flag_found);
-
-    result = processing_split_flag(opt_name, optarg, arguments, flag_found);
-    CHECK_RESULT(result, flag_found);
-
-    result = process_coordinate_flag(opt_name, optarg, arguments, flag_found);
-    CHECK_RESULT(result, flag_found);
-
-    if (opt_name == OptionNames::INFO) {
-        arguments.flag = flags::FLAG_INFO;
-        return error_marker_t::ERR_OK;
-    }
-
-    return error_marker_t::ERR_INCORRECTARG;
 }

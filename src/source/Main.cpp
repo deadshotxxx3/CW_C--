@@ -15,20 +15,18 @@ int main(int argc, char *argv[])
     if (error != error_marker_t::ERR_OK) {
         return static_cast<int>(error);
     }
-
     if (args.flag == flags::FLAG_HELP) {
         print_help();
         return 0;
     }
-    if (args.flag == flags::FLAG_INFO)
-        return 0;
+
     error = bmp.readBmp(args.inputName);
 
     if (error != error_marker_t::ERR_OK) {
         return static_cast<int>(error);
     }
-    operationExecutor(bmp, args);
 
+    operationExecutor(bmp, args);
 
     error = bmp.saveBmp(args.outputName);
 

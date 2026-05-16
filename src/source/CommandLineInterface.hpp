@@ -41,7 +41,7 @@ struct argument {
     error_t error;
     flags flag;
     std::string inputName;
-    std::string outputName;
+    std::string outputName = "out.bmp";
     Pixel old_color;
     Pixel new_color;
     Coordinate left_up;
@@ -52,8 +52,6 @@ struct argument {
     int number_y;
     int thickness;
     Pixel color_split;
-    int Ws;
-    Pixel fill_color;
 };
 
 std::pair<Coordinate, error_marker_t> getCoordinate(const std::string &str);

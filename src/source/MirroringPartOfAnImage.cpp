@@ -15,34 +15,40 @@ void BmpImage::mirror_image(std::string &axis, Coordinate &left_up, Coordinate &
 
     int x1 = left_up.x;
     int y1 = left_up.y;
-    int x2 = right_down.x;
-    int y2 = right_down.y;
+    int x2 = right_down.x - 1;
+    int y2 = right_down.y - 1;
 
-    if (axis == "y") {
-        for (int x = x1; x <= x2; ++x) {
-            for (int y = y1; y < y1 + (y2 - y1 + 1) / 2; ++y) {
-                int mirror_y = y2 - (y - y1);
+    if (x1 > x2)
+        std::swap(x1, x2);
 
-                int true_y = height - 1 - y;
-                int true_mirror_y = height - 1 - mirror_y;
+    if (y1 > y2)
+        std::swap(y1, y2);
 
-                if (x >= 0 && x < width && true_y >= 0 && true_y < height && true_mirror_y >= 0 &&
-                    true_mirror_y < height) {
-                    swapPixel(arr_pixels[true_y][x], arr_pixels[true_mirror_y][x]);
-                }
-            }
-        }
-    } else if (axis == "x") {
+    x1 = std::max(0, x1);
+    y1 = std::max(0, y1);
+
+    x2 = std::min(width - 1, x2);
+    y2 = std::min(height - 1, y2);
+
+    if (axis == "x") {
         for (int y = y1; y <= y2; ++y) {
-            int true_y = height - 1 - y;
+            int row = height - 1 - y;
 
-            for (int x = x1; x < x1 + (x2 - x1 + 1) / 2; ++x) {
+            for (int x = x1; x <= x1 + (x2 - x1) / 2; ++x) {
                 int mirror_x = x2 - (x - x1);
 
-                if (true_y >= 0 && true_y < height && x >= 0 && x < width && mirror_x >= 0 &&
-                    mirror_x < width) {
-                    swapPixel(arr_pixels[true_y][x], arr_pixels[true_y][mirror_x]);
-                }
+                swapPixel(arr_pixels[row][x], arr_pixels[row][mirror_x]);
+            }
+        }
+    } else if (axis == "y") {
+        for (int y = y1; y <= y1 + (y2 - y1) / 2; ++y) {
+            int mirror_y = y2 - (y - y1);
+
+            int row1 = height - 1 - y;
+            int row2 = height - 1 - mirror_y;
+
+            for (int x = x1; x <= x2; ++x) {
+                swapPixel(arr_pixels[row1][x], arr_pixels[row2][x]);
             }
         }
     }
