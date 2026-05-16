@@ -1,64 +1,47 @@
 #include "BmpImage.hpp"
+#include "ImageUtils.hpp"
 #include <algorithm>
 #include <cmath>
-
-void copySourceToBuffer(const std::vector<std::vector<Pixel>> &src, std::vector<std::vector<Pixel>> &dst,
-                        int x1, int y1, int x2, int y2, int height, int width)
-{
-    int rows = y2 - y1;
-    int cols = x2 - x1;
-    for (int dy = 0; dy < rows; ++dy) {
-        int y = y1 + dy;
-        if (y < 0 || y >= height)
-            continue;
-        int src_y = height - 1 - y;
-        for (int dx = 0; dx < cols; ++dx) {
-            int x = x1 + dx;
-            if (x < 0 || x >= width)
-                continue;
-            dst[dy][dx] = src[src_y][x];
-        }
-    }
-}
-
-void copyBufferToTarget(std::vector<std::vector<Pixel>> &target,
-                        const std::vector<std::vector<Pixel>> &buffer, int dest_x, int dest_y, int rows,
-                        int cols, int height, int width)
-{
-    for (int dy = 0; dy < rows; ++dy) {
-        int y = dest_y + dy;
-        if (y < 0 || y >= height)
-            continue;
-        int target_y = height - 1 - y;
-        for (int dx = 0; dx < cols; ++dx) {
-            int x = dest_x + dx;
-            if (x < 0 || x >= width)
-                continue;
-            target[target_y][x] = buffer[dy][dx];
-        }
-    }
-}
 
 void BmpImage::copy_image(Coordinate &left_up, Coordinate &right_down, Coordinate &dest_left_up)
 {
     int width = m_info_header.width;
     int height = std::abs(m_info_header.height);
 
-    int x1 = left_up.x;
-    int y1 = left_up.y;
-    int x2 = right_down.x;
-    int y2 = right_down.y;
+    left_up = clamp_to_image(left_up, width, height);
+    right_down = clamp_to_image(right_down, width, height);
 
-    int cntColumns = x2 - x1;
-    int cntRows = y2 - y1;
+    int cntColumns = right_down.x - left_up.x + 1;
+    int cntRows = right_down.y - left_up.y + 1;
 
     if (cntColumns <= 0 || cntRows <= 0)
         return;
 
     std::vector<std::vector<Pixel>> buffer(cntRows, std::vector<Pixel>(cntColumns));
 
-    copySourceToBuffer(arr_pixels, buffer, x1, y1, x2, y2, height, width);
+    for (int dy = 0; dy < cntRows; ++dy) {
+        int src_y = left_up.y + dy;
+        if (src_y >= height)
+            break;
+        int bmp_src_y = height - 1 - src_y;
+        for (int dx = 0; dx < cntColumns; ++dx) {
+            int src_x = left_up.x + dx;
+            if (src_x >= width)
+                break;
+            buffer[dy][dx] = arr_pixels[bmp_src_y][src_x];
+        }
+    }
 
-    copyBufferToTarget(arr_pixels, buffer, dest_left_up.x, dest_left_up.y, cntRows, cntColumns, height,
-                       width);
+    for (int dy = 0; dy < cntRows; ++dy) {
+        int target_y = dest_left_up.y + dy;
+        if (target_y < 0 || target_y >= height)
+            continue;
+        int bmp_tgt_y = height - 1 - target_y;
+        for (int dx = 0; dx < cntColumns; ++dx) {
+            int target_x = dest_left_up.x + dx;
+            if (target_x < 0 || target_x >= width)
+                continue;
+            arr_pixels[bmp_tgt_y][target_x] = buffer[dy][dx];
+        }
+    }
 }

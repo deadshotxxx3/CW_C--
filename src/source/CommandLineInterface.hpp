@@ -52,6 +52,17 @@ struct argument {
     int number_y;
     int thickness;
     Pixel color_split;
+
+    bool has_old_color = false;
+    bool has_new_color = false;
+    bool has_left_up = false;
+    bool has_right_down = false;
+    bool has_dest_left_up = false;
+    bool has_axis = false;
+    bool has_number_x = false;
+    bool has_number_y = false;
+    bool has_thickness = false;
+    bool has_color_split = false;
 };
 
 std::pair<Coordinate, error_marker_t> getCoordinate(const std::string &str);

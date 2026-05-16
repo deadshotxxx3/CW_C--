@@ -269,6 +269,74 @@ static error_marker_t handle_positional(int &optind, int argc, char *argv[], str
     return error_marker_t::ERR_OK;
 }
 
+static error_marker_t validate_required_args(const argument &args)
+{
+    if (args.flag == flags::NO_FLAG || args.flag == flags::FLAG_HELP || args.flag == flags::FLAG_INFO) {
+        return error_marker_t::ERR_OK;
+    }
+
+    std::vector<std::string> missing;
+    switch (args.flag) {
+        case flags::FLAG_COPY:
+            if (!args.has_left_up)
+                missing.push_back("-l");
+            if (!args.has_right_down)
+                missing.push_back("-r");
+            if (!args.has_dest_left_up)
+                missing.push_back("-d");
+            break;
+        case flags::FLAG_MIRROR:
+            if (!args.has_axis)
+                missing.push_back("-a");
+            if (!args.has_left_up)
+                missing.push_back("-l");
+            if (!args.has_right_down)
+                missing.push_back("-r");
+            break;
+        case flags::FLAG_COLOR_REPLACE:
+            if (!args.has_old_color)
+                missing.push_back("-O");
+            if (!args.has_new_color)
+                missing.push_back("-N");
+            break;
+        case flags::FLAG_SPLIT:
+            if (!args.has_number_x)
+                missing.push_back("-x");
+            if (!args.has_number_y)
+                missing.push_back("-y");
+            if (!args.has_thickness)
+                missing.push_back("-t");
+            if (!args.has_color_split)
+                missing.push_back("-C");
+            break;
+        default:
+            break;
+    }
+
+    if (!missing.empty()) {
+        std::cerr << "Error: Missing required arguments for operation: ";
+        for (size_t i = 0; i < missing.size(); ++i) {
+            std::cerr << missing[i] << (i < missing.size() - 1 ? ", " : "");
+        }
+        std::cerr << "\n";
+        return error_marker_t::ERR_FEWARGS;
+    }
+    return error_marker_t::ERR_OK;
+}
+
+static error_marker_t validate_region_coords(const argument &args)
+{
+    if (args.flag != flags::FLAG_COPY && args.flag != flags::FLAG_MIRROR) {
+        return error_marker_t::ERR_OK;
+    }
+    if (args.right_down.x < args.left_up.x || args.right_down.y < args.left_up.y) {
+        std::cerr << "Error: Bottom-right coordinate (-r) must be to the "
+                     "right and below top-left coordinate (-l).\n";
+        return error_marker_t::ERR_INCORRECTARG;
+    }
+    return error_marker_t::ERR_OK;
+}
+
 error_marker_t CLI(int argc, char *argv[], struct argument &arguments)
 {
     opterr = 0;
@@ -370,7 +438,7 @@ error_marker_t CLI(int argc, char *argv[], struct argument &arguments)
 
     if (!ignored_list.empty()) {
         print_ignored(ignored_list, active_op_name);
-        return error_marker_t::ERR_INCORRECTARG;
+        return error_marker_t::ERR_EXTRARGS;
     }
 
     error_marker_t pos_res = handle_positional(optind, argc, argv, arguments, active_op_name);
@@ -385,6 +453,21 @@ error_marker_t CLI(int argc, char *argv[], struct argument &arguments)
     if (arguments.flag == flags::NO_FLAG) {
         std::cerr << "Error: No operation specified. Available: -m "
                   << "(mirror), -c (color_replace), -b (copy), -s " << "(split), -I (info).\n";
+        return error_marker_t::ERR_INCORRECTARG;
+    }
+
+    error_marker_t val_res = validate_required_args(arguments);
+    if (val_res != error_marker_t::ERR_OK) {
+        return val_res;
+    }
+
+    error_marker_t coord_res = validate_region_coords(arguments);
+    if (coord_res != error_marker_t::ERR_OK)
+        return coord_res;
+
+    if (!arguments.inputName.empty() && !arguments.outputName.empty() &&
+        arguments.inputName == arguments.outputName) {
+        std::cerr << "Error: Input and output files must not be the same.\n";
         return error_marker_t::ERR_INCORRECTARG;
     }
 

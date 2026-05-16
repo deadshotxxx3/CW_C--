@@ -10,6 +10,7 @@ error_marker_t process_coordinate_flag(char short_opt, const char *optarg, struc
             return result.second;
         }
         arguments.left_up = result.first;
+        arguments.has_left_up = true;
         return error_marker_t::ERR_OK;
     } else if (short_opt == 'r') {
         auto result = getCoordinate(optarg);
@@ -17,6 +18,7 @@ error_marker_t process_coordinate_flag(char short_opt, const char *optarg, struc
             return result.second;
         }
         arguments.right_down = result.first;
+        arguments.has_right_down = true;
         return error_marker_t::ERR_OK;
     }
     return error_marker_t::ERR_OK;
@@ -33,6 +35,7 @@ error_marker_t processing_color_flags(char short_opt, const char *optarg, struct
             return result.second;
         }
         arguments.old_color = result.first;
+        arguments.has_old_color = true;
         return error_marker_t::ERR_OK;
     } else if (short_opt == 'N') {
         auto result = getPixel(optarg);
@@ -40,6 +43,7 @@ error_marker_t processing_color_flags(char short_opt, const char *optarg, struct
             return result.second;
         }
         arguments.new_color = result.first;
+        arguments.has_new_color = true;
         return error_marker_t::ERR_OK;
     }
     return error_marker_t::ERR_OK;
@@ -56,6 +60,7 @@ error_marker_t processing_copy_flags(char short_opt, const char *optarg, struct 
             return result.second;
         }
         arguments.dest_left_up = result.first;
+        arguments.has_dest_left_up = true;
         return error_marker_t::ERR_OK;
     }
     error_marker_t coord_result = process_coordinate_flag(short_opt, optarg, arguments);
@@ -76,6 +81,7 @@ error_marker_t processing_mirror_flag(char short_opt, const char *optarg, struct
             return error_marker_t::ERR_INCORRECTARG;
         }
         arguments.axis = optarg;
+        arguments.has_axis = true;
         return error_marker_t::ERR_OK;
     }
     error_marker_t coord_result = process_coordinate_flag(short_opt, optarg, arguments);
@@ -99,6 +105,7 @@ error_marker_t processing_number_line_flag(char short_opt, const char *optarg, s
                 return error_marker_t::ERR_INCORRECTARG;
             }
             arguments.number_x = value;
+            arguments.has_number_x = true;
         } catch (...) {
             std::cerr << "Error: invalid number for number_x\n";
             return error_marker_t::ERR_INCORRECTARG;
@@ -116,6 +123,7 @@ error_marker_t processing_number_line_flag(char short_opt, const char *optarg, s
                 return error_marker_t::ERR_INCORRECTARG;
             }
             arguments.number_y = value;
+            arguments.has_number_y = true;
         } catch (...) {
             std::cerr << "Error: invalid number for number_y\n";
             return error_marker_t::ERR_INCORRECTARG;
@@ -138,6 +146,7 @@ error_marker_t processing_split_flag(char short_opt, const char *optarg, struct 
                 return error_marker_t::ERR_INCORRECTARG;
             }
             arguments.thickness = value;
+            arguments.has_thickness = true;
         } catch (...) {
             std::cerr << "Error: invalid number for thickness\n";
             return error_marker_t::ERR_INCORRECTARG;
@@ -149,6 +158,7 @@ error_marker_t processing_split_flag(char short_opt, const char *optarg, struct 
             return result.second;
         }
         arguments.color_split = result.first;
+        arguments.has_color_split = true;
         return error_marker_t::ERR_OK;
     }
     error_marker_t number_line_result = processing_number_line_flag(short_opt, optarg, arguments);

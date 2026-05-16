@@ -15,6 +15,7 @@ int main(int argc, char *argv[])
     if (error != error_marker_t::ERR_OK) {
         return static_cast<int>(error);
     }
+
     if (args.flag == flags::FLAG_HELP) {
         print_help();
         return 0;
