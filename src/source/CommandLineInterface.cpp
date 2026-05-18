@@ -1,14 +1,10 @@
 #include "CommandLineInterface.hpp"
-#include "Error.hpp"
 #include "ProcessingFlag.hpp"
 #include <cctype>
 #include <cstring>
 #include <iostream>
 #include <sstream>
 #include <vector>
-
-const int MAX_VALUE_COMPONENTS = 255;
-const char DELIMETER = '.';
 
 struct option options[] = {{"input", required_argument, 0, 'i'},
                            {"output", required_argument, 0, 'o'},
@@ -29,97 +25,25 @@ struct option options[] = {{"input", required_argument, 0, 'i'},
                            {"number_x", required_argument, 0, 'x'},
                            {"number_y", required_argument, 0, 'y'},
                            {"thickness", required_argument, 0, 't'},
+                           
                            {"color", required_argument, 0, 'C'},
 
                            {"info", no_argument, 0, 'I'},
                            {"help", no_argument, 0, 'h'},
                            {0, 0, 0, 0}};
 
-bool check_range_component(int values)
-{
-    if (values < 0 || values > MAX_VALUE_COMPONENTS)
-        return false;
-    return true;
-}
 
-bool check_valid_value(std::string values)
-{
-    for (char i : values) {
-        if (!isdigit(i) && i != '-')
-            return false;
-    }
-    return true;
-}
-
-std::pair<Coordinate, error_marker_t> getCoordinate(const std::string &str)
-{
-    std::stringstream sub_string(str);
-    std::string token;
-    std::vector<int> values;
-
-    while (std::getline(sub_string, token, DELIMETER)) {
-        if (!check_valid_value(token)) {
-            std::cerr << "Invalid coordinate format: non-numeric character\n";
-            return {Coordinate(), error_marker_t::ERR_INCORRECTARG};
-        }
-        values.push_back(std::stoi(token));
-    }
-
-    if (values.size() != 2) {
-        std::cerr << "Invalid coordinate format: expected x.y\n";
-        return {Coordinate(), error_marker_t::ERR_INCORRECTARG};
-    }
-
-    return {Coordinate(values[0], values[1]), error_marker_t::ERR_OK};
-}
-
-std::pair<Pixel, error_marker_t> getPixel(const std::string &str)
-{
-    std::stringstream sub_string(str);
-    std::string token;
-    std::vector<int> values;
-
-    while (std::getline(sub_string, token, DELIMETER)) {
-        if (!check_valid_value(token)) {
-            std::cerr << "Invalid color format: non-numeric character\n";
-            return {Pixel(), error_marker_t::ERR_INCORRECTARG};
-        }
-        values.push_back(std::stoi(token));
-    }
-
-    if (values.size() != 3) {
-        std::cerr << "Invalid color format: expected r.g.b\n";
-        return {Pixel(), error_marker_t::ERR_INCORRECTARG};
-    }
-
-    int r = values[0], g = values[1], b = values[2];
-
-    if (!check_range_component(r) || !check_range_component(g) || !check_range_component(b)) {
-        std::cerr << "Color component out of range (0-255)\n";
-        return {Pixel(), error_marker_t::ERR_INCORRECTARG};
-    }
-    return {Pixel(r, g, b), error_marker_t::ERR_OK};
-}
-
-error_marker_t setInputFileIfNeeded(struct argument &arguments, int argc, char *argv[])
-{
-    if (arguments.inputName.empty() && optind < argc) {
-        arguments.inputName = argv[optind];
-        optind++;
-    }
-
-    if (arguments.inputName.empty()) {
-        std::cerr << "Error: No input file specified\n";
-        return error_marker_t::ERR_INCORRECTARG;
-    }
-    return error_marker_t::ERR_OK;
-}
-
-struct OpInfo {
-    flags f;
-    const char *name;
-};
-
+/**
+ * @internal
+ * @brief Maps a short option character to its corresponding operation enum and display name.
+ * @details Used by the CLI parser to resolve primary operation flags. Returns a structured
+ *          pair containing the flags enum value and a human-readable string identifier.
+ *          If the character does not correspond to a known operation, returns NO_FLAG and nullptr.
+ *
+ * @param[in] c The short option character to resolve (e.g., 'm', 'c', 'h', 'I').
+ * @return OpInfo A structure containing the resolved flags enum and operation name.
+ *         Defaults to {flags::NO_FLAG, nullptr} for unrecognized characters.
+ */
 static OpInfo get_op_info(char c)
 {
     switch (c) {
@@ -140,6 +64,24 @@ static OpInfo get_op_info(char c)
     }
 }
 
+/**
+ * @internal
+ * @brief Validates operation flags for duplicates or mutual exclusivity conflicts.
+ * @details Resolves the short option character to a known operation using get_op_info().
+ *          If no operation has been selected yet, it assigns the new operation and updates the
+ *          active operation name. If an operation is already active, it detects duplicates
+ *          (same flag twice) or conflicts (two different operations) and reports an error.
+ *          Non-operation flags are safely ignored and return success.
+ *
+ * @param[in]     c             The short option character to validate (e.g., 'm', 'c', 'h').
+ * @param[in,out] arguments     Reference to the parsed arguments structure. Reads the current
+ *                              operation state and updates it if this is the first valid operation.
+ * @param[in,out] active_op_name Reference to a pointer holding the human-readable name of the
+ *                              currently active operation. Read for conflict messages, updated
+ *                              upon successful assignment.
+ * @return error_marker_t       ERR_OK if the operation is valid/new or not an operation flag;
+ *                              ERR_INCORRECTARG if a duplicate or conflicting operation is detected.
+ */
 error_marker_t check_operation(char c, struct argument &arguments, const char *&active_op_name)
 {
     OpInfo info = get_op_info(c);
@@ -160,6 +102,20 @@ error_marker_t check_operation(char c, struct argument &arguments, const char *&
     return error_marker_t::ERR_INCORRECTARG;
 }
 
+/**
+ * @internal
+ * @brief Identifies and assigns the primary operation category based on a parsed option character.
+ * @details Maps various short options (including operation flags and their dependent parameters)
+ *          to a unified primary operation identifier. For example, '-l', '-r', and '-d' all map
+ *          to the 'copy' ('b') category, while '-O' and '-N' map to 'color_replace' ('c').
+ *          Typically called only on the first encountered relevant option to lock the operation context.
+ *
+ * @param[in]     check_c      The option character to evaluate.
+ * @param[in,out] primary_op   Reference to a char variable tracking the primary operation category.
+ *                             Assigned the category character on a successful match.
+ * @param[in,out] active_name  Reference to a pointer holding the operation's display name.
+ *                             Assigned the corresponding string literal on a successful match.
+ */
 static void set_primary_op(char check_c, char &primary_op, const char *&active_name)
 {
     if (check_c == 'h') {
@@ -195,6 +151,19 @@ static void set_primary_op(char check_c, char &primary_op, const char *&active_n
     }
 }
 
+/**
+ * @internal
+ * @brief Checks if a command-line option belongs to the current primary operation group.
+ * @details Validates option grouping to prevent mixing flags from different operations.
+ *          Global flags ('i', 'o') are always accepted. If no primary operation is set yet
+ *          (primary == 0), all options are temporarily allowed. Otherwise, strictly enforces
+ *          the allowed subset for mirror, copy, split, color_replace, help, and info.
+ *
+ * @param[in] primary The character representing the currently active primary operation category.
+ * @param[in] c       The option character to validate against the primary group.
+ * @return true       If the option is permitted for the current context or is a global flag.
+ * @return false      If the option conflicts with the active operation group.
+ */
 static bool belongs_to(char primary, char c)
 {
     if (c == 'i' || c == 'o')
@@ -218,6 +187,18 @@ static bool belongs_to(char primary, char c)
     }
 }
 
+/**
+ * @internal
+ * @brief Formats and outputs an error message for ignored or superfluous arguments.
+ * @details Concatenates a list of unexpected arguments into a human-readable string
+ *          separated by " and ", then prints a standardized warning to standard error.
+ *          Used when flags that do not accept arguments receive them, or when extra
+ *          positional arguments are provided after valid parsing completes.
+ *
+ * @param[in] list    Vector of argument strings that were deemed invalid or ignored.
+ * @param[in] op_name Pointer to the name of the active operation flag. If nullptr,
+ *                    defaults to "used flags" in the output message.
+ */
 static void print_ignored(const std::vector<std::string> &list, const char *op_name)
 {
     std::string formatted;
@@ -232,6 +213,26 @@ static void print_ignored(const std::vector<std::string> &list, const char *op_n
               << "' does not accept arguments.\n";
 }
 
+/**
+ * @internal
+ * @brief Processes remaining positional arguments after getopt_long parsing.
+ * @details Validates that positional arguments are not provided alongside operations
+ *          that do not accept them (help, info). If an input file was not explicitly
+ *          specified via the -i flag, attempts to consume the next positional argument
+ *          as the input path. Rejects any additional trailing arguments with a standardized
+ *          error message to standard error.
+ *
+ * @param[in,out] optind         Reference to the global getopt index. Advanced when
+ *                               consuming a positional input file.
+ * @param[in]     argc           Total number of command-line arguments.
+ * @param[in]     argv           Array of command-line argument strings.
+ * @param[in,out] arguments      Reference to the parsed arguments structure. Updated
+ *                               with inputName if a fallback positional argument is used.
+ * @param[in]     active_op_name Pointer to the name of the currently active operation
+ *                               for contextual error reporting.
+ * @return error_marker_t        ERR_OK if arguments are handled correctly,
+ *                               ERR_INCORRECTARG if invalid or extra arguments are detected.
+ */
 static error_marker_t handle_positional(int &optind, int argc, char *argv[], struct argument &arguments,
                                         const char *active_op_name)
 {
@@ -269,6 +270,19 @@ static error_marker_t handle_positional(int &optind, int argc, char *argv[], str
     return error_marker_t::ERR_OK;
 }
 
+/**
+ * @internal
+ * @brief Validates that all mandatory parameters for the selected operation have been provided.
+ * @details Inspects the boolean tracking flags (has_*) within the argument structure to ensure
+ *          every required CLI option was explicitly passed by the user. Skips validation for
+ *          global flags (help, info) or when no operation is selected. If any required parameter
+ *          is missing, formats a comma-separated list of the absent flags, prints an error to
+ *          standard error, and returns a specific error code.
+ *
+ * @param[in] args Reference to the fully parsed argument structure containing operation state and tracking flags.
+ * @return error_marker_t ERR_OK if all required arguments are present or validation is not applicable,
+ *         ERR_FEWARGS if one or more mandatory parameters are missing.
+ */
 static error_marker_t validate_required_args(const argument &args)
 {
     if (args.flag == flags::NO_FLAG || args.flag == flags::FLAG_HELP || args.flag == flags::FLAG_INFO) {
@@ -324,6 +338,17 @@ static error_marker_t validate_required_args(const argument &args)
     return error_marker_t::ERR_OK;
 }
 
+/**
+ * @internal
+ * @brief Validates the geometric alignment of region-defining coordinates.
+ * @details Ensures that for operations requiring a rectangular area (copy, mirror),
+ *          the bottom-right coordinate is not positioned to the left or above the top-left coordinate.
+ *          Skips validation entirely for operations that do not use region boundaries.
+ *
+ * @param[in] args Parsed argument structure containing the active operation flag and coordinate pairs.
+ * @return error_marker_t ERR_OK if coordinates are valid or validation is not applicable,
+ *         ERR_INCORRECTARG if the region is geometrically invalid (right_down < left_up).
+ */
 static error_marker_t validate_region_coords(const argument &args)
 {
     if (args.flag != flags::FLAG_COPY && args.flag != flags::FLAG_MIRROR) {
@@ -337,12 +362,38 @@ static error_marker_t validate_region_coords(const argument &args)
     return error_marker_t::ERR_OK;
 }
 
+/**
+ * @internal
+ * @brief Resolves the input file path from remaining positional arguments.
+ * @details Checks if the input file was explicitly specified via the `-i` flag.
+ *          If not, it treats the next remaining command-line argument (left after flag parsing)
+ *          as the input file path. Guarantees that an input path is always present before processing.
+ *
+ * @param[in,out] arguments Reference to the argument structure. Updates `inputName` if a fallback path is detected.
+ * @param[in]     argc      Total number of command-line arguments passed to the program.
+ * @param[in]     argv      Array of command-line argument strings.
+ * @return error_marker_t ERR_OK if `inputName` is successfully resolved,
+ *         ERR_INCORRECTARG if no input file path is provided by either method.
+ */
+static error_marker_t setInputFileIfNeeded(struct argument &arguments, int argc, char *argv[])
+{
+    if (arguments.inputName.empty() && optind < argc) {
+        arguments.inputName = argv[optind];
+        optind++;
+    }
+
+    if (arguments.inputName.empty()) {
+        std::cerr << "Error: No input file specified\n";
+        return error_marker_t::ERR_INCORRECTARG;
+    }
+    return error_marker_t::ERR_OK;
+}
+
 error_marker_t CLI(int argc, char *argv[], struct argument &arguments)
 {
     opterr = 0;
     int options_index = 0;
     int c;
-    arguments.flag = flags::NO_FLAG;
     const char *active_op_name = nullptr;
     char primary_op = 0;
     std::vector<std::string> ignored_list;

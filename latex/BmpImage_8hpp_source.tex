@@ -1,0 +1,55 @@
+\doxysection{Bmp\+Image.\+hpp}
+\hypertarget{BmpImage_8hpp_source}{}\label{BmpImage_8hpp_source}\index{src/source/BmpImage.hpp@{src/source/BmpImage.hpp}}
+\mbox{\hyperlink{BmpImage_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Error.hpp"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Types.hpp"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classBmpImage}{BmpImage}}\ \{}
+\DoxyCodeLine{00024\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{structBitmapFileHeader}{BitmapFileHeader}}\ m\_file\_header;\ }
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{structBitmapInfoHeader}{BitmapInfoHeader}}\ m\_info\_header;\ }
+\DoxyCodeLine{00029\ \ \ \ \ std::vector<std::vector<Pixel>>}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ arr\_pixels;\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{classBmpImage_a2a1b204b84f1d7e565fb30140f56abe0}{BmpImage}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classBmpImage_a0df9c63613bffa1456c59f9ed7a7c567}{getRowStride}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structBitmapInfoHeader}{BitmapInfoHeader}}\ \&\mbox{\hyperlink{classBmpImage_a083bdb937e69f6ccff741b21ebe358d5}{getInfoHeader}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00051\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_info\_header;}
+\DoxyCodeLine{00053\ \ \ \ \ \}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structBitmapFileHeader}{BitmapFileHeader}}\ \&\mbox{\hyperlink{classBmpImage_a529dc860a143a30ce4819f6422524314}{getFileHeader}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00062\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_file\_header;}
+\DoxyCodeLine{00064\ \ \ \ \ \}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::vector<Pixel>>\ \&\mbox{\hyperlink{classBmpImage_a834367fe813d54a1e1dded3239bff663}{getArrPixels}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00073\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ arr\_pixels;}
+\DoxyCodeLine{00075\ \ \ \ \ \}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00085\ \ \ \ \ error\_marker\_t\ \mbox{\hyperlink{classBmpImage_a70e197316f63d8c3b52d525e976ea94b}{readBmp}}(\textcolor{keyword}{const}\ std::string\ \&filename);}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00094\ \ \ \ \ error\_marker\_t\ \mbox{\hyperlink{classBmpImage_aad156118a1be48f5be53d7c1a76bd1c6}{saveBmp}}(\textcolor{keyword}{const}\ std::string\ \&filename);}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBmpImage_a55950f6caa24b4e832071693d400e51b}{mirror\_image}}(std::string\ \&axis,\ \mbox{\hyperlink{structCoordinate}{Coordinate}}\ \&left\_up,\ \mbox{\hyperlink{structCoordinate}{Coordinate}}\ \&right\_down);}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBmpImage_a537e5223ca1e76a84bc966fd5bb28eec}{copy\_image}}(\mbox{\hyperlink{structCoordinate}{Coordinate}}\ \&left\_up,\ \mbox{\hyperlink{structCoordinate}{Coordinate}}\ \&right\_down,\ \mbox{\hyperlink{structCoordinate}{Coordinate}}\ \&dest\_left\_up);}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBmpImage_ab84fc0ad53adf9a68a4c61369ebf5d46}{color\_replace}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structPixel}{Pixel}}\ \&old\_color,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structPixel}{Pixel}}\ \&new\_color);}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBmpImage_a4d4a50c5d56513cfa98838b0930e0c70}{split\_image}}(\textcolor{keywordtype}{int}\ cntLineX,\ \textcolor{keywordtype}{int}\ cntLineY,\ \textcolor{keywordtype}{int}\ thickness,\ \mbox{\hyperlink{structPixel}{Pixel}}\ \&colorLine);}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBmpImage_a1cb0a9f1337692bf81d7b9a46fb7e56e}{draw\_line}}(\mbox{\hyperlink{structCoordinate}{Coordinate}}\ \&pointA,\ \mbox{\hyperlink{structCoordinate}{Coordinate}}\ \&pointB,\ \textcolor{keywordtype}{int}\ thickness,\ \mbox{\hyperlink{structPixel}{Pixel}}\ \&color\_line);}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBmpImage_a89651b5a8e6b9c88b4fe0ba9003f9184}{print\_info}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00156\ \};}
+
+\end{DoxyCode}

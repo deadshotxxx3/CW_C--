@@ -1,0 +1,115 @@
+\doxysection{Bitmap\+Info\+Header Struct Reference}
+\hypertarget{structBitmapInfoHeader}{}\label{structBitmapInfoHeader}\index{BitmapInfoHeader@{BitmapInfoHeader}}
+
+
+BMP information header (40 bytes for v3).  
+
+
+
+
+{\ttfamily \#include $<$Types.\+hpp$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structBitmapInfoHeader_a72533891c7155e89a2ba488b9c570a9f}{header\+Size}}
+\item 
+int32\+\_\+t \mbox{\hyperlink{structBitmapInfoHeader_a473cae74d298e4f4eaf0595f184881cb}{width}}
+\item 
+int32\+\_\+t \mbox{\hyperlink{structBitmapInfoHeader_a5ad7376c798523be0977690cccbcfa9b}{height}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structBitmapInfoHeader_a40f70feb8da5d4a989d1d57e866e0cd4}{planes}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structBitmapInfoHeader_a12b2feee3b5ff67284bbca51479f6e60}{bits\+Per\+Pixel}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structBitmapInfoHeader_ae601a1001d146855816fe4b960667ba8}{compression}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structBitmapInfoHeader_a328c2ba0ff558b95cc8a8670b26d7e34}{image\+Size}}
+\item 
+int32\+\_\+t \mbox{\hyperlink{structBitmapInfoHeader_a932735f6317695606a0d508fd357a2b3}{x\+Pixels\+Per\+Meter}}
+\item 
+int32\+\_\+t \mbox{\hyperlink{structBitmapInfoHeader_a222e1834b23710d4774fab7d22bddac4}{y\+Pixels\+Per\+Meter}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structBitmapInfoHeader_ae407c488b221ad010ad9404012d1354f}{num\+Colors}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structBitmapInfoHeader_a977162be7336d622ec9079a27f9583c4}{important\+Color\+Count}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+BMP information header (40 bytes for v3). 
+
+Contains image dimensions, color depth, compression method, and resolution. Corresponds to the Windows BITMAPINFOHEADER structure. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structBitmapInfoHeader_a12b2feee3b5ff67284bbca51479f6e60}\label{structBitmapInfoHeader_a12b2feee3b5ff67284bbca51479f6e60} 
+\index{BitmapInfoHeader@{BitmapInfoHeader}!bitsPerPixel@{bitsPerPixel}}
+\index{bitsPerPixel@{bitsPerPixel}!BitmapInfoHeader@{BitmapInfoHeader}}
+\doxysubsubsection{\texorpdfstring{bitsPerPixel}{bitsPerPixel}}
+{\footnotesize\ttfamily uint16\+\_\+t Bitmap\+Info\+Header\+::bits\+Per\+Pixel}
+
+Bits per pixel (1, 4, 8, 16, 24, or 32) \Hypertarget{structBitmapInfoHeader_ae601a1001d146855816fe4b960667ba8}\label{structBitmapInfoHeader_ae601a1001d146855816fe4b960667ba8} 
+\index{BitmapInfoHeader@{BitmapInfoHeader}!compression@{compression}}
+\index{compression@{compression}!BitmapInfoHeader@{BitmapInfoHeader}}
+\doxysubsubsection{\texorpdfstring{compression}{compression}}
+{\footnotesize\ttfamily uint32\+\_\+t Bitmap\+Info\+Header\+::compression}
+
+Compression type (0 = BI\+\_\+\+RGB/uncompressed) \Hypertarget{structBitmapInfoHeader_a72533891c7155e89a2ba488b9c570a9f}\label{structBitmapInfoHeader_a72533891c7155e89a2ba488b9c570a9f} 
+\index{BitmapInfoHeader@{BitmapInfoHeader}!headerSize@{headerSize}}
+\index{headerSize@{headerSize}!BitmapInfoHeader@{BitmapInfoHeader}}
+\doxysubsubsection{\texorpdfstring{headerSize}{headerSize}}
+{\footnotesize\ttfamily uint32\+\_\+t Bitmap\+Info\+Header\+::header\+Size}
+
+Size of this header in bytes (typically 40) \Hypertarget{structBitmapInfoHeader_a5ad7376c798523be0977690cccbcfa9b}\label{structBitmapInfoHeader_a5ad7376c798523be0977690cccbcfa9b} 
+\index{BitmapInfoHeader@{BitmapInfoHeader}!height@{height}}
+\index{height@{height}!BitmapInfoHeader@{BitmapInfoHeader}}
+\doxysubsubsection{\texorpdfstring{height}{height}}
+{\footnotesize\ttfamily int32\+\_\+t Bitmap\+Info\+Header\+::height}
+
+Image height. Positive = bottom-\/up, Negative = top-\/down \Hypertarget{structBitmapInfoHeader_a328c2ba0ff558b95cc8a8670b26d7e34}\label{structBitmapInfoHeader_a328c2ba0ff558b95cc8a8670b26d7e34} 
+\index{BitmapInfoHeader@{BitmapInfoHeader}!imageSize@{imageSize}}
+\index{imageSize@{imageSize}!BitmapInfoHeader@{BitmapInfoHeader}}
+\doxysubsubsection{\texorpdfstring{imageSize}{imageSize}}
+{\footnotesize\ttfamily uint32\+\_\+t Bitmap\+Info\+Header\+::image\+Size}
+
+Size of raw pixel data in bytes (0 for uncompressed) \Hypertarget{structBitmapInfoHeader_a977162be7336d622ec9079a27f9583c4}\label{structBitmapInfoHeader_a977162be7336d622ec9079a27f9583c4} 
+\index{BitmapInfoHeader@{BitmapInfoHeader}!importantColorCount@{importantColorCount}}
+\index{importantColorCount@{importantColorCount}!BitmapInfoHeader@{BitmapInfoHeader}}
+\doxysubsubsection{\texorpdfstring{importantColorCount}{importantColorCount}}
+{\footnotesize\ttfamily uint32\+\_\+t Bitmap\+Info\+Header\+::important\+Color\+Count}
+
+Number of important colors (0 = all) \Hypertarget{structBitmapInfoHeader_ae407c488b221ad010ad9404012d1354f}\label{structBitmapInfoHeader_ae407c488b221ad010ad9404012d1354f} 
+\index{BitmapInfoHeader@{BitmapInfoHeader}!numColors@{numColors}}
+\index{numColors@{numColors}!BitmapInfoHeader@{BitmapInfoHeader}}
+\doxysubsubsection{\texorpdfstring{numColors}{numColors}}
+{\footnotesize\ttfamily uint32\+\_\+t Bitmap\+Info\+Header\+::num\+Colors}
+
+Number of colors in palette (0 = 2\texorpdfstring{$^\wedge$}{\string^}bits\+Per\+Pixel) \Hypertarget{structBitmapInfoHeader_a40f70feb8da5d4a989d1d57e866e0cd4}\label{structBitmapInfoHeader_a40f70feb8da5d4a989d1d57e866e0cd4} 
+\index{BitmapInfoHeader@{BitmapInfoHeader}!planes@{planes}}
+\index{planes@{planes}!BitmapInfoHeader@{BitmapInfoHeader}}
+\doxysubsubsection{\texorpdfstring{planes}{planes}}
+{\footnotesize\ttfamily uint16\+\_\+t Bitmap\+Info\+Header\+::planes}
+
+Number of color planes (must be 1) \Hypertarget{structBitmapInfoHeader_a473cae74d298e4f4eaf0595f184881cb}\label{structBitmapInfoHeader_a473cae74d298e4f4eaf0595f184881cb} 
+\index{BitmapInfoHeader@{BitmapInfoHeader}!width@{width}}
+\index{width@{width}!BitmapInfoHeader@{BitmapInfoHeader}}
+\doxysubsubsection{\texorpdfstring{width}{width}}
+{\footnotesize\ttfamily int32\+\_\+t Bitmap\+Info\+Header\+::width}
+
+Image width in pixels \Hypertarget{structBitmapInfoHeader_a932735f6317695606a0d508fd357a2b3}\label{structBitmapInfoHeader_a932735f6317695606a0d508fd357a2b3} 
+\index{BitmapInfoHeader@{BitmapInfoHeader}!xPixelsPerMeter@{xPixelsPerMeter}}
+\index{xPixelsPerMeter@{xPixelsPerMeter}!BitmapInfoHeader@{BitmapInfoHeader}}
+\doxysubsubsection{\texorpdfstring{xPixelsPerMeter}{xPixelsPerMeter}}
+{\footnotesize\ttfamily int32\+\_\+t Bitmap\+Info\+Header\+::x\+Pixels\+Per\+Meter}
+
+Horizontal resolution (pixels per meter) \Hypertarget{structBitmapInfoHeader_a222e1834b23710d4774fab7d22bddac4}\label{structBitmapInfoHeader_a222e1834b23710d4774fab7d22bddac4} 
+\index{BitmapInfoHeader@{BitmapInfoHeader}!yPixelsPerMeter@{yPixelsPerMeter}}
+\index{yPixelsPerMeter@{yPixelsPerMeter}!BitmapInfoHeader@{BitmapInfoHeader}}
+\doxysubsubsection{\texorpdfstring{yPixelsPerMeter}{yPixelsPerMeter}}
+{\footnotesize\ttfamily int32\+\_\+t Bitmap\+Info\+Header\+::y\+Pixels\+Per\+Meter}
+
+Vertical resolution (pixels per meter) 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/source/Types.\+hpp\end{DoxyCompactItemize}

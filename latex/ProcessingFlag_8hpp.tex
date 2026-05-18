@@ -1,0 +1,132 @@
+\doxysection{src/source/\+Processing\+Flag.hpp File Reference}
+\hypertarget{ProcessingFlag_8hpp}{}\label{ProcessingFlag_8hpp}\index{src/source/ProcessingFlag.hpp@{src/source/ProcessingFlag.hpp}}
+
+
+Handlers for parsing and validating operation-\/specific CLI flags.  
+
+
+{\ttfamily \#include "{}Command\+Line\+Interface.\+hpp"{}}\newline
+{\ttfamily \#include "{}Types.\+hpp"{}}\newline
+{\ttfamily \#include $<$string$>$}\newline
+Include dependency graph for Processing\+Flag.\+hpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ProcessingFlag_8hpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+error\+\_\+marker\+\_\+t \mbox{\hyperlink{ProcessingFlag_8hpp_a3dbfe021ba78d56248219bf5e5a03e11}{processing\+\_\+color\+\_\+flags}} (char short\+\_\+opt, const char \texorpdfstring{$\ast$}{*}optarg, struct \mbox{\hyperlink{structargument}{argument}} \&arguments)
+\begin{DoxyCompactList}\small\item\em Processes command-\/line flags related to color replacement. \end{DoxyCompactList}\item 
+error\+\_\+marker\+\_\+t \mbox{\hyperlink{ProcessingFlag_8hpp_ae5e75a8d7af6de184a84a814d80906b2}{processing\+\_\+copy\+\_\+flags}} (char short\+\_\+opt, const char \texorpdfstring{$\ast$}{*}optarg, struct \mbox{\hyperlink{structargument}{argument}} \&arguments)
+\begin{DoxyCompactList}\small\item\em Processes command-\/line flags related to region copying. \end{DoxyCompactList}\item 
+error\+\_\+marker\+\_\+t \mbox{\hyperlink{ProcessingFlag_8hpp_ab4bddf897f805e997a1d44323ba65a99}{processing\+\_\+mirror\+\_\+flag}} (char short\+\_\+opt, const char \texorpdfstring{$\ast$}{*}optarg, struct \mbox{\hyperlink{structargument}{argument}} \&arguments)
+\begin{DoxyCompactList}\small\item\em Processes command-\/line flags related to region mirroring. \end{DoxyCompactList}\item 
+error\+\_\+marker\+\_\+t \mbox{\hyperlink{ProcessingFlag_8hpp_a8928b19c10743618d4637c6c8ca6b533}{processing\+\_\+split\+\_\+flag}} (char short\+\_\+opt, const char \texorpdfstring{$\ast$}{*}optarg, struct \mbox{\hyperlink{structargument}{argument}} \&arguments)
+\begin{DoxyCompactList}\small\item\em Processes command-\/line flags related to image splitting/grid lines. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Handlers for parsing and validating operation-\/specific CLI flags. 
+
+Each function processes a group of related options (color, copy, mirror, split), validates input formats, updates the argument structure, and sets tracking flags. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{ProcessingFlag_8hpp_a3dbfe021ba78d56248219bf5e5a03e11}\label{ProcessingFlag_8hpp_a3dbfe021ba78d56248219bf5e5a03e11} 
+\index{ProcessingFlag.hpp@{ProcessingFlag.hpp}!processing\_color\_flags@{processing\_color\_flags}}
+\index{processing\_color\_flags@{processing\_color\_flags}!ProcessingFlag.hpp@{ProcessingFlag.hpp}}
+\doxysubsubsection{\texorpdfstring{processing\_color\_flags()}{processing\_color\_flags()}}
+{\footnotesize\ttfamily error\+\_\+marker\+\_\+t processing\+\_\+color\+\_\+flags (\begin{DoxyParamCaption}\item[{char}]{short\+\_\+opt,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{optarg,  }\item[{struct \mbox{\hyperlink{structargument}{argument}} \&}]{arguments }\end{DoxyParamCaption})}
+
+
+
+Processes command-\/line flags related to color replacement. 
+
+Handles \textquotesingle{}-\/c\textquotesingle{} (activates operation), \textquotesingle{}-\/O\textquotesingle{} (old color), and \textquotesingle{}-\/N\textquotesingle{} (new color). Validates RGB format and updates tracking flags (has\+\_\+old\+\_\+color, has\+\_\+new\+\_\+color).
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em short\+\_\+opt} & The short option character (\textquotesingle{}c\textquotesingle{}, \textquotesingle{}O\textquotesingle{}, or \textquotesingle{}N\textquotesingle{}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em optarg} & Pointer to the option argument string (nullptr if no argument). \\
+\hline
+\mbox{\texttt{ out}}  & {\em arguments} & Reference to the argument structure to update. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error\+\_\+marker\+\_\+t ERR\+\_\+\+OK on success, or an error code on validation failure. 
+\end{DoxyReturn}
+\Hypertarget{ProcessingFlag_8hpp_ae5e75a8d7af6de184a84a814d80906b2}\label{ProcessingFlag_8hpp_ae5e75a8d7af6de184a84a814d80906b2} 
+\index{ProcessingFlag.hpp@{ProcessingFlag.hpp}!processing\_copy\_flags@{processing\_copy\_flags}}
+\index{processing\_copy\_flags@{processing\_copy\_flags}!ProcessingFlag.hpp@{ProcessingFlag.hpp}}
+\doxysubsubsection{\texorpdfstring{processing\_copy\_flags()}{processing\_copy\_flags()}}
+{\footnotesize\ttfamily error\+\_\+marker\+\_\+t processing\+\_\+copy\+\_\+flags (\begin{DoxyParamCaption}\item[{char}]{short\+\_\+opt,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{optarg,  }\item[{struct \mbox{\hyperlink{structargument}{argument}} \&}]{arguments }\end{DoxyParamCaption})}
+
+
+
+Processes command-\/line flags related to region copying. 
+
+Handles \textquotesingle{}-\/b\textquotesingle{} (activates operation), \textquotesingle{}-\/d\textquotesingle{} (destination), and delegates coordinate parsing (\textquotesingle{}-\/l\textquotesingle{}, \textquotesingle{}-\/r\textquotesingle{}) to internal helpers. Updates tracking flags (has\+\_\+dest\+\_\+left\+\_\+up, has\+\_\+left\+\_\+up, has\+\_\+right\+\_\+down).
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em short\+\_\+opt} & The short option character (\textquotesingle{}b\textquotesingle{}, \textquotesingle{}d\textquotesingle{}, \textquotesingle{}l\textquotesingle{}, or \textquotesingle{}r\textquotesingle{}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em optarg} & Pointer to the option argument string. \\
+\hline
+\mbox{\texttt{ out}}  & {\em arguments} & Reference to the argument structure to update. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error\+\_\+marker\+\_\+t ERR\+\_\+\+OK on success, or an error code on validation failure. 
+\end{DoxyReturn}
+\Hypertarget{ProcessingFlag_8hpp_ab4bddf897f805e997a1d44323ba65a99}\label{ProcessingFlag_8hpp_ab4bddf897f805e997a1d44323ba65a99} 
+\index{ProcessingFlag.hpp@{ProcessingFlag.hpp}!processing\_mirror\_flag@{processing\_mirror\_flag}}
+\index{processing\_mirror\_flag@{processing\_mirror\_flag}!ProcessingFlag.hpp@{ProcessingFlag.hpp}}
+\doxysubsubsection{\texorpdfstring{processing\_mirror\_flag()}{processing\_mirror\_flag()}}
+{\footnotesize\ttfamily error\+\_\+marker\+\_\+t processing\+\_\+mirror\+\_\+flag (\begin{DoxyParamCaption}\item[{char}]{short\+\_\+opt,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{optarg,  }\item[{struct \mbox{\hyperlink{structargument}{argument}} \&}]{arguments }\end{DoxyParamCaption})}
+
+
+
+Processes command-\/line flags related to region mirroring. 
+
+Handles \textquotesingle{}-\/m\textquotesingle{} (activates operation), \textquotesingle{}-\/a\textquotesingle{} (axis validation\+: \textquotesingle{}x\textquotesingle{} or \textquotesingle{}y\textquotesingle{}), and delegates coordinate parsing (\textquotesingle{}-\/l\textquotesingle{}, \textquotesingle{}-\/r\textquotesingle{}) to internal helpers. Updates tracking flags (has\+\_\+axis, has\+\_\+left\+\_\+up, has\+\_\+right\+\_\+down).
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em short\+\_\+opt} & The short option character (\textquotesingle{}m\textquotesingle{}, \textquotesingle{}a\textquotesingle{}, \textquotesingle{}l\textquotesingle{}, or \textquotesingle{}r\textquotesingle{}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em optarg} & Pointer to the option argument string. \\
+\hline
+\mbox{\texttt{ out}}  & {\em arguments} & Reference to the argument structure to update. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error\+\_\+marker\+\_\+t ERR\+\_\+\+OK on success, or an error code on validation failure. 
+\end{DoxyReturn}
+\Hypertarget{ProcessingFlag_8hpp_a8928b19c10743618d4637c6c8ca6b533}\label{ProcessingFlag_8hpp_a8928b19c10743618d4637c6c8ca6b533} 
+\index{ProcessingFlag.hpp@{ProcessingFlag.hpp}!processing\_split\_flag@{processing\_split\_flag}}
+\index{processing\_split\_flag@{processing\_split\_flag}!ProcessingFlag.hpp@{ProcessingFlag.hpp}}
+\doxysubsubsection{\texorpdfstring{processing\_split\_flag()}{processing\_split\_flag()}}
+{\footnotesize\ttfamily error\+\_\+marker\+\_\+t processing\+\_\+split\+\_\+flag (\begin{DoxyParamCaption}\item[{char}]{short\+\_\+opt,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{optarg,  }\item[{struct \mbox{\hyperlink{structargument}{argument}} \&}]{arguments }\end{DoxyParamCaption})}
+
+
+
+Processes command-\/line flags related to image splitting/grid lines. 
+
+Handles \textquotesingle{}-\/s\textquotesingle{} (activates operation), \textquotesingle{}-\/t\textquotesingle{} (thickness), \textquotesingle{}-\/C\textquotesingle{} (line color), and delegates numeric (\textquotesingle{}-\/x\textquotesingle{}, \textquotesingle{}-\/y\textquotesingle{}) and coordinate parsing. Updates tracking flags (has\+\_\+thickness, has\+\_\+color\+\_\+split, has\+\_\+number\+\_\+x, has\+\_\+number\+\_\+y).
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em short\+\_\+opt} & The short option character (\textquotesingle{}s\textquotesingle{}, \textquotesingle{}t\textquotesingle{}, \textquotesingle{}C\textquotesingle{}, \textquotesingle{}x\textquotesingle{}, or \textquotesingle{}y\textquotesingle{}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em optarg} & Pointer to the option argument string. \\
+\hline
+\mbox{\texttt{ out}}  & {\em arguments} & Reference to the argument structure to update. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error\+\_\+marker\+\_\+t ERR\+\_\+\+OK on success, or an error code on validation failure. 
+\end{DoxyReturn}

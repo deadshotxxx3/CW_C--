@@ -1,0 +1,7 @@
+<map id="src/source/CommandLineInterface.hpp" name="src/source/CommandLineInterface.hpp">
+<area shape="rect" id="Node000001" title="Definitions for CLI argument parsing, flag enumeration, and command&#45;line interface entry point." alt="" coords="115,5,387,31"/>
+<area shape="rect" id="Node000002" href="$OperationExecutor_8hpp.html" title="Dispatcher module that routes parsed CLI arguments to corresponding image processing operations." alt="" coords="5,79,244,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="220,40,147,81,144,76,218,35"/>
+<area shape="rect" id="Node000003" href="$ProcessingFlag_8hpp.html" title="Handlers for parsing and validating operation&#45;specific CLI flags." alt="" coords="269,79,487,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="285,35,359,76,356,81,282,40"/>
+</map>

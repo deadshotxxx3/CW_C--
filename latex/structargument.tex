@@ -1,0 +1,228 @@
+\doxysection{argument Struct Reference}
+\hypertarget{structargument}{}\label{structargument}\index{argument@{argument}}
+
+
+Container for all parsed command-\/line arguments and validation states.  
+
+
+
+
+{\ttfamily \#include $<$Command\+Line\+Interface.\+hpp$>$}
+
+
+
+Collaboration diagram for argument\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{structargument__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+error\+\_\+t \mbox{\hyperlink{structargument_a3d78aa4e2f60c348e12f12aa2527834d}{error}}
+\item 
+\mbox{\hyperlink{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9}{flags}} \mbox{\hyperlink{structargument_affa8dc085660f2801e660c976c22108a}{flag}} = \mbox{\hyperlink{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9a65db715f0c96fb5e476e551e7fb7f396}{flags\+::\+NO\+\_\+\+FLAG}}
+\item 
+std\+::string \mbox{\hyperlink{structargument_ab160edded41e31a7709e254578369d18}{input\+Name}}
+\item 
+std\+::string \mbox{\hyperlink{structargument_a559125699389c7a6e046651489a48d30}{output\+Name}} = "{}out.\+bmp"{}
+\item 
+\mbox{\hyperlink{structPixel}{Pixel}} \mbox{\hyperlink{structargument_a5fb832e68daa4d380a2cd7dcc3043eee}{old\+\_\+color}}
+\item 
+\mbox{\hyperlink{structPixel}{Pixel}} \mbox{\hyperlink{structargument_a439aaed7705d0599da3675c5e9ee942c}{new\+\_\+color}}
+\item 
+\mbox{\hyperlink{structCoordinate}{Coordinate}} \mbox{\hyperlink{structargument_ab0626a386c5af2cfd49094e44a728fe9}{left\+\_\+up}}
+\item 
+\mbox{\hyperlink{structCoordinate}{Coordinate}} \mbox{\hyperlink{structargument_a0fac7741e9d0a3329ebd07dadc60d7a1}{right\+\_\+down}}
+\item 
+\mbox{\hyperlink{structCoordinate}{Coordinate}} \mbox{\hyperlink{structargument_a1d01227c7aaa2e53ac7d6c15fe9b1843}{dest\+\_\+left\+\_\+up}}
+\item 
+std\+::string \mbox{\hyperlink{structargument_a25561ad9e673dfa34da89934f21bf672}{axis}}
+\item 
+int \mbox{\hyperlink{structargument_ae8b3da18d3018e1b800b2b5266d4d960}{number\+\_\+x}}
+\item 
+int \mbox{\hyperlink{structargument_a81b923e28446e43a5a28790f50b34853}{number\+\_\+y}}
+\item 
+int \mbox{\hyperlink{structargument_ad4e44a9c0cbc0259c2c9a37ab7351fec}{thickness}}
+\item 
+\mbox{\hyperlink{structPixel}{Pixel}} \mbox{\hyperlink{structargument_ad023b308f71285ad46bce5bfc32fe2e3}{color\+\_\+split}}
+\item 
+bool \mbox{\hyperlink{structargument_a682e2263f029deba9e97319cc193a4f1}{has\+\_\+old\+\_\+color}} = false
+\item 
+bool \mbox{\hyperlink{structargument_a82398b6833a7bfcfaa9c4dd11d800002}{has\+\_\+new\+\_\+color}} = false
+\item 
+bool \mbox{\hyperlink{structargument_a312f6bc626bfa9f4818fb9745473b716}{has\+\_\+left\+\_\+up}} = false
+\item 
+bool \mbox{\hyperlink{structargument_a4ef23760e971786dd3adf92f171ae1d6}{has\+\_\+right\+\_\+down}} = false
+\item 
+bool \mbox{\hyperlink{structargument_a69a177c8d84c0e0f2c7a1db500ebb621}{has\+\_\+dest\+\_\+left\+\_\+up}} = false
+\item 
+bool \mbox{\hyperlink{structargument_adbc88f0e6621b11999202b8a895a69f5}{has\+\_\+axis}} = false
+\item 
+bool \mbox{\hyperlink{structargument_acc71ebbcc72b46c81aab61a5cd3c73d6}{has\+\_\+number\+\_\+x}} = false
+\item 
+bool \mbox{\hyperlink{structargument_a92adf9f29c4622f4f235a0a6cf91b5ea}{has\+\_\+number\+\_\+y}} = false
+\item 
+bool \mbox{\hyperlink{structargument_a909b22711c24e47fc1cf79628e2d29b7}{has\+\_\+thickness}} = false
+\item 
+bool \mbox{\hyperlink{structargument_a7f0a93c31986ec780bf777ca50d8cba7}{has\+\_\+color\+\_\+split}} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Container for all parsed command-\/line arguments and validation states. 
+
+Holds file paths, operation parameters, coordinate/color data, and boolean tracking flags ({\ttfamily has\+\_\+\texorpdfstring{$\ast$}{*}}) to distinguish user-\/provided values from default-\/initialized ones. Populated entirely by CLI(). 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structargument_a25561ad9e673dfa34da89934f21bf672}\label{structargument_a25561ad9e673dfa34da89934f21bf672} 
+\index{argument@{argument}!axis@{axis}}
+\index{axis@{axis}!argument@{argument}}
+\doxysubsubsection{\texorpdfstring{axis}{axis}}
+{\footnotesize\ttfamily std\+::string argument\+::axis}
+
+Mirror axis identifier\+: "{}x"{} or "{}y"{} \Hypertarget{structargument_ad023b308f71285ad46bce5bfc32fe2e3}\label{structargument_ad023b308f71285ad46bce5bfc32fe2e3} 
+\index{argument@{argument}!color\_split@{color\_split}}
+\index{color\_split@{color\_split}!argument@{argument}}
+\doxysubsubsection{\texorpdfstring{color\_split}{color\_split}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structPixel}{Pixel}} argument\+::color\+\_\+split}
+
+Color used for grid lines or drawn elements \Hypertarget{structargument_a1d01227c7aaa2e53ac7d6c15fe9b1843}\label{structargument_a1d01227c7aaa2e53ac7d6c15fe9b1843} 
+\index{argument@{argument}!dest\_left\_up@{dest\_left\_up}}
+\index{dest\_left\_up@{dest\_left\_up}!argument@{argument}}
+\doxysubsubsection{\texorpdfstring{dest\_left\_up}{dest\_left\_up}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structCoordinate}{Coordinate}} argument\+::dest\+\_\+left\+\_\+up}
+
+Destination anchor point for copy operation \Hypertarget{structargument_a3d78aa4e2f60c348e12f12aa2527834d}\label{structargument_a3d78aa4e2f60c348e12f12aa2527834d} 
+\index{argument@{argument}!error@{error}}
+\index{error@{error}!argument@{argument}}
+\doxysubsubsection{\texorpdfstring{error}{error}}
+{\footnotesize\ttfamily error\+\_\+t argument\+::error}
+
+Error state marker (reserved for future use) \Hypertarget{structargument_affa8dc085660f2801e660c976c22108a}\label{structargument_affa8dc085660f2801e660c976c22108a} 
+\index{argument@{argument}!flag@{flag}}
+\index{flag@{flag}!argument@{argument}}
+\doxysubsubsection{\texorpdfstring{flag}{flag}}
+{\footnotesize\ttfamily \mbox{\hyperlink{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9}{flags}} argument\+::flag = \mbox{\hyperlink{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9a65db715f0c96fb5e476e551e7fb7f396}{flags\+::\+NO\+\_\+\+FLAG}}}
+
+Currently selected primary operation \Hypertarget{structargument_adbc88f0e6621b11999202b8a895a69f5}\label{structargument_adbc88f0e6621b11999202b8a895a69f5} 
+\index{argument@{argument}!has\_axis@{has\_axis}}
+\index{has\_axis@{has\_axis}!argument@{argument}}
+\doxysubsubsection{\texorpdfstring{has\_axis}{has\_axis}}
+{\footnotesize\ttfamily bool argument\+::has\+\_\+axis = false}
+
+Tracks explicit -\/a flag usage \Hypertarget{structargument_a7f0a93c31986ec780bf777ca50d8cba7}\label{structargument_a7f0a93c31986ec780bf777ca50d8cba7} 
+\index{argument@{argument}!has\_color\_split@{has\_color\_split}}
+\index{has\_color\_split@{has\_color\_split}!argument@{argument}}
+\doxysubsubsection{\texorpdfstring{has\_color\_split}{has\_color\_split}}
+{\footnotesize\ttfamily bool argument\+::has\+\_\+color\+\_\+split = false}
+
+Tracks explicit -\/C flag usage \Hypertarget{structargument_a69a177c8d84c0e0f2c7a1db500ebb621}\label{structargument_a69a177c8d84c0e0f2c7a1db500ebb621} 
+\index{argument@{argument}!has\_dest\_left\_up@{has\_dest\_left\_up}}
+\index{has\_dest\_left\_up@{has\_dest\_left\_up}!argument@{argument}}
+\doxysubsubsection{\texorpdfstring{has\_dest\_left\_up}{has\_dest\_left\_up}}
+{\footnotesize\ttfamily bool argument\+::has\+\_\+dest\+\_\+left\+\_\+up = false}
+
+Tracks explicit -\/d flag usage \Hypertarget{structargument_a312f6bc626bfa9f4818fb9745473b716}\label{structargument_a312f6bc626bfa9f4818fb9745473b716} 
+\index{argument@{argument}!has\_left\_up@{has\_left\_up}}
+\index{has\_left\_up@{has\_left\_up}!argument@{argument}}
+\doxysubsubsection{\texorpdfstring{has\_left\_up}{has\_left\_up}}
+{\footnotesize\ttfamily bool argument\+::has\+\_\+left\+\_\+up = false}
+
+Tracks explicit -\/l flag usage \Hypertarget{structargument_a82398b6833a7bfcfaa9c4dd11d800002}\label{structargument_a82398b6833a7bfcfaa9c4dd11d800002} 
+\index{argument@{argument}!has\_new\_color@{has\_new\_color}}
+\index{has\_new\_color@{has\_new\_color}!argument@{argument}}
+\doxysubsubsection{\texorpdfstring{has\_new\_color}{has\_new\_color}}
+{\footnotesize\ttfamily bool argument\+::has\+\_\+new\+\_\+color = false}
+
+Tracks explicit -\/N flag usage \Hypertarget{structargument_acc71ebbcc72b46c81aab61a5cd3c73d6}\label{structargument_acc71ebbcc72b46c81aab61a5cd3c73d6} 
+\index{argument@{argument}!has\_number\_x@{has\_number\_x}}
+\index{has\_number\_x@{has\_number\_x}!argument@{argument}}
+\doxysubsubsection{\texorpdfstring{has\_number\_x}{has\_number\_x}}
+{\footnotesize\ttfamily bool argument\+::has\+\_\+number\+\_\+x = false}
+
+Tracks explicit -\/x flag usage \Hypertarget{structargument_a92adf9f29c4622f4f235a0a6cf91b5ea}\label{structargument_a92adf9f29c4622f4f235a0a6cf91b5ea} 
+\index{argument@{argument}!has\_number\_y@{has\_number\_y}}
+\index{has\_number\_y@{has\_number\_y}!argument@{argument}}
+\doxysubsubsection{\texorpdfstring{has\_number\_y}{has\_number\_y}}
+{\footnotesize\ttfamily bool argument\+::has\+\_\+number\+\_\+y = false}
+
+Tracks explicit -\/y flag usage \Hypertarget{structargument_a682e2263f029deba9e97319cc193a4f1}\label{structargument_a682e2263f029deba9e97319cc193a4f1} 
+\index{argument@{argument}!has\_old\_color@{has\_old\_color}}
+\index{has\_old\_color@{has\_old\_color}!argument@{argument}}
+\doxysubsubsection{\texorpdfstring{has\_old\_color}{has\_old\_color}}
+{\footnotesize\ttfamily bool argument\+::has\+\_\+old\+\_\+color = false}
+
+Tracks explicit -\/O flag usage \Hypertarget{structargument_a4ef23760e971786dd3adf92f171ae1d6}\label{structargument_a4ef23760e971786dd3adf92f171ae1d6} 
+\index{argument@{argument}!has\_right\_down@{has\_right\_down}}
+\index{has\_right\_down@{has\_right\_down}!argument@{argument}}
+\doxysubsubsection{\texorpdfstring{has\_right\_down}{has\_right\_down}}
+{\footnotesize\ttfamily bool argument\+::has\+\_\+right\+\_\+down = false}
+
+Tracks explicit -\/r flag usage \Hypertarget{structargument_a909b22711c24e47fc1cf79628e2d29b7}\label{structargument_a909b22711c24e47fc1cf79628e2d29b7} 
+\index{argument@{argument}!has\_thickness@{has\_thickness}}
+\index{has\_thickness@{has\_thickness}!argument@{argument}}
+\doxysubsubsection{\texorpdfstring{has\_thickness}{has\_thickness}}
+{\footnotesize\ttfamily bool argument\+::has\+\_\+thickness = false}
+
+Tracks explicit -\/t flag usage \Hypertarget{structargument_ab160edded41e31a7709e254578369d18}\label{structargument_ab160edded41e31a7709e254578369d18} 
+\index{argument@{argument}!inputName@{inputName}}
+\index{inputName@{inputName}!argument@{argument}}
+\doxysubsubsection{\texorpdfstring{inputName}{inputName}}
+{\footnotesize\ttfamily std\+::string argument\+::input\+Name}
+
+Path to the source BMP file \Hypertarget{structargument_ab0626a386c5af2cfd49094e44a728fe9}\label{structargument_ab0626a386c5af2cfd49094e44a728fe9} 
+\index{argument@{argument}!left\_up@{left\_up}}
+\index{left\_up@{left\_up}!argument@{argument}}
+\doxysubsubsection{\texorpdfstring{left\_up}{left\_up}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structCoordinate}{Coordinate}} argument\+::left\+\_\+up}
+
+Top-\/left boundary of the processing region \Hypertarget{structargument_a439aaed7705d0599da3675c5e9ee942c}\label{structargument_a439aaed7705d0599da3675c5e9ee942c} 
+\index{argument@{argument}!new\_color@{new\_color}}
+\index{new\_color@{new\_color}!argument@{argument}}
+\doxysubsubsection{\texorpdfstring{new\_color}{new\_color}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structPixel}{Pixel}} argument\+::new\+\_\+color}
+
+Replacement color for color\+\_\+replace operation \Hypertarget{structargument_ae8b3da18d3018e1b800b2b5266d4d960}\label{structargument_ae8b3da18d3018e1b800b2b5266d4d960} 
+\index{argument@{argument}!number\_x@{number\_x}}
+\index{number\_x@{number\_x}!argument@{argument}}
+\doxysubsubsection{\texorpdfstring{number\_x}{number\_x}}
+{\footnotesize\ttfamily int argument\+::number\+\_\+x}
+
+Number of vertical grid divisions (split operation) \Hypertarget{structargument_a81b923e28446e43a5a28790f50b34853}\label{structargument_a81b923e28446e43a5a28790f50b34853} 
+\index{argument@{argument}!number\_y@{number\_y}}
+\index{number\_y@{number\_y}!argument@{argument}}
+\doxysubsubsection{\texorpdfstring{number\_y}{number\_y}}
+{\footnotesize\ttfamily int argument\+::number\+\_\+y}
+
+Number of horizontal grid divisions (split operation) \Hypertarget{structargument_a5fb832e68daa4d380a2cd7dcc3043eee}\label{structargument_a5fb832e68daa4d380a2cd7dcc3043eee} 
+\index{argument@{argument}!old\_color@{old\_color}}
+\index{old\_color@{old\_color}!argument@{argument}}
+\doxysubsubsection{\texorpdfstring{old\_color}{old\_color}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structPixel}{Pixel}} argument\+::old\+\_\+color}
+
+Target color for replacement operation \Hypertarget{structargument_a559125699389c7a6e046651489a48d30}\label{structargument_a559125699389c7a6e046651489a48d30} 
+\index{argument@{argument}!outputName@{outputName}}
+\index{outputName@{outputName}!argument@{argument}}
+\doxysubsubsection{\texorpdfstring{outputName}{outputName}}
+{\footnotesize\ttfamily std\+::string argument\+::output\+Name = "{}out.\+bmp"{}}
+
+Path to the destination BMP file (defaults to out.\+bmp) \Hypertarget{structargument_a0fac7741e9d0a3329ebd07dadc60d7a1}\label{structargument_a0fac7741e9d0a3329ebd07dadc60d7a1} 
+\index{argument@{argument}!right\_down@{right\_down}}
+\index{right\_down@{right\_down}!argument@{argument}}
+\doxysubsubsection{\texorpdfstring{right\_down}{right\_down}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structCoordinate}{Coordinate}} argument\+::right\+\_\+down}
+
+Bottom-\/right boundary of the processing region \Hypertarget{structargument_ad4e44a9c0cbc0259c2c9a37ab7351fec}\label{structargument_ad4e44a9c0cbc0259c2c9a37ab7351fec} 
+\index{argument@{argument}!thickness@{thickness}}
+\index{thickness@{thickness}!argument@{argument}}
+\doxysubsubsection{\texorpdfstring{thickness}{thickness}}
+{\footnotesize\ttfamily int argument\+::thickness}
+
+Line thickness in pixels (split/draw operations) 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/source/\mbox{\hyperlink{CommandLineInterface_8hpp}{Command\+Line\+Interface.\+hpp}}\end{DoxyCompactItemize}

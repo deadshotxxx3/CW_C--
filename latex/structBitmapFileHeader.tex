@@ -1,0 +1,67 @@
+\doxysection{Bitmap\+File\+Header Struct Reference}
+\hypertarget{structBitmapFileHeader}{}\label{structBitmapFileHeader}\index{BitmapFileHeader@{BitmapFileHeader}}
+
+
+BMP file header (14 bytes).  
+
+
+
+
+{\ttfamily \#include $<$Types.\+hpp$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structBitmapFileHeader_aedcb43bb97d32fd615a81d7e47767997}{signature}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structBitmapFileHeader_aadab22e8c426729b488ddaa64adb261e}{filesize}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structBitmapFileHeader_ac8d0b77f935329a49f830e51406e225a}{reserved1}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structBitmapFileHeader_ad6401f256079ab001db09cb22cd0bcf4}{reserved2}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structBitmapFileHeader_a9f96e0edc756884929ed6b2ec2008e28}{pixel\+Arr\+Offset}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+BMP file header (14 bytes). 
+
+Identifies the file as a BMP and provides basic file metadata. All multi-\/byte fields are stored in little-\/endian format. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structBitmapFileHeader_aadab22e8c426729b488ddaa64adb261e}\label{structBitmapFileHeader_aadab22e8c426729b488ddaa64adb261e} 
+\index{BitmapFileHeader@{BitmapFileHeader}!filesize@{filesize}}
+\index{filesize@{filesize}!BitmapFileHeader@{BitmapFileHeader}}
+\doxysubsubsection{\texorpdfstring{filesize}{filesize}}
+{\footnotesize\ttfamily uint32\+\_\+t Bitmap\+File\+Header\+::filesize}
+
+Size of the entire file in bytes \Hypertarget{structBitmapFileHeader_a9f96e0edc756884929ed6b2ec2008e28}\label{structBitmapFileHeader_a9f96e0edc756884929ed6b2ec2008e28} 
+\index{BitmapFileHeader@{BitmapFileHeader}!pixelArrOffset@{pixelArrOffset}}
+\index{pixelArrOffset@{pixelArrOffset}!BitmapFileHeader@{BitmapFileHeader}}
+\doxysubsubsection{\texorpdfstring{pixelArrOffset}{pixelArrOffset}}
+{\footnotesize\ttfamily uint32\+\_\+t Bitmap\+File\+Header\+::pixel\+Arr\+Offset}
+
+Byte offset from file start to pixel array \Hypertarget{structBitmapFileHeader_ac8d0b77f935329a49f830e51406e225a}\label{structBitmapFileHeader_ac8d0b77f935329a49f830e51406e225a} 
+\index{BitmapFileHeader@{BitmapFileHeader}!reserved1@{reserved1}}
+\index{reserved1@{reserved1}!BitmapFileHeader@{BitmapFileHeader}}
+\doxysubsubsection{\texorpdfstring{reserved1}{reserved1}}
+{\footnotesize\ttfamily uint16\+\_\+t Bitmap\+File\+Header\+::reserved1}
+
+Reserved; must be 0 \Hypertarget{structBitmapFileHeader_ad6401f256079ab001db09cb22cd0bcf4}\label{structBitmapFileHeader_ad6401f256079ab001db09cb22cd0bcf4} 
+\index{BitmapFileHeader@{BitmapFileHeader}!reserved2@{reserved2}}
+\index{reserved2@{reserved2}!BitmapFileHeader@{BitmapFileHeader}}
+\doxysubsubsection{\texorpdfstring{reserved2}{reserved2}}
+{\footnotesize\ttfamily uint16\+\_\+t Bitmap\+File\+Header\+::reserved2}
+
+Reserved; must be 0 \Hypertarget{structBitmapFileHeader_aedcb43bb97d32fd615a81d7e47767997}\label{structBitmapFileHeader_aedcb43bb97d32fd615a81d7e47767997} 
+\index{BitmapFileHeader@{BitmapFileHeader}!signature@{signature}}
+\index{signature@{signature}!BitmapFileHeader@{BitmapFileHeader}}
+\doxysubsubsection{\texorpdfstring{signature}{signature}}
+{\footnotesize\ttfamily uint16\+\_\+t Bitmap\+File\+Header\+::signature}
+
+File signature\+: \textquotesingle{}BM\textquotesingle{} (0x4\+D42) 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/source/Types.\+hpp\end{DoxyCompactItemize}

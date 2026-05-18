@@ -1,0 +1,110 @@
+\doxysection{Pixel Struct Reference}
+\hypertarget{structPixel}{}\label{structPixel}\index{Pixel@{Pixel}}
+
+
+Represents a 24-\/bit RGB/\+BGR pixel.  
+
+
+
+
+{\ttfamily \#include $<$Types.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structPixel_a395129d0793c7e98aef3846754ca862b}\label{structPixel_a395129d0793c7e98aef3846754ca862b} 
+constexpr {\bfseries Pixel} () noexcept
+\begin{DoxyCompactList}\small\item\em Constructs a black pixel (0, 0, 0). \end{DoxyCompactList}\item 
+constexpr \mbox{\hyperlink{structPixel_aafc84692ce9e7d378121486fb04c25fe}{Pixel}} (uint8\+\_\+t red, uint8\+\_\+t green, uint8\+\_\+t blue) noexcept
+\begin{DoxyCompactList}\small\item\em Constructs a pixel with specified RGB values. \end{DoxyCompactList}\item 
+\Hypertarget{structPixel_aa1e311e938fcd21a4645c6fc6a5cfb38}\label{structPixel_aa1e311e938fcd21a4645c6fc6a5cfb38} 
+\mbox{\hyperlink{structPixel}{Pixel}} \& {\bfseries operator=} (const \mbox{\hyperlink{structPixel}{Pixel}} \&other)=default
+\begin{DoxyCompactList}\small\item\em Copy assignment operator (compiler-\/generated is sufficient). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{structPixel_aad81a91f161b400cfe75261b0add463b}{operator==}} (const \mbox{\hyperlink{structPixel}{Pixel}} \&other) const noexcept
+\begin{DoxyCompactList}\small\item\em Checks if two pixels have identical color components. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structPixel_abc9f592730eddbfcb270a1974a498d78}{b}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structPixel_aeab078b7768caf273f8fe1daffa50729}{g}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structPixel_a47d65d4a410f57c46746ddedd709e177}{r}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a 24-\/bit RGB/\+BGR pixel. 
+
+Memory layout matches BMP format\+: Blue, Green, Red (BGR). All components are in the range \mbox{[}0, 255\mbox{]}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{structPixel_aafc84692ce9e7d378121486fb04c25fe}\label{structPixel_aafc84692ce9e7d378121486fb04c25fe} 
+\index{Pixel@{Pixel}!Pixel@{Pixel}}
+\index{Pixel@{Pixel}!Pixel@{Pixel}}
+\doxysubsubsection{\texorpdfstring{Pixel()}{Pixel()}}
+{\footnotesize\ttfamily constexpr Pixel\+::\+Pixel (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{red,  }\item[{uint8\+\_\+t}]{green,  }\item[{uint8\+\_\+t}]{blue }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+Constructs a pixel with specified RGB values. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em red} & Red component \mbox{[}0-\/255\mbox{]} \\
+\hline
+\mbox{\texttt{ in}}  & {\em green} & Green component \mbox{[}0-\/255\mbox{]} \\
+\hline
+\mbox{\texttt{ in}}  & {\em blue} & Blue component \mbox{[}0-\/255\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Parameters are ordered as R, G, B for convenience, but stored as B, G, R. 
+\end{DoxyNote}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structPixel_aad81a91f161b400cfe75261b0add463b}\label{structPixel_aad81a91f161b400cfe75261b0add463b} 
+\index{Pixel@{Pixel}!operator==@{operator==}}
+\index{operator==@{operator==}!Pixel@{Pixel}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Pixel\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structPixel}{Pixel}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Checks if two pixels have identical color components. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em other} & \doxylink{structPixel}{Pixel} to compare with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if R, G, and B match; false otherwise. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structPixel_abc9f592730eddbfcb270a1974a498d78}\label{structPixel_abc9f592730eddbfcb270a1974a498d78} 
+\index{Pixel@{Pixel}!b@{b}}
+\index{b@{b}!Pixel@{Pixel}}
+\doxysubsubsection{\texorpdfstring{b}{b}}
+{\footnotesize\ttfamily uint8\+\_\+t Pixel\+::b}
+
+Blue component \Hypertarget{structPixel_aeab078b7768caf273f8fe1daffa50729}\label{structPixel_aeab078b7768caf273f8fe1daffa50729} 
+\index{Pixel@{Pixel}!g@{g}}
+\index{g@{g}!Pixel@{Pixel}}
+\doxysubsubsection{\texorpdfstring{g}{g}}
+{\footnotesize\ttfamily uint8\+\_\+t Pixel\+::g}
+
+Green component \Hypertarget{structPixel_a47d65d4a410f57c46746ddedd709e177}\label{structPixel_a47d65d4a410f57c46746ddedd709e177} 
+\index{Pixel@{Pixel}!r@{r}}
+\index{r@{r}!Pixel@{Pixel}}
+\doxysubsubsection{\texorpdfstring{r}{r}}
+{\footnotesize\ttfamily uint8\+\_\+t Pixel\+::r}
+
+Red component 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/source/Types.\+hpp\end{DoxyCompactItemize}

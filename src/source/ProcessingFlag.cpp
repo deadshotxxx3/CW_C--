@@ -1,8 +1,26 @@
 #include "ProcessingFlag.hpp"
+#include "ArgumentParser.hpp"
+
 #include <cstring>
 #include <iostream>
 
-error_marker_t process_coordinate_flag(char short_opt, const char *optarg, struct argument &arguments)
+const int MAX_CNT_LINE = 100; /**< Maximum allowed number of grid divisions (100). */
+
+/**
+ * @internal
+ * @brief Parses and validates coordinate options ('-l' and '-r').
+ *
+ * @details Delegates string parsing to getCoordinate(). Validates the "x.y" format,
+ *          updates the corresponding field in the argument structure, and sets the
+ *          appropriate tracking flag (has_left_up / has_right_down).
+ *          Returns immediately on parsing failure without modifying other fields.
+ *
+ * @param[in]  short_opt Option character to process ('l' or 'r').
+ * @param[in]  optarg    Raw command-line argument string.
+ * @param[out] arguments Reference to the argument structure to update.
+ * @return error_marker_t ERR_OK on success, or ERR_INCORRECTARG if format is invalid.
+ */
+static error_marker_t process_coordinate_flag(char short_opt, const char *optarg, struct argument &arguments)
 {
     if (short_opt == 'l') {
         auto result = getCoordinate(optarg);
@@ -19,6 +37,62 @@ error_marker_t process_coordinate_flag(char short_opt, const char *optarg, struc
         }
         arguments.right_down = result.first;
         arguments.has_right_down = true;
+        return error_marker_t::ERR_OK;
+    }
+    return error_marker_t::ERR_OK;
+}
+
+/**
+ * @internal
+ * @brief Parses and validates grid division counts ('-x' and '-y').
+ *
+ * @details Converts the argument string to an integer and validates the range (2 to MAX_CNT_LINE).
+ *          Updates number_x/number_y fields and sets the corresponding tracking flag.
+ *          Handles std::stoi exceptions and range violations with descriptive error messages.
+ *
+ * @param[in]  short_opt Option character to process ('x' or 'y').
+ * @param[in]  optarg    Raw command-line argument string.
+ * @param[out] arguments Reference to the argument structure to update.
+ * @return error_marker_t ERR_OK on success, or ERR_INCORRECTARG if out of range or not a number.
+ */
+static error_marker_t processing_number_line_flag(char short_opt, const char *optarg,
+                                                  struct argument &arguments)
+{
+    if (short_opt == 'x') {
+        try {
+            int value = std::stoi(optarg);
+            if (value <= 1) {
+                std::cerr << "Error: number_x must be greater than 1\n";
+                return error_marker_t::ERR_INCORRECTARG;
+            }
+            if (value > MAX_CNT_LINE) {
+                std::cerr << "Error: number_x too large\n";
+                return error_marker_t::ERR_INCORRECTARG;
+            }
+            arguments.number_x = value;
+            arguments.has_number_x = true;
+        } catch (...) {
+            std::cerr << "Error: invalid number for number_x\n";
+            return error_marker_t::ERR_INCORRECTARG;
+        }
+        return error_marker_t::ERR_OK;
+    } else if (short_opt == 'y') {
+        try {
+            int value = std::stoi(optarg);
+            if (value <= 1) {
+                std::cerr << "Error: number_y must be greater than 1\n";
+                return error_marker_t::ERR_INCORRECTARG;
+            }
+            if (value > MAX_CNT_LINE) {
+                std::cerr << "Error: number_y too large\n";
+                return error_marker_t::ERR_INCORRECTARG;
+            }
+            arguments.number_y = value;
+            arguments.has_number_y = true;
+        } catch (...) {
+            std::cerr << "Error: invalid number for number_y\n";
+            return error_marker_t::ERR_INCORRECTARG;
+        }
         return error_marker_t::ERR_OK;
     }
     return error_marker_t::ERR_OK;
@@ -87,48 +161,6 @@ error_marker_t processing_mirror_flag(char short_opt, const char *optarg, struct
     error_marker_t coord_result = process_coordinate_flag(short_opt, optarg, arguments);
     if (coord_result != error_marker_t::ERR_OK) {
         return coord_result;
-    }
-    return error_marker_t::ERR_OK;
-}
-
-error_marker_t processing_number_line_flag(char short_opt, const char *optarg, struct argument &arguments)
-{
-    if (short_opt == 'x') {
-        try {
-            int value = std::stoi(optarg);
-            if (value <= 1) {
-                std::cerr << "Error: number_x must be greater than 1\n";
-                return error_marker_t::ERR_INCORRECTARG;
-            }
-            if (value > 100) {
-                std::cerr << "Error: number_x too large\n";
-                return error_marker_t::ERR_INCORRECTARG;
-            }
-            arguments.number_x = value;
-            arguments.has_number_x = true;
-        } catch (...) {
-            std::cerr << "Error: invalid number for number_x\n";
-            return error_marker_t::ERR_INCORRECTARG;
-        }
-        return error_marker_t::ERR_OK;
-    } else if (short_opt == 'y') {
-        try {
-            int value = std::stoi(optarg);
-            if (value <= 1) {
-                std::cerr << "Error: number_y must be greater than 1\n";
-                return error_marker_t::ERR_INCORRECTARG;
-            }
-            if (value > 100) {
-                std::cerr << "Error: number_y too large\n";
-                return error_marker_t::ERR_INCORRECTARG;
-            }
-            arguments.number_y = value;
-            arguments.has_number_y = true;
-        } catch (...) {
-            std::cerr << "Error: invalid number for number_y\n";
-            return error_marker_t::ERR_INCORRECTARG;
-        }
-        return error_marker_t::ERR_OK;
     }
     return error_marker_t::ERR_OK;
 }

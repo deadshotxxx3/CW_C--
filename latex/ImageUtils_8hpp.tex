@@ -1,0 +1,80 @@
+\doxysection{src/source/\+Image\+Utils.hpp File Reference}
+\hypertarget{ImageUtils_8hpp}{}\label{ImageUtils_8hpp}\index{src/source/ImageUtils.hpp@{src/source/ImageUtils.hpp}}
+
+
+Geometric and mathematical utilities for image processing.  
+
+
+{\ttfamily \#include "{}Types.\+hpp"{}}\newline
+Include dependency graph for Image\+Utils.\+hpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=223pt]{ImageUtils_8hpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\constexpr T \mbox{\hyperlink{ImageUtils_8hpp_aec2031959588450b9b13c0b8481eabcd}{clamp}} (T value, T min\+\_\+val, T max\+\_\+val)
+\begin{DoxyCompactList}\small\item\em Clamps a value between a minimum and maximum boundary. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structCoordinate}{Coordinate}} \mbox{\hyperlink{ImageUtils_8hpp_a2c9e7d4194c0c74b2aeac34eb76b7a9e}{clamp\+\_\+to\+\_\+image}} (const \mbox{\hyperlink{structCoordinate}{Coordinate}} \&coord, int img\+\_\+width, int img\+\_\+height)
+\begin{DoxyCompactList}\small\item\em Clamps coordinate values to fit within image boundaries. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Geometric and mathematical utilities for image processing. 
+
+Contains clamping, coordinate validation, and helper math functions. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{ImageUtils_8hpp_aec2031959588450b9b13c0b8481eabcd}\label{ImageUtils_8hpp_aec2031959588450b9b13c0b8481eabcd} 
+\index{ImageUtils.hpp@{ImageUtils.hpp}!clamp@{clamp}}
+\index{clamp@{clamp}!ImageUtils.hpp@{ImageUtils.hpp}}
+\doxysubsubsection{\texorpdfstring{clamp()}{clamp()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+constexpr T clamp (\begin{DoxyParamCaption}\item[{T}]{value,  }\item[{T}]{min\+\_\+val,  }\item[{T}]{max\+\_\+val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Clamps a value between a minimum and maximum boundary. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Any comparable type (arithmetic, enum, or custom class with \texorpdfstring{$<$}{<} and \texorpdfstring{$>$}{>}). \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & The value to clamp. \\
+\hline
+\mbox{\texttt{ in}}  & {\em min\+\_\+val} & The lower bound. \\
+\hline
+\mbox{\texttt{ in}}  & {\em max\+\_\+val} & The upper bound. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The clamped value\+: min\+\_\+val if value \texorpdfstring{$<$}{<} min\+\_\+val, max\+\_\+val if value \texorpdfstring{$>$}{>} max\+\_\+val, otherwise value. 
+\end{DoxyReturn}
+\Hypertarget{ImageUtils_8hpp_a2c9e7d4194c0c74b2aeac34eb76b7a9e}\label{ImageUtils_8hpp_a2c9e7d4194c0c74b2aeac34eb76b7a9e} 
+\index{ImageUtils.hpp@{ImageUtils.hpp}!clamp\_to\_image@{clamp\_to\_image}}
+\index{clamp\_to\_image@{clamp\_to\_image}!ImageUtils.hpp@{ImageUtils.hpp}}
+\doxysubsubsection{\texorpdfstring{clamp\_to\_image()}{clamp\_to\_image()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structCoordinate}{Coordinate}} clamp\+\_\+to\+\_\+image (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structCoordinate}{Coordinate}} \&}]{coord,  }\item[{int}]{img\+\_\+width,  }\item[{int}]{img\+\_\+height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Clamps coordinate values to fit within image boundaries. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em coord} & The original coordinate to clamp. \\
+\hline
+\mbox{\texttt{ in}}  & {\em img\+\_\+width} & The width of the image in pixels. \\
+\hline
+\mbox{\texttt{ in}}  & {\em img\+\_\+height} & The height of the image in pixels. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{structCoordinate}{Coordinate} with x and y values restricted to \mbox{[}0, width-\/1\mbox{]} and \mbox{[}0, height-\/1\mbox{]}. 
+\end{DoxyReturn}

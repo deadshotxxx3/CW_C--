@@ -1,5 +1,4 @@
 #include "BmpImage.hpp"
-#include "Error.hpp"
 #include <fstream>
 #include <iostream>
 

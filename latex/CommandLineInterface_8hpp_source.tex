@@ -1,0 +1,55 @@
+\doxysection{Command\+Line\+Interface.\+hpp}
+\hypertarget{CommandLineInterface_8hpp_source}{}\label{CommandLineInterface_8hpp_source}\index{src/source/CommandLineInterface.hpp@{src/source/CommandLineInterface.hpp}}
+\mbox{\hyperlink{CommandLineInterface_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{BmpImage_8hpp}{BmpImage.hpp}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Error.hpp"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <getopt.h>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9}{flags}}\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9a65db715f0c96fb5e476e551e7fb7f396}{NO\_FLAG}},\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9a889fa468d344b87b56f3b6d50adaf200}{FLAG\_HELP}},\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9a0f1be385ad2757c1ab4e2c0d0281efc8}{FLAG\_INFO}},\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9ab747cbe59f8ce592676cc1b1971b0296}{FLAG\_MIRROR}},\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9a125ea71dfc27424f6ed9872530f84e53}{FLAG\_COPY}},\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9af9cf3806fb0cab1876ae67a7bbf10671}{FLAG\_COLOR\_REPLACE}},\ }
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9a9c38bc002a6fb4a5c705e58df9c3b6a5}{FLAG\_SPLIT}},\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00029\ \};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structargument}{argument}}\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ error\_t\ \mbox{\hyperlink{structargument_a3d78aa4e2f60c348e12f12aa2527834d}{error}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9}{flags}}\ \mbox{\hyperlink{structargument_affa8dc085660f2801e660c976c22108a}{flag}}\ =\ \mbox{\hyperlink{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9a65db715f0c96fb5e476e551e7fb7f396}{flags::NO\_FLAG}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00041\ \ \ \ \ std::string\ \mbox{\hyperlink{structargument_ab160edded41e31a7709e254578369d18}{inputName}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ std::string\ \mbox{\hyperlink{structargument_a559125699389c7a6e046651489a48d30}{outputName}}\ =\ \textcolor{stringliteral}{"{}out.bmp"{}};\ }
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{structPixel}{Pixel}}\ \mbox{\hyperlink{structargument_a5fb832e68daa4d380a2cd7dcc3043eee}{old\_color}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{structPixel}{Pixel}}\ \mbox{\hyperlink{structargument_a439aaed7705d0599da3675c5e9ee942c}{new\_color}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{structCoordinate}{Coordinate}}\ \mbox{\hyperlink{structargument_ab0626a386c5af2cfd49094e44a728fe9}{left\_up}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{structCoordinate}{Coordinate}}\ \mbox{\hyperlink{structargument_a0fac7741e9d0a3329ebd07dadc60d7a1}{right\_down}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{structCoordinate}{Coordinate}}\ \mbox{\hyperlink{structargument_a1d01227c7aaa2e53ac7d6c15fe9b1843}{dest\_left\_up}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00048\ \ \ \ \ std::string\ \mbox{\hyperlink{structargument_a25561ad9e673dfa34da89934f21bf672}{axis}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structargument_ae8b3da18d3018e1b800b2b5266d4d960}{number\_x}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structargument_a81b923e28446e43a5a28790f50b34853}{number\_y}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structargument_ad4e44a9c0cbc0259c2c9a37ab7351fec}{thickness}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{structPixel}{Pixel}}\ \mbox{\hyperlink{structargument_ad023b308f71285ad46bce5bfc32fe2e3}{color\_split}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structargument_a682e2263f029deba9e97319cc193a4f1}{has\_old\_color}}\ =\ \textcolor{keyword}{false};\ \ \ \ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structargument_a82398b6833a7bfcfaa9c4dd11d800002}{has\_new\_color}}\ =\ \textcolor{keyword}{false};\ \ \ \ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structargument_a312f6bc626bfa9f4818fb9745473b716}{has\_left\_up}}\ =\ \textcolor{keyword}{false};\ \ \ \ \ \ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structargument_a4ef23760e971786dd3adf92f171ae1d6}{has\_right\_down}}\ =\ \textcolor{keyword}{false};\ \ \ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structargument_a69a177c8d84c0e0f2c7a1db500ebb621}{has\_dest\_left\_up}}\ =\ \textcolor{keyword}{false};\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structargument_adbc88f0e6621b11999202b8a895a69f5}{has\_axis}}\ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structargument_acc71ebbcc72b46c81aab61a5cd3c73d6}{has\_number\_x}}\ =\ \textcolor{keyword}{false};\ \ \ \ \ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structargument_a92adf9f29c4622f4f235a0a6cf91b5ea}{has\_number\_y}}\ =\ \textcolor{keyword}{false};\ \ \ \ \ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structargument_a909b22711c24e47fc1cf79628e2d29b7}{has\_thickness}}\ =\ \textcolor{keyword}{false};\ \ \ \ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structargument_a7f0a93c31986ec780bf777ca50d8cba7}{has\_color\_split}}\ =\ \textcolor{keyword}{false};\ \ }
+\DoxyCodeLine{00064\ \};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00072\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structOpInfo}{OpInfo}}\ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \mbox{\hyperlink{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9}{flags}}\ \mbox{\hyperlink{structOpInfo_a3236088e6bc13de61dbc799076bf7b1a}{f}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structOpInfo_a168d8baf18cebc5d466e32dcdb5079e2}{name}};\ }
+\DoxyCodeLine{00075\ \};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00090\ error\_marker\_t\ \mbox{\hyperlink{CommandLineInterface_8hpp_ab553c4e46d05308795e94f5239e8624b}{CLI}}(\textcolor{keywordtype}{int}\ argc,\ \textcolor{keywordtype}{char}\ *argv[],\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structargument}{argument}}\ \&arguments);}
+
+\end{DoxyCode}

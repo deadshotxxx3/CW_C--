@@ -1,0 +1,117 @@
+\doxysection{Coordinate Struct Reference}
+\hypertarget{structCoordinate}{}\label{structCoordinate}\index{Coordinate@{Coordinate}}
+
+
+Represents a 2D integer coordinate.  
+
+
+
+
+{\ttfamily \#include $<$Types.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structCoordinate_a5b2ffc54d801fa319fb3f4956dcc433c}\label{structCoordinate_a5b2ffc54d801fa319fb3f4956dcc433c} 
+constexpr {\bfseries Coordinate} () noexcept
+\begin{DoxyCompactList}\small\item\em Constructs a coordinate at (0, 0). \end{DoxyCompactList}\item 
+constexpr \mbox{\hyperlink{structCoordinate_ac3177f381c815c261f0169a0f527f9f1}{Coordinate}} (int x\+\_\+val, int y\+\_\+val) noexcept
+\begin{DoxyCompactList}\small\item\em Constructs a coordinate with specified X and Y values. \end{DoxyCompactList}\item 
+\Hypertarget{structCoordinate_a1cc2b4f9fc99df7d86c5946a80067dba}\label{structCoordinate_a1cc2b4f9fc99df7d86c5946a80067dba} 
+\mbox{\hyperlink{structCoordinate}{Coordinate}} \& {\bfseries operator=} (const \mbox{\hyperlink{structCoordinate}{Coordinate}} \&other)=default
+\begin{DoxyCompactList}\small\item\em Copy assignment operator (compiler-\/generated). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{structCoordinate_ad33b6312b41aa4cf671e3b9d7d831f37}{operator==}} (const \mbox{\hyperlink{structCoordinate}{Coordinate}} \&other) const noexcept
+\begin{DoxyCompactList}\small\item\em Checks if two coordinates are identical. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{structCoordinate_a4bdace0d5d8523f3adcdc81baff13ae9}{operator!=}} (const \mbox{\hyperlink{structCoordinate}{Coordinate}} \&other) const noexcept
+\begin{DoxyCompactList}\small\item\em Checks if two coordinates differ. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{structCoordinate_ad462d671f1feb865911333e3ff5f0a5d}{x}}
+\item 
+int \mbox{\hyperlink{structCoordinate_a5c7d59f0f65ff9371b6c3791f78880aa}{y}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a 2D integer coordinate. 
+
+Used for defining regions, lines, and points in image processing. Values may be negative during intermediate calculations but must be clamped to \mbox{[}0, width-\/1\mbox{]} and \mbox{[}0, height-\/1\mbox{]} before accessing pixels. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{structCoordinate_ac3177f381c815c261f0169a0f527f9f1}\label{structCoordinate_ac3177f381c815c261f0169a0f527f9f1} 
+\index{Coordinate@{Coordinate}!Coordinate@{Coordinate}}
+\index{Coordinate@{Coordinate}!Coordinate@{Coordinate}}
+\doxysubsubsection{\texorpdfstring{Coordinate()}{Coordinate()}}
+{\footnotesize\ttfamily constexpr Coordinate\+::\+Coordinate (\begin{DoxyParamCaption}\item[{int}]{x\+\_\+val,  }\item[{int}]{y\+\_\+val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+Constructs a coordinate with specified X and Y values. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em x\+\_\+val} & Horizontal position \\
+\hline
+\mbox{\texttt{ in}}  & {\em y\+\_\+val} & Vertical position \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structCoordinate_a4bdace0d5d8523f3adcdc81baff13ae9}\label{structCoordinate_a4bdace0d5d8523f3adcdc81baff13ae9} 
+\index{Coordinate@{Coordinate}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!Coordinate@{Coordinate}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool Coordinate\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structCoordinate}{Coordinate}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Checks if two coordinates differ. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em other} & \doxylink{structCoordinate}{Coordinate} to compare with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if X or Y differ; false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{structCoordinate_ad33b6312b41aa4cf671e3b9d7d831f37}\label{structCoordinate_ad33b6312b41aa4cf671e3b9d7d831f37} 
+\index{Coordinate@{Coordinate}!operator==@{operator==}}
+\index{operator==@{operator==}!Coordinate@{Coordinate}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Coordinate\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structCoordinate}{Coordinate}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Checks if two coordinates are identical. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em other} & \doxylink{structCoordinate}{Coordinate} to compare with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if X and Y match; false otherwise. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structCoordinate_ad462d671f1feb865911333e3ff5f0a5d}\label{structCoordinate_ad462d671f1feb865911333e3ff5f0a5d} 
+\index{Coordinate@{Coordinate}!x@{x}}
+\index{x@{x}!Coordinate@{Coordinate}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily int Coordinate\+::x}
+
+Horizontal position (column index) \Hypertarget{structCoordinate_a5c7d59f0f65ff9371b6c3791f78880aa}\label{structCoordinate_a5c7d59f0f65ff9371b6c3791f78880aa} 
+\index{Coordinate@{Coordinate}!y@{y}}
+\index{y@{y}!Coordinate@{Coordinate}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily int Coordinate\+::y}
+
+Vertical position (row index) 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/source/Types.\+hpp\end{DoxyCompactItemize}

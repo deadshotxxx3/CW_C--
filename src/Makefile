@@ -22,6 +22,9 @@ clean:
 	rm -f $(TARGET) $(PREF_OBJ)*.o $(PREF_OBJ)*.d
 	rm -d obj 
 
-.PHONY: run clean
+docs:
+	doxygen Doxyfile
+
+.PHONY: run clean docs
 
 -include $(DEPS)

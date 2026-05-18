@@ -1,0 +1,49 @@
+\doxysection{src/source/\+Operation\+Executor.hpp File Reference}
+\hypertarget{OperationExecutor_8hpp}{}\label{OperationExecutor_8hpp}\index{src/source/OperationExecutor.hpp@{src/source/OperationExecutor.hpp}}
+
+
+Dispatcher module that routes parsed CLI arguments to corresponding image processing operations.  
+
+
+{\ttfamily \#include "{}Bmp\+Image.\+hpp"{}}\newline
+{\ttfamily \#include "{}Command\+Line\+Interface.\+hpp"{}}\newline
+Include dependency graph for Operation\+Executor.\+hpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{OperationExecutor_8hpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{OperationExecutor_8hpp_a3edfa21d7ef0cdf764c66ec79d38db67}{operation\+Executor}} (\mbox{\hyperlink{classBmpImage}{Bmp\+Image}} \&bmp, struct \mbox{\hyperlink{structargument}{argument}} arguments)
+\begin{DoxyCompactList}\small\item\em Executes the selected image operation based on parsed command-\/line arguments. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Dispatcher module that routes parsed CLI arguments to corresponding image processing operations. 
+
+Acts as a bridge between the command-\/line interface and the \doxylink{classBmpImage}{Bmp\+Image} manipulation methods. Selects and executes the appropriate operation based on the parsed flags, or triggers help/info output when requested. Ensures strict one-\/operation-\/per-\/run policy. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{OperationExecutor_8hpp_a3edfa21d7ef0cdf764c66ec79d38db67}\label{OperationExecutor_8hpp_a3edfa21d7ef0cdf764c66ec79d38db67} 
+\index{OperationExecutor.hpp@{OperationExecutor.hpp}!operationExecutor@{operationExecutor}}
+\index{operationExecutor@{operationExecutor}!OperationExecutor.hpp@{OperationExecutor.hpp}}
+\doxysubsubsection{\texorpdfstring{operationExecutor()}{operationExecutor()}}
+{\footnotesize\ttfamily void operation\+Executor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBmpImage}{Bmp\+Image}} \&}]{bmp,  }\item[{struct \mbox{\hyperlink{structargument}{argument}}}]{arguments }\end{DoxyParamCaption})}
+
+
+
+Executes the selected image operation based on parsed command-\/line arguments. 
+
+Routes execution to the appropriate \doxylink{classBmpImage}{Bmp\+Image} method (mirror, copy, color\+\_\+replace, split) or outputs help/info metadata. The function acts as a central switchboard, ensuring that only the operation specified by the user is performed. Modifies the image in-\/place or prints metadata depending on the active flag.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em bmp} & Reference to the \doxylink{classBmpImage}{Bmp\+Image} instance to be processed/modified. \\
+\hline
+\mbox{\texttt{ in}}  & {\em arguments} & Structure containing all parsed CLI options, operation parameters, and state flags. \\
+\hline
+\end{DoxyParams}

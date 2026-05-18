@@ -1,0 +1,10 @@
+<map id="src/source/BmpImage.hpp" name="src/source/BmpImage.hpp">
+<area shape="rect" id="Node000001" title="Core class for managing, processing, and persisting 24&#45;bit BMP images." alt="" coords="116,5,307,31"/>
+<area shape="rect" id="Node000002" href="$CommandLineInterface_8hpp.html" title="Definitions for CLI argument parsing, flag enumeration, and command&#45;line interface entry point." alt="" coords="162,79,434,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="237,37,286,76,282,81,234,41"/>
+<area shape="rect" id="Node000003" href="$OperationExecutor_8hpp.html" title="Dispatcher module that routes parsed CLI arguments to corresponding image processing operations." alt="" coords="5,152,244,177"/>
+<area shape="poly" id="edge4_Node000001_Node000003" title=" " alt="" coords="187,41,168,59,152,80,136,118,129,152,124,151,131,117,148,77,164,56,183,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="259,112,154,154,152,149,257,107"/>
+<area shape="rect" id="Node000004" href="$ProcessingFlag_8hpp.html" title="Handlers for parsing and validating operation&#45;specific CLI flags." alt="" coords="269,152,487,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="323,111,367,150,363,154,319,115"/>
+</map>

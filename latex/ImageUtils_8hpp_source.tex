@@ -1,0 +1,19 @@
+\doxysection{Image\+Utils.\+hpp}
+\hypertarget{ImageUtils_8hpp_source}{}\label{ImageUtils_8hpp_source}\index{src/source/ImageUtils.hpp@{src/source/ImageUtils.hpp}}
+\mbox{\hyperlink{ImageUtils_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}Types.hpp"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>\ \textcolor{keyword}{constexpr}\ T\ \mbox{\hyperlink{ImageUtils_8hpp_aec2031959588450b9b13c0b8481eabcd}{clamp}}(T\ value,\ T\ min\_val,\ T\ max\_val)}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordflow}{return}\ (value\ <\ min\_val)\ ?\ min\_val\ :\ (value\ >\ max\_val)\ ?\ max\_val\ :\ value;}
+\DoxyCodeLine{00023\ \}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{structCoordinate}{Coordinate}}\ \mbox{\hyperlink{ImageUtils_8hpp_a2c9e7d4194c0c74b2aeac34eb76b7a9e}{clamp\_to\_image}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structCoordinate}{Coordinate}}\ \&coord,\ \textcolor{keywordtype}{int}\ img\_width,\ \textcolor{keywordtype}{int}\ img\_height)}
+\DoxyCodeLine{00034\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structCoordinate}{Coordinate}}(\mbox{\hyperlink{ImageUtils_8hpp_aec2031959588450b9b13c0b8481eabcd}{clamp}}(coord.\mbox{\hyperlink{structCoordinate_ad462d671f1feb865911333e3ff5f0a5d}{x}},\ 0,\ img\_width\ -\/\ 1),\ \mbox{\hyperlink{ImageUtils_8hpp_aec2031959588450b9b13c0b8481eabcd}{clamp}}(coord.\mbox{\hyperlink{structCoordinate_a5c7d59f0f65ff9371b6c3791f78880aa}{y}},\ 0,\ img\_height\ -\/\ 1));}
+\DoxyCodeLine{00036\ \}}
+
+\end{DoxyCode}

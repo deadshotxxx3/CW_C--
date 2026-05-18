@@ -1,0 +1,125 @@
+\doxysection{src/source/\+Argument\+Parser.hpp File Reference}
+\hypertarget{ArgumentParser_8hpp}{}\label{ArgumentParser_8hpp}\index{src/source/ArgumentParser.hpp@{src/source/ArgumentParser.hpp}}
+
+
+Utility functions for parsing and validating CLI arguments.  
+
+
+{\ttfamily \#include "{}Error.\+hpp"{}}\newline
+{\ttfamily \#include "{}Types.\+hpp"{}}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$utility$>$}\newline
+Include dependency graph for Argument\+Parser.\+hpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ArgumentParser_8hpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{ArgumentParser_8hpp_a969bbfc679a350375cf54598de0cc788}{check\+\_\+range\+\_\+component}} (int values)
+\begin{DoxyCompactList}\small\item\em Checks if a color component value is within the valid range \mbox{[}0, 255\mbox{]}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{ArgumentParser_8hpp_a04409403fcbe974450da420620a8530e}{check\+\_\+valid\+\_\+value}} (const std\+::string \&values)
+\begin{DoxyCompactList}\small\item\em Checks if a string represents a valid integer (positive or negative). \end{DoxyCompactList}\item 
+std\+::pair$<$ \mbox{\hyperlink{structCoordinate}{Coordinate}}, error\+\_\+marker\+\_\+t $>$ \mbox{\hyperlink{ArgumentParser_8hpp_aecfe9ac39d27db2b59d95f8b55b4806c}{get\+Coordinate}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Parses a string into a \doxylink{structCoordinate}{Coordinate} object. \end{DoxyCompactList}\item 
+std\+::pair$<$ \mbox{\hyperlink{structPixel}{Pixel}}, error\+\_\+marker\+\_\+t $>$ \mbox{\hyperlink{ArgumentParser_8hpp_a562ef698d5c9bd46f8b6da34e58e22a8}{get\+Pixel}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Parses a string into a \doxylink{structPixel}{Pixel} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Utility functions for parsing and validating CLI arguments. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{ArgumentParser_8hpp_a969bbfc679a350375cf54598de0cc788}\label{ArgumentParser_8hpp_a969bbfc679a350375cf54598de0cc788} 
+\index{ArgumentParser.hpp@{ArgumentParser.hpp}!check\_range\_component@{check\_range\_component}}
+\index{check\_range\_component@{check\_range\_component}!ArgumentParser.hpp@{ArgumentParser.hpp}}
+\doxysubsubsection{\texorpdfstring{check\_range\_component()}{check\_range\_component()}}
+{\footnotesize\ttfamily bool check\+\_\+range\+\_\+component (\begin{DoxyParamCaption}\item[{int}]{values }\end{DoxyParamCaption})}
+
+
+
+Checks if a color component value is within the valid range \mbox{[}0, 255\mbox{]}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em values} & The color component value to validate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true If the value is within the permissible range. 
+
+false If the value is outside the permissible range. 
+\end{DoxyReturn}
+\Hypertarget{ArgumentParser_8hpp_a04409403fcbe974450da420620a8530e}\label{ArgumentParser_8hpp_a04409403fcbe974450da420620a8530e} 
+\index{ArgumentParser.hpp@{ArgumentParser.hpp}!check\_valid\_value@{check\_valid\_value}}
+\index{check\_valid\_value@{check\_valid\_value}!ArgumentParser.hpp@{ArgumentParser.hpp}}
+\doxysubsubsection{\texorpdfstring{check\_valid\_value()}{check\_valid\_value()}}
+{\footnotesize\ttfamily bool check\+\_\+valid\+\_\+value (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{values }\end{DoxyParamCaption})}
+
+
+
+Checks if a string represents a valid integer (positive or negative). 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em values} & The string to validate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true If the string contains only digits, optionally prefixed by a single \textquotesingle{}-\/\textquotesingle{}. 
+
+false If the format is invalid (e.\+g., "{}123-\/3"{}, "{}-\/"{}, "{}abc"{}, "{}"{}). 
+\end{DoxyReturn}
+\Hypertarget{ArgumentParser_8hpp_aecfe9ac39d27db2b59d95f8b55b4806c}\label{ArgumentParser_8hpp_aecfe9ac39d27db2b59d95f8b55b4806c} 
+\index{ArgumentParser.hpp@{ArgumentParser.hpp}!getCoordinate@{getCoordinate}}
+\index{getCoordinate@{getCoordinate}!ArgumentParser.hpp@{ArgumentParser.hpp}}
+\doxysubsubsection{\texorpdfstring{getCoordinate()}{getCoordinate()}}
+{\footnotesize\ttfamily std\+::pair$<$ \mbox{\hyperlink{structCoordinate}{Coordinate}}, error\+\_\+marker\+\_\+t $>$ get\+Coordinate (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Parses a string into a \doxylink{structCoordinate}{Coordinate} object. 
+
+Validates the input for the "{}x.\+y"{} format. If parsing fails or the format is invalid, returns a default \doxylink{structCoordinate}{Coordinate} and an error status.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em str} & String containing coordinates in "{}x.\+y"{} format. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::pair$<$\+Pixel , error\+\_\+marker\+\_\+t$>$ A pair where\+:
+\begin{DoxyItemize}
+\item first\+: Parsed \doxylink{structCoordinate}{Coordinate} (0.\+0 if invalid)
+\item second\+: ERR\+\_\+\+OK on success, ERR\+\_\+\+INCORRECTARG on failure 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\Hypertarget{ArgumentParser_8hpp_a562ef698d5c9bd46f8b6da34e58e22a8}\label{ArgumentParser_8hpp_a562ef698d5c9bd46f8b6da34e58e22a8} 
+\index{ArgumentParser.hpp@{ArgumentParser.hpp}!getPixel@{getPixel}}
+\index{getPixel@{getPixel}!ArgumentParser.hpp@{ArgumentParser.hpp}}
+\doxysubsubsection{\texorpdfstring{getPixel()}{getPixel()}}
+{\footnotesize\ttfamily std\+::pair$<$ \mbox{\hyperlink{structPixel}{Pixel}}, error\+\_\+marker\+\_\+t $>$ get\+Pixel (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Parses a string into a \doxylink{structPixel}{Pixel} object. 
+
+Validates the input for the "{}r.\+g.\+b"{} format. If parsing fails or the format is invalid, returns a default \doxylink{structPixel}{Pixel} and an error status.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em str} & String containing \doxylink{structPixel}{Pixel} in "{}r.\+g.\+b"{} format. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::pair$<$\+Coordinate, error\+\_\+marker\+\_\+t$>$ A pair where\+:
+\begin{DoxyItemize}
+\item first\+: Parsed \doxylink{structPixel}{Pixel} (0.\+0.\+0 if invalid)
+\item second\+: ERR\+\_\+\+OK on success, ERR\+\_\+\+INCORRECTARG on failure 
+\end{DoxyItemize}
+\end{DoxyReturn}

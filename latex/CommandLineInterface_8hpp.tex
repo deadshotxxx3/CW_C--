@@ -1,0 +1,126 @@
+\doxysection{src/source/\+Command\+Line\+Interface.hpp File Reference}
+\hypertarget{CommandLineInterface_8hpp}{}\label{CommandLineInterface_8hpp}\index{src/source/CommandLineInterface.hpp@{src/source/CommandLineInterface.hpp}}
+
+
+Definitions for CLI argument parsing, flag enumeration, and command-\/line interface entry point.  
+
+
+{\ttfamily \#include "{}Bmp\+Image.\+hpp"{}}\newline
+{\ttfamily \#include "{}Error.\+hpp"{}}\newline
+{\ttfamily \#include $<$getopt.\+h$>$}\newline
+Include dependency graph for Command\+Line\+Interface.\+hpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{CommandLineInterface_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{CommandLineInterface_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structargument}{argument}}
+\begin{DoxyCompactList}\small\item\em Container for all parsed command-\/line arguments and validation states. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structOpInfo}{Op\+Info}}
+\begin{DoxyCompactList}\small\item\em Internal mapping between short option characters and operation metadata. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9}{flags}} \{ \newline
+\mbox{\hyperlink{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9a65db715f0c96fb5e476e551e7fb7f396}{NO\+\_\+\+FLAG}}
+, \mbox{\hyperlink{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9a889fa468d344b87b56f3b6d50adaf200}{FLAG\+\_\+\+HELP}}
+, \mbox{\hyperlink{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9a0f1be385ad2757c1ab4e2c0d0281efc8}{FLAG\+\_\+\+INFO}}
+, \mbox{\hyperlink{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9ab747cbe59f8ce592676cc1b1971b0296}{FLAG\+\_\+\+MIRROR}}
+, \newline
+\mbox{\hyperlink{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9a125ea71dfc27424f6ed9872530f84e53}{FLAG\+\_\+\+COPY}}
+, \mbox{\hyperlink{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9af9cf3806fb0cab1876ae67a7bbf10671}{FLAG\+\_\+\+COLOR\+\_\+\+REPLACE}}
+, \mbox{\hyperlink{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9a9c38bc002a6fb4a5c705e58df9c3b6a5}{FLAG\+\_\+\+SPLIT}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration of available command-\/line operations and parser states. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+error\+\_\+marker\+\_\+t \mbox{\hyperlink{CommandLineInterface_8hpp_ab553c4e46d05308795e94f5239e8624b}{CLI}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]}, struct \mbox{\hyperlink{structargument}{argument}} \&arguments)
+\begin{DoxyCompactList}\small\item\em Parses command-\/line arguments and populates the argument structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Definitions for CLI argument parsing, flag enumeration, and command-\/line interface entry point. 
+
+Contains the {\ttfamily argument} structure for storing parsed options, the {\ttfamily flags} enumeration for operation selection, and the main {\ttfamily CLI} function signature. Used across all modules to share parsed configuration and validation state. 
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9}\label{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9} 
+\index{CommandLineInterface.hpp@{CommandLineInterface.hpp}!flags@{flags}}
+\index{flags@{flags}!CommandLineInterface.hpp@{CommandLineInterface.hpp}}
+\doxysubsubsection{\texorpdfstring{flags}{flags}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9}{flags}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Enumeration of available command-\/line operations and parser states. 
+
+Ensures mutual exclusivity of image processing commands. The parser switches to the corresponding enum value when a primary operation flag is encountered. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NO\_FLAG@{NO\_FLAG}!CommandLineInterface.hpp@{CommandLineInterface.hpp}}\index{CommandLineInterface.hpp@{CommandLineInterface.hpp}!NO\_FLAG@{NO\_FLAG}}}\Hypertarget{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9a65db715f0c96fb5e476e551e7fb7f396}\label{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9a65db715f0c96fb5e476e551e7fb7f396} 
+NO\+\_\+\+FLAG&No operation selected (initial state) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_HELP@{FLAG\_HELP}!CommandLineInterface.hpp@{CommandLineInterface.hpp}}\index{CommandLineInterface.hpp@{CommandLineInterface.hpp}!FLAG\_HELP@{FLAG\_HELP}}}\Hypertarget{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9a889fa468d344b87b56f3b6d50adaf200}\label{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9a889fa468d344b87b56f3b6d50adaf200} 
+FLAG\+\_\+\+HELP&--help / -\/h requested \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_INFO@{FLAG\_INFO}!CommandLineInterface.hpp@{CommandLineInterface.hpp}}\index{CommandLineInterface.hpp@{CommandLineInterface.hpp}!FLAG\_INFO@{FLAG\_INFO}}}\Hypertarget{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9a0f1be385ad2757c1ab4e2c0d0281efc8}\label{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9a0f1be385ad2757c1ab4e2c0d0281efc8} 
+FLAG\+\_\+\+INFO&--info / -\/I requested \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_MIRROR@{FLAG\_MIRROR}!CommandLineInterface.hpp@{CommandLineInterface.hpp}}\index{CommandLineInterface.hpp@{CommandLineInterface.hpp}!FLAG\_MIRROR@{FLAG\_MIRROR}}}\Hypertarget{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9ab747cbe59f8ce592676cc1b1971b0296}\label{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9ab747cbe59f8ce592676cc1b1971b0296} 
+FLAG\+\_\+\+MIRROR&--mirror / -\/m requested \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_COPY@{FLAG\_COPY}!CommandLineInterface.hpp@{CommandLineInterface.hpp}}\index{CommandLineInterface.hpp@{CommandLineInterface.hpp}!FLAG\_COPY@{FLAG\_COPY}}}\Hypertarget{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9a125ea71dfc27424f6ed9872530f84e53}\label{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9a125ea71dfc27424f6ed9872530f84e53} 
+FLAG\+\_\+\+COPY&--copy / -\/b requested \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_COLOR\_REPLACE@{FLAG\_COLOR\_REPLACE}!CommandLineInterface.hpp@{CommandLineInterface.hpp}}\index{CommandLineInterface.hpp@{CommandLineInterface.hpp}!FLAG\_COLOR\_REPLACE@{FLAG\_COLOR\_REPLACE}}}\Hypertarget{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9af9cf3806fb0cab1876ae67a7bbf10671}\label{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9af9cf3806fb0cab1876ae67a7bbf10671} 
+FLAG\+\_\+\+COLOR\+\_\+\+REPLACE&--color\+\_\+replace / -\/c requested \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_SPLIT@{FLAG\_SPLIT}!CommandLineInterface.hpp@{CommandLineInterface.hpp}}\index{CommandLineInterface.hpp@{CommandLineInterface.hpp}!FLAG\_SPLIT@{FLAG\_SPLIT}}}\Hypertarget{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9a9c38bc002a6fb4a5c705e58df9c3b6a5}\label{CommandLineInterface_8hpp_ab6b306ef981f5e21bb41ea2c2dbe8cd9a9c38bc002a6fb4a5c705e58df9c3b6a5} 
+FLAG\+\_\+\+SPLIT&--split / -\/s requested \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{CommandLineInterface_8hpp_ab553c4e46d05308795e94f5239e8624b}\label{CommandLineInterface_8hpp_ab553c4e46d05308795e94f5239e8624b} 
+\index{CommandLineInterface.hpp@{CommandLineInterface.hpp}!CLI@{CLI}}
+\index{CLI@{CLI}!CommandLineInterface.hpp@{CommandLineInterface.hpp}}
+\doxysubsubsection{\texorpdfstring{CLI()}{CLI()}}
+{\footnotesize\ttfamily error\+\_\+marker\+\_\+t CLI (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}}]{argv\mbox{[}$\,$\mbox{]},  }\item[{struct \mbox{\hyperlink{structargument}{argument}} \&}]{arguments }\end{DoxyParamCaption})}
+
+
+
+Parses command-\/line arguments and populates the argument structure. 
+
+Processes short and long options using getopt\+\_\+long, validates operation exclusivity, checks for missing required parameters, handles ignored/extra arguments, enforces coordinate ordering rules, and sets up input/output file paths. Stops execution and returns an error code on any validation failure.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em argc} & Number of command-\/line arguments passed to main(). \\
+\hline
+\mbox{\texttt{ in}}  & {\em argv} & Array of command-\/line argument strings. \\
+\hline
+\mbox{\texttt{ out}}  & {\em arguments} & Reference to the structure that will be filled with parsed data. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error\+\_\+marker\+\_\+t ERR\+\_\+\+OK on successful parsing and validation, or a specific error code (ERR\+\_\+\+INCORRECTARG, ERR\+\_\+\+FEWARGS, ERR\+\_\+\+EXTRARGS, etc.) on failure. 
+\end{DoxyReturn}

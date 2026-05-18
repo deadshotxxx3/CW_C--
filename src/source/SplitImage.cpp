@@ -1,6 +1,6 @@
 #include "BmpImage.hpp"
 
-void replace_color_pixel(Pixel &pixel, Pixel &need_color)
+static void replace_color_pixel(Pixel &pixel, Pixel &need_color)
 {
     pixel.r = need_color.r;
     pixel.b = need_color.b;

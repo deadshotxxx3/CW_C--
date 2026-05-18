@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
 {
     BmpImage bmp;
 
-    struct argument args {};
+    struct argument args{};
 
     auto error = CLI(argc, argv, args);
 
