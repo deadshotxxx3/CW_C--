@@ -19,6 +19,7 @@
  *          or prints metadata depending on the active flag.
  *
  * @param[in,out] bmp       Reference to the BmpImage instance to be processed/modified.
- * @param[in]     arguments Structure containing all parsed CLI options, operation parameters, and state flags.
+ * @param[in]     arguments Structure containing all parsed CLI options, operation parameters, and state
+ * flags.
  */
 void operationExecutor(BmpImage &bmp, struct argument arguments);

@@ -25,13 +25,12 @@ struct option options[] = {{"input", required_argument, 0, 'i'},
                            {"number_x", required_argument, 0, 'x'},
                            {"number_y", required_argument, 0, 'y'},
                            {"thickness", required_argument, 0, 't'},
-                           
+
                            {"color", required_argument, 0, 'C'},
 
                            {"info", no_argument, 0, 'I'},
                            {"help", no_argument, 0, 'h'},
                            {0, 0, 0, 0}};
-
 
 /**
  * @internal
@@ -279,7 +278,8 @@ static error_marker_t handle_positional(int &optind, int argc, char *argv[], str
  *          is missing, formats a comma-separated list of the absent flags, prints an error to
  *          standard error, and returns a specific error code.
  *
- * @param[in] args Reference to the fully parsed argument structure containing operation state and tracking flags.
+ * @param[in] args Reference to the fully parsed argument structure containing operation state and tracking
+ * flags.
  * @return error_marker_t ERR_OK if all required arguments are present or validation is not applicable,
  *         ERR_FEWARGS if one or more mandatory parameters are missing.
  */
@@ -369,7 +369,8 @@ static error_marker_t validate_region_coords(const argument &args)
  *          If not, it treats the next remaining command-line argument (left after flag parsing)
  *          as the input file path. Guarantees that an input path is always present before processing.
  *
- * @param[in,out] arguments Reference to the argument structure. Updates `inputName` if a fallback path is detected.
+ * @param[in,out] arguments Reference to the argument structure. Updates `inputName` if a fallback path is
+ * detected.
  * @param[in]     argc      Total number of command-line arguments passed to the program.
  * @param[in]     argv      Array of command-line argument strings.
  * @return error_marker_t ERR_OK if `inputName` is successfully resolved,
