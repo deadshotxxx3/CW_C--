@@ -1,0 +1,31 @@
+\doxysection{src/source/\+Print\+Help\+And\+Info.hpp File Reference}
+\hypertarget{PrintHelpAndInfo_8hpp}{}\label{PrintHelpAndInfo_8hpp}\index{src/source/PrintHelpAndInfo.hpp@{src/source/PrintHelpAndInfo.hpp}}
+
+
+Declares utility functions for printing program documentation and metadata.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{PrintHelpAndInfo_8hpp_a853216ac51aa181669ff4d3de74058a7}{print\+\_\+help}} ()
+\begin{DoxyCompactList}\small\item\em Outputs the complete command-\/line usage guide to standard output. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Declares utility functions for printing program documentation and metadata. 
+
+Provides the public interface for outputting CLI usage instructions, flag descriptions, and format specifications. Called when the user requests assistance via --help or -\/h. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{PrintHelpAndInfo_8hpp_a853216ac51aa181669ff4d3de74058a7}\label{PrintHelpAndInfo_8hpp_a853216ac51aa181669ff4d3de74058a7} 
+\index{PrintHelpAndInfo.hpp@{PrintHelpAndInfo.hpp}!print\_help@{print\_help}}
+\index{print\_help@{print\_help}!PrintHelpAndInfo.hpp@{PrintHelpAndInfo.hpp}}
+\doxysubsubsection{\texorpdfstring{print\_help()}{print\_help()}}
+{\footnotesize\ttfamily void print\+\_\+help (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Outputs the complete command-\/line usage guide to standard output. 
+
+Prints a formatted help message listing all supported operations, required/optional flags, coordinate (x.\+y) and color (r.\+g.\+b) formats, and usage examples. Output is directed to std\+::cout and formatted for terminal readability. No state modification or return value. 

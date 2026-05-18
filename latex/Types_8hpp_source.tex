@@ -1,70 +1,82 @@
 \doxysection{Types.\+hpp}
 \hypertarget{Types_8hpp_source}{}\label{Types_8hpp_source}\index{src/source/Types.hpp@{src/source/Types.hpp}}
-
+\mbox{\hyperlink{Types_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <cstdint>}}
-\DoxyCodeLine{00003\ }
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#pragma\ pack(push,\ 1)}}
-\DoxyCodeLine{00005\ }
-\DoxyCodeLine{00011\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structBitmapFileHeader}{BitmapFileHeader}}\ \{}
-\DoxyCodeLine{00012\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{structBitmapFileHeader_aedcb43bb97d32fd615a81d7e47767997}{signature}};\ \ \ \ \ \ }
-\DoxyCodeLine{00013\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structBitmapFileHeader_aadab22e8c426729b488ddaa64adb261e}{filesize}};\ \ \ \ \ \ \ }
-\DoxyCodeLine{00014\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{structBitmapFileHeader_ac8d0b77f935329a49f830e51406e225a}{reserved1}};\ \ \ \ \ \ }
-\DoxyCodeLine{00015\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{structBitmapFileHeader_ad6401f256079ab001db09cb22cd0bcf4}{reserved2}};\ \ \ \ \ \ }
-\DoxyCodeLine{00016\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structBitmapFileHeader_a9f96e0edc756884929ed6b2ec2008e28}{pixelArrOffset}};\ }
-\DoxyCodeLine{00017\ \};}
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00024\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structBitmapInfoHeader}{BitmapInfoHeader}}\ \{}
-\DoxyCodeLine{00025\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structBitmapInfoHeader_a72533891c7155e89a2ba488b9c570a9f}{headerSize}};\ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00026\ \ \ \ \ int32\_t\ \mbox{\hyperlink{structBitmapInfoHeader_a473cae74d298e4f4eaf0595f184881cb}{width}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00027\ \ \ \ \ int32\_t\ \mbox{\hyperlink{structBitmapInfoHeader_a5ad7376c798523be0977690cccbcfa9b}{height}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00028\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{structBitmapInfoHeader_a40f70feb8da5d4a989d1d57e866e0cd4}{planes}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00029\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{structBitmapInfoHeader_a12b2feee3b5ff67284bbca51479f6e60}{bitsPerPixel}};\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00030\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structBitmapInfoHeader_ae601a1001d146855816fe4b960667ba8}{compression}};\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00031\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structBitmapInfoHeader_a328c2ba0ff558b95cc8a8670b26d7e34}{imageSize}};\ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00032\ \ \ \ \ int32\_t\ \mbox{\hyperlink{structBitmapInfoHeader_a932735f6317695606a0d508fd357a2b3}{xPixelsPerMeter}};\ \ \ \ \ \ }
-\DoxyCodeLine{00033\ \ \ \ \ int32\_t\ \mbox{\hyperlink{structBitmapInfoHeader_a222e1834b23710d4774fab7d22bddac4}{yPixelsPerMeter}};\ \ \ \ \ \ }
-\DoxyCodeLine{00034\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structBitmapInfoHeader_ae407c488b221ad010ad9404012d1354f}{numColors}};\ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00035\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structBitmapInfoHeader_a977162be7336d622ec9079a27f9583c4}{importantColorCount}};\ }
-\DoxyCodeLine{00036\ \};}
-\DoxyCodeLine{00037\ }
-\DoxyCodeLine{00043\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structPixel}{Pixel}}\ \{}
-\DoxyCodeLine{00044\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structPixel_abc9f592730eddbfcb270a1974a498d78}{b}};\ }
-\DoxyCodeLine{00045\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structPixel_aeab078b7768caf273f8fe1daffa50729}{g}};\ }
-\DoxyCodeLine{00046\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structPixel_a47d65d4a410f57c46746ddedd709e177}{r}};\ }
-\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{structPixel_a395129d0793c7e98aef3846754ca862b}{Pixel}}()\ noexcept\ :\ \mbox{\hyperlink{structPixel_abc9f592730eddbfcb270a1974a498d78}{b}}(0),\ \mbox{\hyperlink{structPixel_aeab078b7768caf273f8fe1daffa50729}{g}}(0),\ \mbox{\hyperlink{structPixel_a47d65d4a410f57c46746ddedd709e177}{r}}(0)\ \{\}}
-\DoxyCodeLine{00050\ }
-\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{structPixel_aafc84692ce9e7d378121486fb04c25fe}{Pixel}}(uint8\_t\ red,\ uint8\_t\ green,\ uint8\_t\ blue)\ noexcept\ :\ \mbox{\hyperlink{structPixel_abc9f592730eddbfcb270a1974a498d78}{b}}(blue),\ \mbox{\hyperlink{structPixel_aeab078b7768caf273f8fe1daffa50729}{g}}(green),\ \mbox{\hyperlink{structPixel_a47d65d4a410f57c46746ddedd709e177}{r}}(red)\ \{\}}
-\DoxyCodeLine{00059\ }
-\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{structPixel}{Pixel}}\ \&\mbox{\hyperlink{structPixel_aa1e311e938fcd21a4645c6fc6a5cfb38}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structPixel}{Pixel}}\ \&other)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#pragma\ pack(push,\ 1)}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structBitmapFileHeader}{BitmapFileHeader}}\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{structBitmapFileHeader_aedcb43bb97d32fd615a81d7e47767997}{signature}};\ \ \ \ \ \ }
+\DoxyCodeLine{00025\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structBitmapFileHeader_aadab22e8c426729b488ddaa64adb261e}{filesize}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{structBitmapFileHeader_a4c345838feeaa03b164a5dbb979b5284}{reservedA}};\ \ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{structBitmapFileHeader_aacb42688e8af4967be4f7df9a22223ce}{reservedB}};\ \ \ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structBitmapFileHeader_a9f96e0edc756884929ed6b2ec2008e28}{pixelArrOffset}};\ }
+\DoxyCodeLine{00029\ \};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structBitmapInfoHeader}{BitmapInfoHeader}}\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structBitmapInfoHeader_a72533891c7155e89a2ba488b9c570a9f}{headerSize}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ int32\_t\ \mbox{\hyperlink{structBitmapInfoHeader_a473cae74d298e4f4eaf0595f184881cb}{width}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00039\ \ \ \ \ int32\_t\ \mbox{\hyperlink{structBitmapInfoHeader_a5ad7376c798523be0977690cccbcfa9b}{height}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{structBitmapInfoHeader_a40f70feb8da5d4a989d1d57e866e0cd4}{planes}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00041\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{structBitmapInfoHeader_a12b2feee3b5ff67284bbca51479f6e60}{bitsPerPixel}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structBitmapInfoHeader_ae601a1001d146855816fe4b960667ba8}{compression}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00043\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structBitmapInfoHeader_a328c2ba0ff558b95cc8a8670b26d7e34}{imageSize}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00044\ \ \ \ \ int32\_t\ \mbox{\hyperlink{structBitmapInfoHeader_a932735f6317695606a0d508fd357a2b3}{xPixelsPerMeter}};\ \ \ \ \ \ }
+\DoxyCodeLine{00045\ \ \ \ \ int32\_t\ \mbox{\hyperlink{structBitmapInfoHeader_a222e1834b23710d4774fab7d22bddac4}{yPixelsPerMeter}};\ \ \ \ \ \ }
+\DoxyCodeLine{00046\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structBitmapInfoHeader_ae407c488b221ad010ad9404012d1354f}{numColors}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00047\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structBitmapInfoHeader_a977162be7336d622ec9079a27f9583c4}{importantColorCount}};\ }
+\DoxyCodeLine{00048\ \};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00055\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structPixel}{Pixel}}\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structPixel_abc9f592730eddbfcb270a1974a498d78}{b}};\ }
+\DoxyCodeLine{00057\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structPixel_aeab078b7768caf273f8fe1daffa50729}{g}};\ }
+\DoxyCodeLine{00058\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structPixel_a47d65d4a410f57c46746ddedd709e177}{r}};\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{structPixel_a395129d0793c7e98aef3846754ca862b}{Pixel}}()\ noexcept\ :\ \mbox{\hyperlink{structPixel_abc9f592730eddbfcb270a1974a498d78}{b}}(0),\ \mbox{\hyperlink{structPixel_aeab078b7768caf273f8fe1daffa50729}{g}}(0),\ \mbox{\hyperlink{structPixel_a47d65d4a410f57c46746ddedd709e177}{r}}(0)\ \{\}}
 \DoxyCodeLine{00062\ }
-\DoxyCodeLine{00068\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structPixel_aad81a91f161b400cfe75261b0add463b}{operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structPixel}{Pixel}}\ \&other)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}}
-\DoxyCodeLine{00069\ \ \ \ \ \{}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structPixel_a47d65d4a410f57c46746ddedd709e177}{r}}\ ==\ other.r\ \&\&\ \mbox{\hyperlink{structPixel_aeab078b7768caf273f8fe1daffa50729}{g}}\ ==\ other.g\ \&\&\ \mbox{\hyperlink{structPixel_abc9f592730eddbfcb270a1974a498d78}{b}}\ ==\ other.b;}
-\DoxyCodeLine{00071\ \ \ \ \ \}}
-\DoxyCodeLine{00072\ \};}
-\DoxyCodeLine{00073\ }
-\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#pragma\ pack(pop)}}
-\DoxyCodeLine{00075\ }
-\DoxyCodeLine{00082\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structCoordinate}{Coordinate}}\ \{}
-\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structCoordinate_ad462d671f1feb865911333e3ff5f0a5d}{x}};\ }
-\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structCoordinate_a5c7d59f0f65ff9371b6c3791f78880aa}{y}};\ }
-\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{structCoordinate_a5b2ffc54d801fa319fb3f4956dcc433c}{Coordinate}}()\ noexcept\ :\ \mbox{\hyperlink{structCoordinate_ad462d671f1feb865911333e3ff5f0a5d}{x}}(0),\ \mbox{\hyperlink{structCoordinate_a5c7d59f0f65ff9371b6c3791f78880aa}{y}}(0)\ \{\}}
-\DoxyCodeLine{00088\ }
-\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{structCoordinate_ac3177f381c815c261f0169a0f527f9f1}{Coordinate}}(\textcolor{keywordtype}{int}\ x\_val,\ \textcolor{keywordtype}{int}\ y\_val)\ noexcept\ :\ \mbox{\hyperlink{structCoordinate_ad462d671f1feb865911333e3ff5f0a5d}{x}}(x\_val),\ \mbox{\hyperlink{structCoordinate_a5c7d59f0f65ff9371b6c3791f78880aa}{y}}(y\_val)\ \{\}}
-\DoxyCodeLine{00095\ }
-\DoxyCodeLine{00097\ \ \ \ \ \mbox{\hyperlink{structCoordinate}{Coordinate}}\ \&\mbox{\hyperlink{structCoordinate_a1cc2b4f9fc99df7d86c5946a80067dba}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structCoordinate}{Coordinate}}\ \&other)\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00098\ }
-\DoxyCodeLine{00104\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structCoordinate_ad33b6312b41aa4cf671e3b9d7d831f37}{operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structCoordinate}{Coordinate}}\ \&other)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}}
-\DoxyCodeLine{00105\ \ \ \ \ \{}
-\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structCoordinate_ad462d671f1feb865911333e3ff5f0a5d}{x}}\ ==\ other.x\ \&\&\ \mbox{\hyperlink{structCoordinate_a5c7d59f0f65ff9371b6c3791f78880aa}{y}}\ ==\ other.y;}
-\DoxyCodeLine{00107\ \ \ \ \ \}}
-\DoxyCodeLine{00108\ }
-\DoxyCodeLine{00114\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structCoordinate_a4bdace0d5d8523f3adcdc81baff13ae9}{operator!=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structCoordinate}{Coordinate}}\ \&other)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}}
-\DoxyCodeLine{00115\ \ \ \ \ \{}
-\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !(*\textcolor{keyword}{this}\ ==\ other);}
-\DoxyCodeLine{00117\ \ \ \ \ \}}
-\DoxyCodeLine{00118\ \};}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{structPixel_aafc84692ce9e7d378121486fb04c25fe}{Pixel}}(uint8\_t\ red,\ uint8\_t\ green,\ uint8\_t\ blue)\ noexcept\ :\ \mbox{\hyperlink{structPixel_abc9f592730eddbfcb270a1974a498d78}{b}}(blue),\ \mbox{\hyperlink{structPixel_aeab078b7768caf273f8fe1daffa50729}{g}}(green),\ \mbox{\hyperlink{structPixel_a47d65d4a410f57c46746ddedd709e177}{r}}(red)\ \{\}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00073\ \ \ \ \ \mbox{\hyperlink{structPixel}{Pixel}}\ \&\mbox{\hyperlink{structPixel_aa1e311e938fcd21a4645c6fc6a5cfb38}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structPixel}{Pixel}}\ \&other)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00080\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structPixel_aad81a91f161b400cfe75261b0add463b}{operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structPixel}{Pixel}}\ \&other)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00081\ \ \ \ \ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structPixel_a47d65d4a410f57c46746ddedd709e177}{r}}\ ==\ other.r\ \&\&\ \mbox{\hyperlink{structPixel_aeab078b7768caf273f8fe1daffa50729}{g}}\ ==\ other.g\ \&\&\ \mbox{\hyperlink{structPixel_abc9f592730eddbfcb270a1974a498d78}{b}}\ ==\ other.b;}
+\DoxyCodeLine{00083\ \ \ \ \ \}}
+\DoxyCodeLine{00084\ \};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#pragma\ pack(pop)}}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00094\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structCoordinate}{Coordinate}}\ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structCoordinate_ad462d671f1feb865911333e3ff5f0a5d}{x}};\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structCoordinate_a5c7d59f0f65ff9371b6c3791f78880aa}{y}};\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{structCoordinate_a5b2ffc54d801fa319fb3f4956dcc433c}{Coordinate}}()\ noexcept\ :\ \mbox{\hyperlink{structCoordinate_ad462d671f1feb865911333e3ff5f0a5d}{x}}(0),\ \mbox{\hyperlink{structCoordinate_a5c7d59f0f65ff9371b6c3791f78880aa}{y}}(0)\ \{\}}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{structCoordinate_ac3177f381c815c261f0169a0f527f9f1}{Coordinate}}(\textcolor{keywordtype}{int}\ x\_val,\ \textcolor{keywordtype}{int}\ y\_val)\ noexcept\ :\ \mbox{\hyperlink{structCoordinate_ad462d671f1feb865911333e3ff5f0a5d}{x}}(x\_val),\ \mbox{\hyperlink{structCoordinate_a5c7d59f0f65ff9371b6c3791f78880aa}{y}}(y\_val)\ \{\}}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00109\ \ \ \ \ \mbox{\hyperlink{structCoordinate}{Coordinate}}\ \&\mbox{\hyperlink{structCoordinate_a1cc2b4f9fc99df7d86c5946a80067dba}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structCoordinate}{Coordinate}}\ \&other)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00116\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structCoordinate_ad33b6312b41aa4cf671e3b9d7d831f37}{operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structCoordinate}{Coordinate}}\ \&other)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00117\ \ \ \ \ \{}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structCoordinate_ad462d671f1feb865911333e3ff5f0a5d}{x}}\ ==\ other.x\ \&\&\ \mbox{\hyperlink{structCoordinate_a5c7d59f0f65ff9371b6c3791f78880aa}{y}}\ ==\ other.y;}
+\DoxyCodeLine{00119\ \ \ \ \ \}}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00126\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structCoordinate_a4bdace0d5d8523f3adcdc81baff13ae9}{operator!=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structCoordinate}{Coordinate}}\ \&other)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00127\ \ \ \ \ \{}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !(*\textcolor{keyword}{this}\ ==\ other);}
+\DoxyCodeLine{00129\ \ \ \ \ \}}
+\DoxyCodeLine{00130\ \};}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00140\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{Types_8hpp_a7677555cfb96463579412d41c1ab93dc}{error\_marker\_t}}\ \{}
+\DoxyCodeLine{00141\ \ \ \ \ \mbox{\hyperlink{Types_8hpp_a7677555cfb96463579412d41c1ab93dcafd0d2d092acf6cbdc0e66d1e3ae8aed5}{ERR\_OK}}\ =\ 0,\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00142\ \ \ \ \ \mbox{\hyperlink{Types_8hpp_a7677555cfb96463579412d41c1ab93dcab41afec9bc4bc2845abe3e100bbb7a35}{ERR\_NOTBMP}}\ =\ 40,\ \ \ \ \ \ \ }
+\DoxyCodeLine{00143\ \ \ \ \ \mbox{\hyperlink{Types_8hpp_a7677555cfb96463579412d41c1ab93dca0f99ee95958ae63880affdc0ed571d92}{ERR\_READING}}\ =\ 41,\ \ \ \ \ \ }
+\DoxyCodeLine{00144\ \ \ \ \ \mbox{\hyperlink{Types_8hpp_a7677555cfb96463579412d41c1ab93dca89df9668f327c0936558b4cbb1182761}{ERR\_WRITING}}\ =\ 42,\ \ \ \ \ \ }
+\DoxyCodeLine{00145\ \ \ \ \ \mbox{\hyperlink{Types_8hpp_a7677555cfb96463579412d41c1ab93dcaea5b3e5776c286e4ee0b149dee59cd74}{ERR\_INCORRECTARG}}\ =\ 43,\ }
+\DoxyCodeLine{00146\ \ \ \ \ \mbox{\hyperlink{Types_8hpp_a7677555cfb96463579412d41c1ab93dcad8dbf6431f22724317ec9c5f215e1fd6}{ERR\_EXTRARGS}}\ =\ 44,\ \ \ \ \ }
+\DoxyCodeLine{00147\ \ \ \ \ \mbox{\hyperlink{Types_8hpp_a7677555cfb96463579412d41c1ab93dcab445e17663ab01da8d17681b16760803}{ERR\_FEWARGS}}\ =\ 45,\ \ \ \ \ \ }
+\DoxyCodeLine{00148\ \ \ \ \ \mbox{\hyperlink{Types_8hpp_a7677555cfb96463579412d41c1ab93dca2a4d04cb584703c1f0812a90c3b32bbe}{ERR\_FILENAME}}\ =\ 46\ \ \ \ \ \ }
+\DoxyCodeLine{00149\ \};}
 
 \end{DoxyCode}

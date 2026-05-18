@@ -28,17 +28,47 @@ private:
     std::vector<std::vector<Pixel>>
         arr_pixels; /**< 2D pixel buffer storing image data. Indexed as [row][column]. */
 
+    /**
+     * @brief Updates BMP headers and recalculates file size after dimension changes.
+     * @details Modifies internal metadata to reflect new image dimensions. Computes the
+     *          padded row stride using integer arithmetic: ((width * 3 + 3) / 4) * 4.
+     *          This formula rounds the raw byte count up to the nearest 4-byte boundary,
+     *          as mandated by the BMP specification.
+     *          - * 3: Converts pixel width to bytes (24-bit BMP = 3 bytes per pixel).
+     *          - + 3: Compensates for truncating integer division, ensuring rounding up.
+     *          - / 4 * 4: Normalizes the result to the exact 4-byte alignment step.
+     * @param[in] new_width  New image width in pixels.
+     * @param[in] new_height New image height in pixels.
+     */
+    void updateDimensions(int new_width, int new_height)
+    {
+        int row_stride = ((new_width * 3 + 3) / 4) * 4;
+        m_info_header.width = new_width;
+        m_info_header.height = new_height;
+        m_info_header.imageSize = row_stride * new_height;
+        m_file_header.filesize =
+            sizeof(BitmapFileHeader) + sizeof(BitmapInfoHeader) + m_info_header.imageSize;
+    }
+
 public:
     /** @brief Default constructor. Initializes an empty image object. */
     BmpImage() = default;
 
     /**
-     * @brief Calculates the number of bytes occupied by a single row in the BMP file.
-     * @details BMP format requires each row to be padded to a multiple of 4 bytes.
-     *          This method computes the actual byte width including necessary padding.
-     * @return The byte stride per row (width * 3 + padding).
+     * @brief Calculates the byte stride for a single image row, including BMP padding.
+     * @details BMP format requires each row to be aligned to a 4-byte boundary.
+     *          This method uses the bitwise rounding formula: (width * 3 + 3) & ~3.
+     *          - Adding 3 ensures that any non-zero remainder pushes the value
+     *            into the next 4-byte block before truncation.
+     *          - Bitwise AND with ~3 (binary ...11111100) clears the lowest two bits,
+     *            effectively rounding the result down to the nearest multiple of 4.
+     * @return Row stride in bytes (always a multiple of 4).
      */
-    int getRowStride() const;
+    int getRowStride() const
+    {
+        int raw_bytes = m_info_header.width * 3;
+        return (raw_bytes + 3) & ~3;
+    }
 
     /**
      * @brief Retrieves the BMP information header.

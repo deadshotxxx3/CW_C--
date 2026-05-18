@@ -1,0 +1,17 @@
+<map id="src/source/Types.hpp" name="src/source/Types.hpp">
+<area shape="rect" id="Node000001" title="Fundamental data types, binary structures, and error codes for BMP image processing." alt="" coords="345,5,502,31"/>
+<area shape="rect" id="Node000002" href="$ArgumentParser_8hpp.html" title="Utility functions for parsing and validating CLI arguments." alt="" coords="5,79,228,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="361,36,167,81,166,76,360,31"/>
+<area shape="rect" id="Node000003" href="$BmpImage_8hpp.html" title="Core class for managing, processing, and persisting 24&#45;bit BMP images." alt="" coords="252,79,443,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="403,42,362,80,358,76,399,38"/>
+<area shape="rect" id="Node000006" href="$ProcessingFlag_8hpp.html" title="Handlers for parsing and validating operation&#45;specific CLI flags." alt="" coords="367,225,586,251"/>
+<area shape="poly" id="edge8_Node000001_Node000006" title=" " alt="" coords="440,41,458,78,471,114,478,152,481,192,480,225,475,225,475,192,473,152,466,115,453,80,435,44"/>
+<area shape="rect" id="Node000007" href="$ImageUtils_8hpp.html" title="Geometric and mathematical utilities for image processing." alt="" coords="539,79,729,104"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="471,32,601,76,599,81,469,37"/>
+<area shape="rect" id="Node000004" href="$CommandLineInterface_8hpp.html" title="Definitions for CLI argument parsing, flag enumeration, and command&#45;line interface entry point." alt="" coords="191,152,463,177"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="343,118,333,153,328,151,338,117"/>
+<area shape="rect" id="Node000005" href="$OperationExecutor_8hpp.html" title="Dispatcher module that routes parsed CLI arguments to corresponding image processing operations." alt="" coords="81,225,320,251"/>
+<area shape="poly" id="edge6_Node000003_Node000005" title=" " alt="" coords="243,111,209,128,182,153,176,171,178,190,195,224,190,226,173,191,170,170,177,151,206,123,241,106"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="296,186,223,227,220,223,294,182"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="365,181,453,223,451,228,362,186"/>
+</map>

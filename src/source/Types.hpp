@@ -1,4 +1,16 @@
 #pragma once
+
+/**
+ * @file Types.hpp
+ * @brief Fundamental data types, binary structures, and error codes for BMP image processing.
+ * @details Provides packed BMP header definitions (BitmapFileHeader, BitmapInfoHeader),
+ *          color representation (Pixel), geometric coordinates (Coordinate), and the
+ *          error_marker_t enumeration. Ensures strict memory layout compliance with the
+ *          BMP v3 specification via #pragma pack directives and fixed-width integer types.
+ *          Serves as the core type system shared across CLI parsing, I/O operations, and image manipulation
+ * modules.
+ */
+
 #include <cstdint>
 
 #pragma pack(push, 1)
@@ -11,8 +23,8 @@
 struct BitmapFileHeader {
     uint16_t signature;      /**< File signature: 'BM' (0x4D42) */
     uint32_t filesize;       /**< Size of the entire file in bytes */
-    uint16_t reserved1;      /**< Reserved; must be 0 */
-    uint16_t reserved2;      /**< Reserved; must be 0 */
+    uint16_t reservedA;      /**< Reserved; must be 0 */
+    uint16_t reservedB;      /**< Reserved; must be 0 */
     uint32_t pixelArrOffset; /**< Byte offset from file start to pixel array */
 };
 
@@ -117,13 +129,21 @@ struct Coordinate {
     }
 };
 
+/**
+ * @enum error_marker_t
+ * @brief Enumeration of all possible error and status codes returned by the application.
+ * @details Serves as the unified return type for CLI parsing, file I/O, and validation routines.
+ *          Values are explicitly assigned to guarantee stable process exit codes.
+ *          0 indicates success; values ≥40 represent distinct failure categories mapped to
+ *          specific diagnostic messages and termination states.
+ */
 enum class error_marker_t {
-    ERR_OK = 0,
-    ERR_NOTBMP = 40,
-    ERR_READING = 41,
-    ERR_WRITING = 42,
-    ERR_INCORRECTARG = 43,
-    ERR_EXTRARGS = 44,
-    ERR_FEWARGS = 45,
-    ERR_FILENAME = 46
+    ERR_OK = 0,            /**< Operation completed successfully; no errors detected */
+    ERR_NOTBMP = 40,       /**< Invalid BMP signature, unsupported bit depth, or compressed format */
+    ERR_READING = 41,      /**< Failed to open input file or encountered stream read error */
+    ERR_WRITING = 42,      /**< Failed to create output file or encountered stream write error */
+    ERR_INCORRECTARG = 43, /**< Argument format is malformed or violates logical constraints */
+    ERR_EXTRARGS = 44,     /**< Superfluous or conflicting arguments provided for the active operation */
+    ERR_FEWARGS = 45,      /**< Mandatory parameters for the selected operation are missing */
+    ERR_FILENAME = 46      /**< File path is invalid, empty, or inaccessible */
 };

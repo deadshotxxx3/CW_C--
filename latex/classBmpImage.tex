@@ -16,16 +16,16 @@ In-\/memory representation of a BMP image with manipulation capabilities.
 {\bfseries Bmp\+Image} ()=default
 \begin{DoxyCompactList}\small\item\em Default constructor. Initializes an empty image object. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classBmpImage_a0df9c63613bffa1456c59f9ed7a7c567}{get\+Row\+Stride}} () const
-\begin{DoxyCompactList}\small\item\em Calculates the number of bytes occupied by a single row in the BMP file. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Calculates the byte stride for a single image row, including BMP padding. \end{DoxyCompactList}\item 
 const \mbox{\hyperlink{structBitmapInfoHeader}{Bitmap\+Info\+Header}} \& \mbox{\hyperlink{classBmpImage_a083bdb937e69f6ccff741b21ebe358d5}{get\+Info\+Header}} () const
 \begin{DoxyCompactList}\small\item\em Retrieves the BMP information header. \end{DoxyCompactList}\item 
 const \mbox{\hyperlink{structBitmapFileHeader}{Bitmap\+File\+Header}} \& \mbox{\hyperlink{classBmpImage_a529dc860a143a30ce4819f6422524314}{get\+File\+Header}} () const
 \begin{DoxyCompactList}\small\item\em Retrieves the BMP file header. \end{DoxyCompactList}\item 
 const std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{structPixel}{Pixel}} $>$ $>$ \& \mbox{\hyperlink{classBmpImage_a834367fe813d54a1e1dded3239bff663}{get\+Arr\+Pixels}} () const
 \begin{DoxyCompactList}\small\item\em Retrieves the internal 2D pixel matrix. \end{DoxyCompactList}\item 
-error\+\_\+marker\+\_\+t \mbox{\hyperlink{classBmpImage_a70e197316f63d8c3b52d525e976ea94b}{read\+Bmp}} (const std\+::string \&filename)
+\mbox{\hyperlink{Types_8hpp_a7677555cfb96463579412d41c1ab93dc}{error\+\_\+marker\+\_\+t}} \mbox{\hyperlink{classBmpImage_a70e197316f63d8c3b52d525e976ea94b}{read\+Bmp}} (const std\+::string \&filename)
 \begin{DoxyCompactList}\small\item\em Loads and parses a BMP image from the specified file path. \end{DoxyCompactList}\item 
-error\+\_\+marker\+\_\+t \mbox{\hyperlink{classBmpImage_aad156118a1be48f5be53d7c1a76bd1c6}{save\+Bmp}} (const std\+::string \&filename)
+\mbox{\hyperlink{Types_8hpp_a7677555cfb96463579412d41c1ab93dc}{error\+\_\+marker\+\_\+t}} \mbox{\hyperlink{classBmpImage_aad156118a1be48f5be53d7c1a76bd1c6}{save\+Bmp}} (const std\+::string \&filename)
 \begin{DoxyCompactList}\small\item\em Serializes the current image state to a BMP file. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classBmpImage_a55950f6caa24b4e832071693d400e51b}{mirror\+\_\+image}} (std\+::string \&axis, \mbox{\hyperlink{structCoordinate}{Coordinate}} \&left\+\_\+up, \mbox{\hyperlink{structCoordinate}{Coordinate}} \&right\+\_\+down)
 \begin{DoxyCompactList}\small\item\em Mirrors a rectangular region of the image along a specified axis. \end{DoxyCompactList}\item 
@@ -147,16 +147,20 @@ Constant reference to the {\ttfamily \doxylink{structBitmapInfoHeader}{Bitmap\+I
 \index{BmpImage@{BmpImage}!getRowStride@{getRowStride}}
 \index{getRowStride@{getRowStride}!BmpImage@{BmpImage}}
 \doxysubsubsection{\texorpdfstring{getRowStride()}{getRowStride()}}
-{\footnotesize\ttfamily int Bmp\+Image\+::get\+Row\+Stride (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily int Bmp\+Image\+::get\+Row\+Stride (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Calculates the number of bytes occupied by a single row in the BMP file. 
+Calculates the byte stride for a single image row, including BMP padding. 
 
-BMP format requires each row to be padded to a multiple of 4 bytes. This method computes the actual byte width including necessary padding. \begin{DoxyReturn}{Returns}
-The byte stride per row (width \texorpdfstring{$\ast$}{*} 3 + padding). 
+BMP format requires each row to be aligned to a 4-\/byte boundary. This method uses the bitwise rounding formula\+: (width \texorpdfstring{$\ast$}{*} 3 + 3) \& \texorpdfstring{$\sim$}{\string~}3.
+\begin{DoxyItemize}
+\item Adding 3 ensures that any non-\/zero remainder pushes the value into the next 4-\/byte block before truncation.
+\item Bitwise AND with \texorpdfstring{$\sim$}{\string~}3 (binary ...11111100) clears the lowest two bits, effectively rounding the result down to the nearest multiple of 4. \begin{DoxyReturn}{Returns}
+Row stride in bytes (always a multiple of 4). 
 \end{DoxyReturn}
-\Hypertarget{classBmpImage_a55950f6caa24b4e832071693d400e51b}\label{classBmpImage_a55950f6caa24b4e832071693d400e51b} 
+
+\end{DoxyItemize}\Hypertarget{classBmpImage_a55950f6caa24b4e832071693d400e51b}\label{classBmpImage_a55950f6caa24b4e832071693d400e51b} 
 \index{BmpImage@{BmpImage}!mirror\_image@{mirror\_image}}
 \index{mirror\_image@{mirror\_image}!BmpImage@{BmpImage}}
 \doxysubsubsection{\texorpdfstring{mirror\_image()}{mirror\_image()}}
@@ -189,7 +193,7 @@ Prints formatted information including file size, dimensions, color depth, compr
 \index{BmpImage@{BmpImage}!readBmp@{readBmp}}
 \index{readBmp@{readBmp}!BmpImage@{BmpImage}}
 \doxysubsubsection{\texorpdfstring{readBmp()}{readBmp()}}
-{\footnotesize\ttfamily error\+\_\+marker\+\_\+t Bmp\+Image\+::read\+Bmp (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{Types_8hpp_a7677555cfb96463579412d41c1ab93dc}{error\+\_\+marker\+\_\+t}} Bmp\+Image\+::read\+Bmp (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
 
 
 
@@ -207,7 +211,7 @@ Reads binary headers and pixel data into memory. Validates the file signature, c
 \index{BmpImage@{BmpImage}!saveBmp@{saveBmp}}
 \index{saveBmp@{saveBmp}!BmpImage@{BmpImage}}
 \doxysubsubsection{\texorpdfstring{saveBmp()}{saveBmp()}}
-{\footnotesize\ttfamily error\+\_\+marker\+\_\+t Bmp\+Image\+::save\+Bmp (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{Types_8hpp_a7677555cfb96463579412d41c1ab93dc}{error\+\_\+marker\+\_\+t}} Bmp\+Image\+::save\+Bmp (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
 
 
 

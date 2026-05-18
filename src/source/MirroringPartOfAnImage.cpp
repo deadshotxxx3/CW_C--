@@ -2,7 +2,7 @@
 #include "ImageUtils.hpp"
 #include <cmath>
 
-void swapPixel(Pixel &first, Pixel &second)
+static void swapPixel(Pixel &first, Pixel &second)
 {
     Pixel tmp = first;
     first = second;

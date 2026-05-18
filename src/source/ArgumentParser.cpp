@@ -5,8 +5,10 @@
 #include <sstream>
 #include <vector>
 
-const int MAX_VALUE_COMPONENTS = 255;
-const char DELIMETER = '.';
+static constexpr int MAX_VALUE_COMPONENTS = 255;
+static constexpr int CNT_COMPINENTS = 3;
+static constexpr int CNT_COORDINATE = 2;
+static constexpr char DELIMETER = '.';
 
 bool check_range_component(int values)
 {
@@ -49,12 +51,13 @@ std::pair<Coordinate, error_marker_t> getCoordinate(const std::string &str)
         values.push_back(std::stoi(token));
     }
 
-    if (values.size() != 2) {
+    if (values.size() != CNT_COORDINATE) {
         std::cerr << "Invalid coordinate format: expected x.y\n";
         return {Coordinate(), error_marker_t::ERR_INCORRECTARG};
     }
 
-    return {Coordinate(values[0], values[1]), error_marker_t::ERR_OK};
+    return {Coordinate(values[0], values[1]),
+            error_marker_t::ERR_OK}; // values[0] = x coordinate, values[1] = y;
 }
 
 std::pair<Pixel, error_marker_t> getPixel(const std::string &str)
@@ -71,7 +74,7 @@ std::pair<Pixel, error_marker_t> getPixel(const std::string &str)
         values.push_back(std::stoi(token));
     }
 
-    if (values.size() != 3) {
+    if (values.size() != CNT_COMPINENTS) {
         std::cerr << "Invalid color format: expected r.g.b\n";
         return {Pixel(), error_marker_t::ERR_INCORRECTARG};
     }

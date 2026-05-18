@@ -81,8 +81,7 @@ $(function() {
 
 <p>Utility functions for parsing and validating CLI arguments.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;Error.hpp&quot;</code><br />
-<code>#include &quot;Types.hpp&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="Types_8hpp_source.html">Types.hpp</a>&quot;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;utility&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -90,17 +89,15 @@ Include dependency graph for ArgumentParser.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="ArgumentParser_8hpp__incl.png" border="0" usemap="#asrc_2source_2ArgumentParser_8hpp" alt=""/></div>
 <map name="asrc_2source_2ArgumentParser_8hpp" id="asrc_2source_2ArgumentParser_8hpp">
-<area shape="rect" title="Utility functions for parsing and validating CLI arguments." alt="" coords="90,5,313,31"/>
-<area shape="rect" href="Error_8hpp_source.html" title=" " alt="" coords="5,79,85,104"/>
-<area shape="poly" title=" " alt="" coords="177,33,84,75,82,70,175,28"/>
-<area shape="rect" href="Types_8hpp_source.html" title=" " alt="" coords="110,79,197,104"/>
-<area shape="poly" title=" " alt="" coords="196,33,171,69,166,66,191,30"/>
-<area shape="rect" title=" " alt="" coords="221,79,280,104"/>
-<area shape="poly" title=" " alt="" coords="212,29,237,66,233,69,207,33"/>
-<area shape="rect" title=" " alt="" coords="305,79,365,104"/>
-<area shape="poly" title=" " alt="" coords="224,28,302,70,300,74,222,33"/>
-<area shape="rect" title=" " alt="" coords="120,152,187,177"/>
-<area shape="poly" title=" " alt="" coords="156,104,156,138,151,138,151,104"/>
+<area shape="rect" title="Utility functions for parsing and validating CLI arguments." alt="" coords="35,5,257,31"/>
+<area shape="rect" href="Types_8hpp.html" title="Fundamental data types, binary structures, and error codes for BMP image processing." alt="" coords="5,79,92,104"/>
+<area shape="poly" title=" " alt="" coords="132,33,77,72,74,68,129,29"/>
+<area shape="rect" title=" " alt="" coords="117,79,175,104"/>
+<area shape="poly" title=" " alt="" coords="149,31,149,65,143,65,143,31"/>
+<area shape="rect" title=" " alt="" coords="200,79,260,104"/>
+<area shape="poly" title=" " alt="" coords="161,29,207,67,204,72,158,33"/>
+<area shape="rect" title=" " alt="" coords="15,152,82,177"/>
+<area shape="poly" title=" " alt="" coords="51,104,51,138,46,138,46,104"/>
 </map>
 </div>
 </div>
@@ -114,10 +111,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a04409403fcbe974450da420620a8530e" id="r_a04409403fcbe974450da420620a8530e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ArgumentParser_8hpp.html#a04409403fcbe974450da420620a8530e">check_valid_value</a> (const std::string &amp;values)</td></tr>
 <tr class="memdesc:a04409403fcbe974450da420620a8530e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a string represents a valid integer (positive or negative).  <br /></td></tr>
 <tr class="separator:a04409403fcbe974450da420620a8530e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aecfe9ac39d27db2b59d95f8b55b4806c" id="r_aecfe9ac39d27db2b59d95f8b55b4806c"><td class="memItemLeft" align="right" valign="top">std::pair&lt; <a class="el" href="structCoordinate.html">Coordinate</a>, error_marker_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ArgumentParser_8hpp.html#aecfe9ac39d27db2b59d95f8b55b4806c">getCoordinate</a> (const std::string &amp;str)</td></tr>
+<tr class="memitem:aecfe9ac39d27db2b59d95f8b55b4806c" id="r_aecfe9ac39d27db2b59d95f8b55b4806c"><td class="memItemLeft" align="right" valign="top">std::pair&lt; <a class="el" href="structCoordinate.html">Coordinate</a>, <a class="el" href="Types_8hpp.html#a7677555cfb96463579412d41c1ab93dc">error_marker_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ArgumentParser_8hpp.html#aecfe9ac39d27db2b59d95f8b55b4806c">getCoordinate</a> (const std::string &amp;str)</td></tr>
 <tr class="memdesc:aecfe9ac39d27db2b59d95f8b55b4806c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses a string into a <a class="el" href="structCoordinate.html" title="Represents a 2D integer coordinate.">Coordinate</a> object.  <br /></td></tr>
 <tr class="separator:aecfe9ac39d27db2b59d95f8b55b4806c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a562ef698d5c9bd46f8b6da34e58e22a8" id="r_a562ef698d5c9bd46f8b6da34e58e22a8"><td class="memItemLeft" align="right" valign="top">std::pair&lt; <a class="el" href="structPixel.html">Pixel</a>, error_marker_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ArgumentParser_8hpp.html#a562ef698d5c9bd46f8b6da34e58e22a8">getPixel</a> (const std::string &amp;str)</td></tr>
+<tr class="memitem:a562ef698d5c9bd46f8b6da34e58e22a8" id="r_a562ef698d5c9bd46f8b6da34e58e22a8"><td class="memItemLeft" align="right" valign="top">std::pair&lt; <a class="el" href="structPixel.html">Pixel</a>, <a class="el" href="Types_8hpp.html#a7677555cfb96463579412d41c1ab93dc">error_marker_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ArgumentParser_8hpp.html#a562ef698d5c9bd46f8b6da34e58e22a8">getPixel</a> (const std::string &amp;str)</td></tr>
 <tr class="memdesc:a562ef698d5c9bd46f8b6da34e58e22a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses a string into a <a class="el" href="structPixel.html" title="Represents a 24-bit RGB/BGR pixel.">Pixel</a> object.  <br /></td></tr>
 <tr class="separator:a562ef698d5c9bd46f8b6da34e58e22a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -189,7 +186,7 @@ false If the format is invalid (e.g., "123-3", "-", "abc", ""). </dd></dl>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::pair&lt; <a class="el" href="structCoordinate.html">Coordinate</a>, error_marker_t &gt; getCoordinate </td>
+          <td class="memname">std::pair&lt; <a class="el" href="structCoordinate.html">Coordinate</a>, <a class="el" href="Types_8hpp.html#a7677555cfb96463579412d41c1ab93dc">error_marker_t</a> &gt; getCoordinate </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>str</em></td><td>)</td>
@@ -221,7 +218,7 @@ false If the format is invalid (e.g., "123-3", "-", "abc", ""). </dd></dl>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::pair&lt; <a class="el" href="structPixel.html">Pixel</a>, error_marker_t &gt; getPixel </td>
+          <td class="memname">std::pair&lt; <a class="el" href="structPixel.html">Pixel</a>, <a class="el" href="Types_8hpp.html#a7677555cfb96463579412d41c1ab93dc">error_marker_t</a> &gt; getPixel </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>str</em></td><td>)</td>

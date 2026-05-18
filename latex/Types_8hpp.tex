@@ -1,0 +1,100 @@
+\doxysection{src/source/\+Types.hpp File Reference}
+\hypertarget{Types_8hpp}{}\label{Types_8hpp}\index{src/source/Types.hpp@{src/source/Types.hpp}}
+
+
+Fundamental data types, binary structures, and error codes for BMP image processing.  
+
+
+{\ttfamily \#include $<$cstdint$>$}\newline
+Include dependency graph for Types.\+hpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=198pt]{Types_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Types_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structBitmapFileHeader}{Bitmap\+File\+Header}}
+\begin{DoxyCompactList}\small\item\em BMP file header (14 bytes). \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structBitmapInfoHeader}{Bitmap\+Info\+Header}}
+\begin{DoxyCompactList}\small\item\em BMP information header (40 bytes for v3). \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structPixel}{Pixel}}
+\begin{DoxyCompactList}\small\item\em Represents a 24-\/bit RGB/\+BGR pixel. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structCoordinate}{Coordinate}}
+\begin{DoxyCompactList}\small\item\em Represents a 2D integer coordinate. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{Types_8hpp_a7677555cfb96463579412d41c1ab93dc}{error\+\_\+marker\+\_\+t}} \{ \newline
+\mbox{\hyperlink{Types_8hpp_a7677555cfb96463579412d41c1ab93dcafd0d2d092acf6cbdc0e66d1e3ae8aed5}{ERR\+\_\+\+OK}} = 0
+, \mbox{\hyperlink{Types_8hpp_a7677555cfb96463579412d41c1ab93dcab41afec9bc4bc2845abe3e100bbb7a35}{ERR\+\_\+\+NOTBMP}} = 40
+, \mbox{\hyperlink{Types_8hpp_a7677555cfb96463579412d41c1ab93dca0f99ee95958ae63880affdc0ed571d92}{ERR\+\_\+\+READING}} = 41
+, \mbox{\hyperlink{Types_8hpp_a7677555cfb96463579412d41c1ab93dca89df9668f327c0936558b4cbb1182761}{ERR\+\_\+\+WRITING}} = 42
+, \newline
+\mbox{\hyperlink{Types_8hpp_a7677555cfb96463579412d41c1ab93dcaea5b3e5776c286e4ee0b149dee59cd74}{ERR\+\_\+\+INCORRECTARG}} = 43
+, \mbox{\hyperlink{Types_8hpp_a7677555cfb96463579412d41c1ab93dcad8dbf6431f22724317ec9c5f215e1fd6}{ERR\+\_\+\+EXTRARGS}} = 44
+, \mbox{\hyperlink{Types_8hpp_a7677555cfb96463579412d41c1ab93dcab445e17663ab01da8d17681b16760803}{ERR\+\_\+\+FEWARGS}} = 45
+, \mbox{\hyperlink{Types_8hpp_a7677555cfb96463579412d41c1ab93dca2a4d04cb584703c1f0812a90c3b32bbe}{ERR\+\_\+\+FILENAME}} = 46
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration of all possible error and status codes returned by the application. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Fundamental data types, binary structures, and error codes for BMP image processing. 
+
+Provides packed BMP header definitions (\doxylink{structBitmapFileHeader}{Bitmap\+File\+Header}, \doxylink{structBitmapInfoHeader}{Bitmap\+Info\+Header}), color representation (\doxylink{structPixel}{Pixel}), geometric coordinates (\doxylink{structCoordinate}{Coordinate}), and the error\+\_\+marker\+\_\+t enumeration. Ensures strict memory layout compliance with the BMP v3 specification via \#pragma pack directives and fixed-\/width integer types. Serves as the core type system shared across CLI parsing, I/O operations, and image manipulation modules. 
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{Types_8hpp_a7677555cfb96463579412d41c1ab93dc}\label{Types_8hpp_a7677555cfb96463579412d41c1ab93dc} 
+\index{Types.hpp@{Types.hpp}!error\_marker\_t@{error\_marker\_t}}
+\index{error\_marker\_t@{error\_marker\_t}!Types.hpp@{Types.hpp}}
+\doxysubsubsection{\texorpdfstring{error\_marker\_t}{error\_marker\_t}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{Types_8hpp_a7677555cfb96463579412d41c1ab93dc}{error\+\_\+marker\+\_\+t}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Enumeration of all possible error and status codes returned by the application. 
+
+Serves as the unified return type for CLI parsing, file I/O, and validation routines. Values are explicitly assigned to guarantee stable process exit codes. 0 indicates success; values ≥40 represent distinct failure categories mapped to specific diagnostic messages and termination states. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERR\_OK@{ERR\_OK}!Types.hpp@{Types.hpp}}\index{Types.hpp@{Types.hpp}!ERR\_OK@{ERR\_OK}}}\Hypertarget{Types_8hpp_a7677555cfb96463579412d41c1ab93dcafd0d2d092acf6cbdc0e66d1e3ae8aed5}\label{Types_8hpp_a7677555cfb96463579412d41c1ab93dcafd0d2d092acf6cbdc0e66d1e3ae8aed5} 
+ERR\+\_\+\+OK&Operation completed successfully; no errors detected \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERR\_NOTBMP@{ERR\_NOTBMP}!Types.hpp@{Types.hpp}}\index{Types.hpp@{Types.hpp}!ERR\_NOTBMP@{ERR\_NOTBMP}}}\Hypertarget{Types_8hpp_a7677555cfb96463579412d41c1ab93dcab41afec9bc4bc2845abe3e100bbb7a35}\label{Types_8hpp_a7677555cfb96463579412d41c1ab93dcab41afec9bc4bc2845abe3e100bbb7a35} 
+ERR\+\_\+\+NOTBMP&Invalid BMP signature, unsupported bit depth, or compressed format \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERR\_READING@{ERR\_READING}!Types.hpp@{Types.hpp}}\index{Types.hpp@{Types.hpp}!ERR\_READING@{ERR\_READING}}}\Hypertarget{Types_8hpp_a7677555cfb96463579412d41c1ab93dca0f99ee95958ae63880affdc0ed571d92}\label{Types_8hpp_a7677555cfb96463579412d41c1ab93dca0f99ee95958ae63880affdc0ed571d92} 
+ERR\+\_\+\+READING&Failed to open input file or encountered stream read error \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERR\_WRITING@{ERR\_WRITING}!Types.hpp@{Types.hpp}}\index{Types.hpp@{Types.hpp}!ERR\_WRITING@{ERR\_WRITING}}}\Hypertarget{Types_8hpp_a7677555cfb96463579412d41c1ab93dca89df9668f327c0936558b4cbb1182761}\label{Types_8hpp_a7677555cfb96463579412d41c1ab93dca89df9668f327c0936558b4cbb1182761} 
+ERR\+\_\+\+WRITING&Failed to create output file or encountered stream write error \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERR\_INCORRECTARG@{ERR\_INCORRECTARG}!Types.hpp@{Types.hpp}}\index{Types.hpp@{Types.hpp}!ERR\_INCORRECTARG@{ERR\_INCORRECTARG}}}\Hypertarget{Types_8hpp_a7677555cfb96463579412d41c1ab93dcaea5b3e5776c286e4ee0b149dee59cd74}\label{Types_8hpp_a7677555cfb96463579412d41c1ab93dcaea5b3e5776c286e4ee0b149dee59cd74} 
+ERR\+\_\+\+INCORRECTARG&Argument format is malformed or violates logical constraints \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERR\_EXTRARGS@{ERR\_EXTRARGS}!Types.hpp@{Types.hpp}}\index{Types.hpp@{Types.hpp}!ERR\_EXTRARGS@{ERR\_EXTRARGS}}}\Hypertarget{Types_8hpp_a7677555cfb96463579412d41c1ab93dcad8dbf6431f22724317ec9c5f215e1fd6}\label{Types_8hpp_a7677555cfb96463579412d41c1ab93dcad8dbf6431f22724317ec9c5f215e1fd6} 
+ERR\+\_\+\+EXTRARGS&Superfluous or conflicting arguments provided for the active operation \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERR\_FEWARGS@{ERR\_FEWARGS}!Types.hpp@{Types.hpp}}\index{Types.hpp@{Types.hpp}!ERR\_FEWARGS@{ERR\_FEWARGS}}}\Hypertarget{Types_8hpp_a7677555cfb96463579412d41c1ab93dcab445e17663ab01da8d17681b16760803}\label{Types_8hpp_a7677555cfb96463579412d41c1ab93dcab445e17663ab01da8d17681b16760803} 
+ERR\+\_\+\+FEWARGS&Mandatory parameters for the selected operation are missing \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERR\_FILENAME@{ERR\_FILENAME}!Types.hpp@{Types.hpp}}\index{Types.hpp@{Types.hpp}!ERR\_FILENAME@{ERR\_FILENAME}}}\Hypertarget{Types_8hpp_a7677555cfb96463579412d41c1ab93dca2a4d04cb584703c1f0812a90c3b32bbe}\label{Types_8hpp_a7677555cfb96463579412d41c1ab93dca2a4d04cb584703c1f0812a90c3b32bbe} 
+ERR\+\_\+\+FILENAME&File path is invalid, empty, or inaccessible \\
+\hline
+
+\end{DoxyEnumFields}

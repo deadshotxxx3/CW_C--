@@ -1,9 +1,11 @@
 var searchData=
 [
-  ['flag_5fcolor_5freplace_0',['FLAG_COLOR_REPLACE',['../CommandLineInterface_8hpp.html#ab6b306ef981f5e21bb41ea2c2dbe8cd9af9cf3806fb0cab1876ae67a7bbf10671',1,'CommandLineInterface.hpp']]],
-  ['flag_5fcopy_1',['FLAG_COPY',['../CommandLineInterface_8hpp.html#ab6b306ef981f5e21bb41ea2c2dbe8cd9a125ea71dfc27424f6ed9872530f84e53',1,'CommandLineInterface.hpp']]],
-  ['flag_5fhelp_2',['FLAG_HELP',['../CommandLineInterface_8hpp.html#ab6b306ef981f5e21bb41ea2c2dbe8cd9a889fa468d344b87b56f3b6d50adaf200',1,'CommandLineInterface.hpp']]],
-  ['flag_5finfo_3',['FLAG_INFO',['../CommandLineInterface_8hpp.html#ab6b306ef981f5e21bb41ea2c2dbe8cd9a0f1be385ad2757c1ab4e2c0d0281efc8',1,'CommandLineInterface.hpp']]],
-  ['flag_5fmirror_4',['FLAG_MIRROR',['../CommandLineInterface_8hpp.html#ab6b306ef981f5e21bb41ea2c2dbe8cd9ab747cbe59f8ce592676cc1b1971b0296',1,'CommandLineInterface.hpp']]],
-  ['flag_5fsplit_5',['FLAG_SPLIT',['../CommandLineInterface_8hpp.html#ab6b306ef981f5e21bb41ea2c2dbe8cd9a9c38bc002a6fb4a5c705e58df9c3b6a5',1,'CommandLineInterface.hpp']]]
+  ['err_5fextrargs_0',['ERR_EXTRARGS',['../Types_8hpp.html#a7677555cfb96463579412d41c1ab93dcad8dbf6431f22724317ec9c5f215e1fd6',1,'Types.hpp']]],
+  ['err_5ffewargs_1',['ERR_FEWARGS',['../Types_8hpp.html#a7677555cfb96463579412d41c1ab93dcab445e17663ab01da8d17681b16760803',1,'Types.hpp']]],
+  ['err_5ffilename_2',['ERR_FILENAME',['../Types_8hpp.html#a7677555cfb96463579412d41c1ab93dca2a4d04cb584703c1f0812a90c3b32bbe',1,'Types.hpp']]],
+  ['err_5fincorrectarg_3',['ERR_INCORRECTARG',['../Types_8hpp.html#a7677555cfb96463579412d41c1ab93dcaea5b3e5776c286e4ee0b149dee59cd74',1,'Types.hpp']]],
+  ['err_5fnotbmp_4',['ERR_NOTBMP',['../Types_8hpp.html#a7677555cfb96463579412d41c1ab93dcab41afec9bc4bc2845abe3e100bbb7a35',1,'Types.hpp']]],
+  ['err_5fok_5',['ERR_OK',['../Types_8hpp.html#a7677555cfb96463579412d41c1ab93dcafd0d2d092acf6cbdc0e66d1e3ae8aed5',1,'Types.hpp']]],
+  ['err_5freading_6',['ERR_READING',['../Types_8hpp.html#a7677555cfb96463579412d41c1ab93dca0f99ee95958ae63880affdc0ed571d92',1,'Types.hpp']]],
+  ['err_5fwriting_7',['ERR_WRITING',['../Types_8hpp.html#a7677555cfb96463579412d41c1ab93dca89df9668f327c0936558b4cbb1182761',1,'Types.hpp']]]
 ];

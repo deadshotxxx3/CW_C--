@@ -1,6 +1,6 @@
 <map id="src/source/ImageUtils.hpp" name="src/source/ImageUtils.hpp">
 <area shape="rect" id="Node000001" title="Geometric and mathematical utilities for image processing." alt="" coords="5,5,196,31"/>
-<area shape="rect" id="Node000002" href="$Types_8hpp_source.html" title=" " alt="" coords="57,79,144,104"/>
+<area shape="rect" id="Node000002" href="$Types_8hpp.html" title="Fundamental data types, binary structures, and error codes for BMP image processing." alt="" coords="57,79,144,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="103,31,103,65,98,65,98,31"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="67,152,134,177"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="103,104,103,138,98,138,98,104"/>

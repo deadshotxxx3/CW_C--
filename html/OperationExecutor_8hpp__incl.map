@@ -2,20 +2,17 @@
 <area shape="rect" id="Node000001" title="Dispatcher module that routes parsed CLI arguments to corresponding image processing operations." alt="" coords="88,5,327,31"/>
 <area shape="rect" id="Node000002" href="$BmpImage_8hpp.html" title="Core class for managing, processing, and persisting 24&#45;bit BMP images." alt="" coords="85,152,207,177"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="198,33,181,54,166,80,156,110,151,139,146,138,151,109,161,78,177,51,194,29"/>
-<area shape="rect" id="Node000008" href="$CommandLineInterface_8hpp.html" title="Definitions for CLI argument parsing, flag enumeration, and command&#45;line interface entry point." alt="" coords="175,79,378,104"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="221,29,258,67,254,71,217,33"/>
-<area shape="rect" id="Node000003" href="$Error_8hpp_source.html" title=" " alt="" coords="297,225,377,251"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="178,175,294,218,292,223,176,180"/>
-<area shape="rect" id="Node000004" href="$Types_8hpp_source.html" title=" " alt="" coords="5,225,92,251"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="132,180,77,219,74,215,129,175"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="117,225,175,251"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="149,178,149,212,143,212,143,178"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="200,225,263,251"/>
-<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="161,175,209,214,205,219,158,179"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="15,299,82,324"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="51,251,51,285,46,285,46,251"/>
-<area shape="poly" id="edge8_Node000008_Node000002" title=" " alt="" coords="257,106,180,148,178,143,254,102"/>
-<area shape="poly" id="edge9_Node000008_Node000003" title=" " alt="" coords="289,102,306,124,322,151,332,182,337,211,332,212,327,183,317,153,302,127,285,106"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="231,152,307,177"/>
-<area shape="poly" id="edge10_Node000008_Node000009" title=" " alt="" coords="278,105,274,139,269,138,273,104"/>
+<area shape="rect" id="Node000007" href="$CommandLineInterface_8hpp.html" title="Definitions for CLI argument parsing, flag enumeration, and command&#45;line interface entry point." alt="" coords="175,79,378,104"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="221,29,258,67,254,71,217,33"/>
+<area shape="rect" id="Node000003" href="$Types_8hpp.html" title="Fundamental data types, binary structures, and error codes for BMP image processing." alt="" coords="5,225,92,251"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="132,180,77,219,74,215,129,175"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="117,225,175,251"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="149,178,149,212,143,212,143,178"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="200,225,263,251"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="161,175,209,214,205,219,158,179"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="15,299,82,324"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="51,251,51,285,46,285,46,251"/>
+<area shape="poly" id="edge7_Node000007_Node000002" title=" " alt="" coords="257,106,180,148,178,143,254,102"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="239,152,315,177"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="279,104,279,138,274,138,274,104"/>
 </map>

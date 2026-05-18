@@ -5,7 +5,6 @@
 Utility functions for parsing and validating CLI arguments.  
 
 
-{\ttfamily \#include "{}Error.\+hpp"{}}\newline
 {\ttfamily \#include "{}Types.\+hpp"{}}\newline
 {\ttfamily \#include $<$string$>$}\newline
 {\ttfamily \#include $<$utility$>$}\newline
@@ -13,7 +12,7 @@ Include dependency graph for Argument\+Parser.\+hpp\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{ArgumentParser_8hpp__incl}
+\includegraphics[width=271pt]{ArgumentParser_8hpp__incl}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Functions}
@@ -23,9 +22,9 @@ bool \mbox{\hyperlink{ArgumentParser_8hpp_a969bbfc679a350375cf54598de0cc788}{che
 \begin{DoxyCompactList}\small\item\em Checks if a color component value is within the valid range \mbox{[}0, 255\mbox{]}. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{ArgumentParser_8hpp_a04409403fcbe974450da420620a8530e}{check\+\_\+valid\+\_\+value}} (const std\+::string \&values)
 \begin{DoxyCompactList}\small\item\em Checks if a string represents a valid integer (positive or negative). \end{DoxyCompactList}\item 
-std\+::pair$<$ \mbox{\hyperlink{structCoordinate}{Coordinate}}, error\+\_\+marker\+\_\+t $>$ \mbox{\hyperlink{ArgumentParser_8hpp_aecfe9ac39d27db2b59d95f8b55b4806c}{get\+Coordinate}} (const std\+::string \&str)
+std\+::pair$<$ \mbox{\hyperlink{structCoordinate}{Coordinate}}, \mbox{\hyperlink{Types_8hpp_a7677555cfb96463579412d41c1ab93dc}{error\+\_\+marker\+\_\+t}} $>$ \mbox{\hyperlink{ArgumentParser_8hpp_aecfe9ac39d27db2b59d95f8b55b4806c}{get\+Coordinate}} (const std\+::string \&str)
 \begin{DoxyCompactList}\small\item\em Parses a string into a \doxylink{structCoordinate}{Coordinate} object. \end{DoxyCompactList}\item 
-std\+::pair$<$ \mbox{\hyperlink{structPixel}{Pixel}}, error\+\_\+marker\+\_\+t $>$ \mbox{\hyperlink{ArgumentParser_8hpp_a562ef698d5c9bd46f8b6da34e58e22a8}{get\+Pixel}} (const std\+::string \&str)
+std\+::pair$<$ \mbox{\hyperlink{structPixel}{Pixel}}, \mbox{\hyperlink{Types_8hpp_a7677555cfb96463579412d41c1ab93dc}{error\+\_\+marker\+\_\+t}} $>$ \mbox{\hyperlink{ArgumentParser_8hpp_a562ef698d5c9bd46f8b6da34e58e22a8}{get\+Pixel}} (const std\+::string \&str)
 \begin{DoxyCompactList}\small\item\em Parses a string into a \doxylink{structPixel}{Pixel} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -79,7 +78,7 @@ false If the format is invalid (e.\+g., "{}123-\/3"{}, "{}-\/"{}, "{}abc"{}, "{}
 \index{ArgumentParser.hpp@{ArgumentParser.hpp}!getCoordinate@{getCoordinate}}
 \index{getCoordinate@{getCoordinate}!ArgumentParser.hpp@{ArgumentParser.hpp}}
 \doxysubsubsection{\texorpdfstring{getCoordinate()}{getCoordinate()}}
-{\footnotesize\ttfamily std\+::pair$<$ \mbox{\hyperlink{structCoordinate}{Coordinate}}, error\+\_\+marker\+\_\+t $>$ get\+Coordinate (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily std\+::pair$<$ \mbox{\hyperlink{structCoordinate}{Coordinate}}, \mbox{\hyperlink{Types_8hpp_a7677555cfb96463579412d41c1ab93dc}{error\+\_\+marker\+\_\+t}} $>$ get\+Coordinate (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})}
 
 
 
@@ -103,7 +102,7 @@ std\+::pair$<$\+Pixel , error\+\_\+marker\+\_\+t$>$ A pair where\+:
 \index{ArgumentParser.hpp@{ArgumentParser.hpp}!getPixel@{getPixel}}
 \index{getPixel@{getPixel}!ArgumentParser.hpp@{ArgumentParser.hpp}}
 \doxysubsubsection{\texorpdfstring{getPixel()}{getPixel()}}
-{\footnotesize\ttfamily std\+::pair$<$ \mbox{\hyperlink{structPixel}{Pixel}}, error\+\_\+marker\+\_\+t $>$ get\+Pixel (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily std\+::pair$<$ \mbox{\hyperlink{structPixel}{Pixel}}, \mbox{\hyperlink{Types_8hpp_a7677555cfb96463579412d41c1ab93dc}{error\+\_\+marker\+\_\+t}} $>$ get\+Pixel (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})}
 
 
 

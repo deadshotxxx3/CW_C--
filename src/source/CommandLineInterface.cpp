@@ -390,6 +390,64 @@ static error_marker_t setInputFileIfNeeded(struct argument &arguments, int argc,
     return error_marker_t::ERR_OK;
 }
 
+/**
+ * @internal
+ * @brief Validates and finalizes parsed CLI arguments after the getopt loop.
+ * @details Checks for ignored arguments, processes positional parameters,
+ *          verifies operation selection, required flags, coordinate geometry,
+ *          and input/output file constraints.
+ *
+ * @param[in,out] optind         Reference to getopt index (modified during positional handling).
+ * @param[in]     argc           Total number of command-line arguments.
+ * @param[in]     argv           Array of command-line argument strings.
+ * @param[in,out] arguments      Parsed arguments structure (updated during validation).
+ * @param[in]     ignored_list   List of arguments that conflicted with the active operation.
+ * @param[in]     active_op_name Name of the currently active operation for error context.
+ * @return error_marker_t        ERR_OK on success, or specific error code on validation failure.
+ */
+static error_marker_t finalize_cli_parsing(int &optind, int argc, char *argv[], struct argument &arguments,
+                                           const std::vector<std::string> &ignored_list,
+                                           const char *active_op_name)
+{
+    if (!ignored_list.empty()) {
+        print_ignored(ignored_list, active_op_name);
+        return error_marker_t::ERR_EXTRARGS;
+    }
+
+    error_marker_t pos_res = handle_positional(optind, argc, argv, arguments, active_op_name);
+    if (pos_res != error_marker_t::ERR_OK) {
+        return pos_res;
+    }
+
+    if (arguments.flag == flags::FLAG_HELP || arguments.flag == flags::FLAG_INFO) {
+        return error_marker_t::ERR_OK;
+    }
+
+    if (arguments.flag == flags::NO_FLAG) {
+        std::cerr << "Error: No operation specified. Available: -m "
+                  << "(mirror), -c (color_replace), -b (copy), -s " << "(split), -I (info).\n";
+        return error_marker_t::ERR_INCORRECTARG;
+    }
+
+    error_marker_t val_res = validate_required_args(arguments);
+    if (val_res != error_marker_t::ERR_OK) {
+        return val_res;
+    }
+
+    error_marker_t coord_res = validate_region_coords(arguments);
+    if (coord_res != error_marker_t::ERR_OK) {
+        return coord_res;
+    }
+
+    if (!arguments.inputName.empty() && !arguments.outputName.empty() &&
+        arguments.inputName == arguments.outputName) {
+        std::cerr << "Error: Input and output files must not be the same.\n";
+        return error_marker_t::ERR_INCORRECTARG;
+    }
+
+    return setInputFileIfNeeded(arguments, argc, argv);
+}
+
 error_marker_t CLI(int argc, char *argv[], struct argument &arguments)
 {
     opterr = 0;
@@ -488,40 +546,5 @@ error_marker_t CLI(int argc, char *argv[], struct argument &arguments)
         }
     }
 
-    if (!ignored_list.empty()) {
-        print_ignored(ignored_list, active_op_name);
-        return error_marker_t::ERR_EXTRARGS;
-    }
-
-    error_marker_t pos_res = handle_positional(optind, argc, argv, arguments, active_op_name);
-    if (pos_res != error_marker_t::ERR_OK) {
-        return pos_res;
-    }
-
-    if (arguments.flag == flags::FLAG_HELP || arguments.flag == flags::FLAG_INFO) {
-        return error_marker_t::ERR_OK;
-    }
-
-    if (arguments.flag == flags::NO_FLAG) {
-        std::cerr << "Error: No operation specified. Available: -m "
-                  << "(mirror), -c (color_replace), -b (copy), -s " << "(split), -I (info).\n";
-        return error_marker_t::ERR_INCORRECTARG;
-    }
-
-    error_marker_t val_res = validate_required_args(arguments);
-    if (val_res != error_marker_t::ERR_OK) {
-        return val_res;
-    }
-
-    error_marker_t coord_res = validate_region_coords(arguments);
-    if (coord_res != error_marker_t::ERR_OK)
-        return coord_res;
-
-    if (!arguments.inputName.empty() && !arguments.outputName.empty() &&
-        arguments.inputName == arguments.outputName) {
-        std::cerr << "Error: Input and output files must not be the same.\n";
-        return error_marker_t::ERR_INCORRECTARG;
-    }
-
-    return setInputFileIfNeeded(arguments, argc, argv);
+    return finalize_cli_parsing(optind, argc, argv, arguments, ignored_list, active_op_name);
 }

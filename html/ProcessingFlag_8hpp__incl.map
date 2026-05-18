@@ -1,22 +1,19 @@
 <map id="src/source/ProcessingFlag.hpp" name="src/source/ProcessingFlag.hpp">
-<area shape="rect" id="Node000001" title="Handlers for parsing and validating operation&#45;specific CLI flags." alt="" coords="232,5,451,31"/>
-<area shape="rect" id="Node000002" href="$CommandLineInterface_8hpp.html" title="Definitions for CLI argument parsing, flag enumeration, and command&#45;line interface entry point." alt="" coords="72,79,275,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="315,33,214,76,212,71,313,28"/>
-<area shape="rect" id="Node000005" href="$Types_8hpp_source.html" title=" " alt="" coords="225,225,311,251"/>
-<area shape="poly" id="edge10_Node000001_Node000005" title=" " alt="" coords="344,31,339,95,331,137,317,179,291,217,287,214,312,176,326,136,334,95,339,31"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="349,225,408,251"/>
-<area shape="poly" id="edge11_Node000001_Node000007" title=" " alt="" coords="348,30,363,78,374,151,380,211,375,212,369,151,357,79,343,32"/>
-<area shape="rect" id="Node000003" href="$BmpImage_8hpp.html" title="Core class for managing, processing, and persisting 24&#45;bit BMP images." alt="" coords="82,152,203,177"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="171,105,155,141,151,139,166,103"/>
-<area shape="rect" id="Node000004" href="$Error_8hpp_source.html" title=" " alt="" coords="5,225,85,251"/>
-<area shape="poly" id="edge8_Node000002_Node000004" title=" " alt="" coords="141,106,104,125,86,138,72,154,57,182,50,212,45,211,52,180,67,150,83,134,101,121,138,102"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="227,152,303,177"/>
-<area shape="poly" id="edge9_Node000002_Node000009" title=" " alt="" coords="190,102,241,141,238,146,186,106"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="129,180,74,219,71,215,125,175"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="164,175,237,216,234,221,161,180"/>
-<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="181,175,337,221,335,226,180,180"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="111,225,174,251"/>
-<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="145,178,145,212,140,212,140,178"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="235,299,301,324"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="271,251,271,285,265,285,265,251"/>
+<area shape="rect" id="Node000001" title="Handlers for parsing and validating operation&#45;specific CLI flags." alt="" coords="87,5,306,31"/>
+<area shape="rect" id="Node000002" href="$CommandLineInterface_8hpp.html" title="Definitions for CLI argument parsing, flag enumeration, and command&#45;line interface entry point." alt="" coords="95,79,298,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="199,31,199,65,194,65,194,31"/>
+<area shape="rect" id="Node000004" href="$Types_8hpp.html" title="Fundamental data types, binary structures, and error codes for BMP image processing." alt="" coords="5,225,92,251"/>
+<area shape="poly" id="edge8_Node000001_Node000004" title=" " alt="" coords="157,33,119,52,101,65,85,80,68,112,57,148,51,212,45,211,52,147,63,110,81,77,97,60,116,47,155,28"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="259,225,318,251"/>
+<area shape="poly" id="edge9_Node000001_Node000006" title=" " alt="" coords="240,28,279,47,297,60,312,77,326,102,332,125,330,149,323,178,307,215,302,213,318,176,325,149,326,126,321,104,308,80,293,64,276,51,238,33"/>
+<area shape="rect" id="Node000003" href="$BmpImage_8hpp.html" title="Core class for managing, processing, and persisting 24&#45;bit BMP images." alt="" coords="87,152,208,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="191,106,165,142,161,139,186,103"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="232,152,308,177"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="211,102,250,140,246,144,207,106"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="133,180,77,219,74,215,130,175"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="171,175,255,217,252,221,169,180"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="116,225,179,251"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="150,178,150,212,145,212,145,178"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="15,299,82,324"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="51,251,51,285,46,285,46,251"/>
 </map>
