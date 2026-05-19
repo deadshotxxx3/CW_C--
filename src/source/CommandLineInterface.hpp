@@ -35,7 +35,6 @@ enum class flags {
  *          from default-initialized ones. Populated entirely by CLI().
  */
 struct argument {
-    error_t error;                      /**< Error state marker (reserved for future use) */
     flags flag = flags::NO_FLAG;        /**< Currently selected primary operation */
     std::string inputName;              /**< Path to the source BMP file */
     std::string outputName = "out.bmp"; /**< Path to the destination BMP file (defaults to out.bmp) */

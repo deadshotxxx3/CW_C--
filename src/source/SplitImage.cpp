@@ -27,11 +27,11 @@ void BmpImage::split_image(int cntLineX, int cntLineY, int thickness, const Pixe
                 blockX = cntLineX - 1;
 
             int newX = x + blockX * thickness;
-            new_pixels[newY][newX] = arr_pixels[y][x];
+            new_pixels[newY][newX] = m_arr_pixel[y][x];
         }
     }
 
     updateDimensions(new_w, new_h);
 
-    arr_pixels = std::move(new_pixels);
+    m_arr_pixel = std::move(new_pixels);
 }

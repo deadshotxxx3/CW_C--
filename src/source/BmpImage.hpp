@@ -26,7 +26,7 @@ private:
     BitmapInfoHeader m_info_header; /**< <tt>BITMAPINFOHEADER</tt>: Contains image dimensions, color depth,
                                        and compression type. */
     std::vector<std::vector<Pixel>>
-        arr_pixels; /**< 2D pixel buffer storing image data. Indexed as [row][column]. */
+        m_arr_pixel; /**< 2D pixel buffer storing image data. Indexed as [row][column]. */
 
     /**
      * @brief Updates BMP headers and recalculates file size after dimension changes.
@@ -100,7 +100,7 @@ public:
      */
     const std::vector<std::vector<Pixel>> &getArrPixels() const
     {
-        return arr_pixels;
+        return m_arr_pixel;
     }
 
     /**
@@ -131,7 +131,7 @@ public:
      * @param[in] left_up Top-left corner coordinate defining the region boundary.
      * @param[in] right_down Bottom-right corner coordinate defining the region boundary.
      */
-    void mirror_image(std::string &axis, Coordinate &left_up, Coordinate &right_down);
+    void mirror_image(const std::string &axis, Coordinate &left_up, Coordinate &right_down);
 
     /**
      * @brief Copies a rectangular region from a source position to a destination.

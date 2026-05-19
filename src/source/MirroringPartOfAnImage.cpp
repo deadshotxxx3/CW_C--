@@ -9,7 +9,7 @@ static void swapPixel(Pixel &first, Pixel &second)
     second = tmp;
 }
 
-void BmpImage::mirror_image(std::string &axis, Coordinate &left_up, Coordinate &right_down)
+void BmpImage::mirror_image(const std::string &axis, Coordinate &left_up, Coordinate &right_down)
 {
     int height = std::abs(m_info_header.height);
     int width = m_info_header.width;
@@ -29,7 +29,7 @@ void BmpImage::mirror_image(std::string &axis, Coordinate &left_up, Coordinate &
             for (int x = x_left_up; x <= x_left_up + (x_right_down - x_left_up) / 2; ++x) {
                 int mirror_x = x_right_down - (x - x_left_up);
 
-                swapPixel(arr_pixels[row][x], arr_pixels[row][mirror_x]);
+                swapPixel(m_arr_pixel[row][x], m_arr_pixel[row][mirror_x]);
             }
         }
     } else if (axis == "y") {
@@ -40,7 +40,7 @@ void BmpImage::mirror_image(std::string &axis, Coordinate &left_up, Coordinate &
             int row2 = height - 1 - mirror_y;
 
             for (int x = x_left_up; x <= x_right_down; ++x) {
-                swapPixel(arr_pixels[row1][x], arr_pixels[row2][x]);
+                swapPixel(m_arr_pixel[row1][x], m_arr_pixel[row2][x]);
             }
         }
     }

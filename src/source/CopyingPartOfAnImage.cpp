@@ -28,7 +28,7 @@ void BmpImage::copy_image(Coordinate &left_up, Coordinate &right_down, Coordinat
             int src_x = left_up.x + dx;
             if (src_x >= width)
                 break;
-            buffer[dy][dx] = arr_pixels[bmp_src_y][src_x];
+            buffer[dy][dx] = m_arr_pixel[bmp_src_y][src_x];
         }
     }
 
@@ -41,7 +41,7 @@ void BmpImage::copy_image(Coordinate &left_up, Coordinate &right_down, Coordinat
             int target_x = dest_left_up.x + dx;
             if (target_x < 0 || target_x >= width)
                 continue;
-            arr_pixels[bmp_tgt_y][target_x] = buffer[dy][dx];
+            m_arr_pixel[bmp_tgt_y][target_x] = buffer[dy][dx];
         }
     }
 }

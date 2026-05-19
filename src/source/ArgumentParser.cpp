@@ -6,7 +6,7 @@
 #include <vector>
 
 static constexpr int MAX_VALUE_COMPONENTS = 255;
-static constexpr int CNT_COMPINENTS = 3;
+static constexpr int CNT_COMPONENTS = 3;
 static constexpr int CNT_COORDINATE = 2;
 static constexpr char DELIMETER = '.';
 
@@ -74,7 +74,7 @@ std::pair<Pixel, error_marker_t> getPixel(const std::string &str)
         values.push_back(std::stoi(token));
     }
 
-    if (values.size() != CNT_COMPINENTS) {
+    if (values.size() != CNT_COMPONENTS) {
         std::cerr << "Invalid color format: expected r.g.b\n";
         return {Pixel(), error_marker_t::ERR_INCORRECTARG};
     }

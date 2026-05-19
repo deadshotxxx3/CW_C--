@@ -4,9 +4,9 @@
 
 void BmpImage::color_replace(const Pixel &old_color, const Pixel &new_color)
 {
-    for (auto &row : arr_pixels) {
+    for (auto &row : m_arr_pixel) {
         for (auto &pixel : row) {
-            if (pixel.r == old_color.r && pixel.g == old_color.g && pixel.b == old_color.b)
+            if (pixel == old_color)
                 pixel = new_color;
         }
     }

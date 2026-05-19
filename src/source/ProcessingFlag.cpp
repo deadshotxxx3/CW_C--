@@ -4,7 +4,7 @@
 #include <cstring>
 #include <iostream>
 
-const int MAX_CNT_LINE = 100; /**< Maximum allowed number of grid divisions (100). */
+const constexpr int MAX_CNT_LINE = 100; /**< Maximum allowed number of grid divisions (100). */
 
 /**
  * @internal
