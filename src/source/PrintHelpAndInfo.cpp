@@ -26,7 +26,7 @@ void print_help()
     std::cout << "\n  -s, --split                 Split image into grid with lines\n";
     std::cout << "    -x, --number_x N          Number of columns (>1)\n";
     std::cout << "    -y, --number_y N          Number of rows (>1)\n";
-    std::cout << "    -t, --thickness N         Line thickness in pixels (>0)\n";
+    std::cout << "    -t, --thickness N         Line thickness in pixels (>0 and <100)\n";
     std::cout << "    -C, --color R.G.B         Line color (e.g., 0.0.0 for black)\n";
     std::cout << "\nNotes:\n";
     std::cout << "  • Coordinates format: X.Y where X and Y are floating-point numbers\n";

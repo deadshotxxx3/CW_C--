@@ -52,10 +52,10 @@ error_marker_t BmpImage::readBmp(const std::string &filename)
         return result;
     }
 
-    uint32_t H = std::abs(m_info_header.height);
-    uint32_t W = m_info_header.width;
+    uint32_t height_image = std::abs(m_info_header.height);
+    uint32_t width_image = m_info_header.width;
 
-    arr_pixels.resize(H, std::vector<Pixel>(W));
+    arr_pixels.resize(height_image, std::vector<Pixel>(width_image));
 
     file.seekg(m_file_header.pixelArrOffset, std::ios::beg);
     if (!file) {
@@ -65,8 +65,8 @@ error_marker_t BmpImage::readBmp(const std::string &filename)
 
     int row_stride = getRowStride();
 
-    for (uint32_t i = 0; i < H; ++i) {
-        file.read(reinterpret_cast<char *>(arr_pixels[i].data()), W * BYTES_PER_PIXEL);
+    for (uint32_t i = 0; i < height_image; ++i) {
+        file.read(reinterpret_cast<char *>(arr_pixels[i].data()), width_image * BYTES_PER_PIXEL);
         if (!file) {
             std::cerr << "Error: Unexpected end of file while reading pixel "
                          "data at row "
@@ -74,7 +74,7 @@ error_marker_t BmpImage::readBmp(const std::string &filename)
             return error_marker_t::ERR_READING;
         }
 
-        file.ignore(row_stride - W * BYTES_PER_PIXEL);
+        file.ignore(row_stride - width_image * BYTES_PER_PIXEL);
     }
 
     file.close();

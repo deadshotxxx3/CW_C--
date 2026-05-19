@@ -30,9 +30,9 @@ error_marker_t BmpImage::saveBmp(const std::string &filename)
         return error_marker_t::ERR_WRITING;
     }
 
-    uint32_t H = abs(m_info_header.height);
+    uint32_t height_image = abs(m_info_header.height);
 
-    for (uint32_t i = 0; i < H; ++i) {
+    for (uint32_t i = 0; i < height_image; ++i) {
         file.write(reinterpret_cast<const char *>(arr_pixels[i].data()), m_info_header.width * 3);
 
         for (int j = 0; j < row_stride - m_info_header.width * BYTES_PER_PIXEL; ++j) {

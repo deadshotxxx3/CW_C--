@@ -5,8 +5,8 @@
 
 void BmpImage::copy_image(Coordinate &left_up, Coordinate &right_down, Coordinate &dest_left_up)
 {
-    int width = m_info_header.width;
-    int height = std::abs(m_info_header.height);
+    const int width = m_info_header.width;
+    const int height = std::abs(m_info_header.height);
 
     left_up = clamp_to_image(left_up, width, height);
     right_down = clamp_to_image(right_down, width, height);

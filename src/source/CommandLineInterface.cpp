@@ -451,86 +451,88 @@ static error_marker_t finalize_cli_parsing(int &optind, int argc, char *argv[], 
 error_marker_t CLI(int argc, char *argv[], struct argument &arguments)
 {
     opterr = 0;
-    int options_index = 0;
-    int c;
+    int long_opt_index = 0;
+    int current_opt;
     const char *active_op_name = nullptr;
-    char primary_op = 0;
-    std::vector<std::string> ignored_list;
-    error_marker_t res = error_marker_t::ERR_OK;
-    const char *arg = "";
+    char main_op_flag = 0;
+    std::vector<std::string> ignored_args;
+    error_marker_t parse_status = error_marker_t::ERR_OK;
+    const char *opt_argument = "";
 
-    using ProcessFn = error_marker_t (*)(char, const char *, argument &);
-    auto handle_op = [&](char trigger, ProcessFn proc_fn) {
-        if (c == trigger) {
-            res = check_operation(c, arguments, active_op_name);
+    using FlagHandler = error_marker_t (*)(char, const char *, argument &);
+    auto process_flag_if_active = [&](char trigger, FlagHandler handler) {
+        if (current_opt == trigger) {
+            parse_status = check_operation(current_opt, arguments, active_op_name);
         }
-        if (res == error_marker_t::ERR_OK) {
-            res = proc_fn(c, arg, arguments);
+        if (parse_status == error_marker_t::ERR_OK) {
+            parse_status = handler(current_opt, opt_argument, arguments);
         }
     };
 
-    while ((c = getopt_long(argc, argv, "i:o:O:N:l:r:d:a:x:y:t:C:cbmsIh", options, &options_index)) != -1) {
-        arg = optarg ? optarg : "";
-        char check_c = (c == '?') ? static_cast<char>(optopt) : static_cast<char>(c);
+    while ((current_opt =
+                getopt_long(argc, argv, "i:o:O:N:l:r:d:a:x:y:t:C:cbmsIh", options, &long_opt_index)) != -1) {
+        opt_argument = optarg ? optarg : "";
+        char validation_char =
+            (current_opt == '?') ? static_cast<char>(optopt) : static_cast<char>(current_opt);
 
-        if (primary_op == 0) {
-            set_primary_op(check_c, primary_op, active_op_name);
+        if (main_op_flag == 0) {
+            set_primary_op(validation_char, main_op_flag, active_op_name);
         }
 
-        if (!belongs_to(primary_op, check_c)) {
-            std::string entry = "-" + std::string(1, check_c);
+        if (!belongs_to(main_op_flag, validation_char)) {
+            std::string entry = "-" + std::string(1, validation_char);
             if (optarg && optarg[0] != '-') {
                 entry += " " + std::string(optarg);
             }
-            ignored_list.push_back(entry);
+            ignored_args.push_back(entry);
             if (optarg && optarg[0] == '-') {
-                ignored_list.push_back(optarg);
+                ignored_args.push_back(optarg);
             }
             continue;
         }
 
-        switch (c) {
+        switch (current_opt) {
             case 'i':
-                if (!arg) {
+                if (!opt_argument) {
                     std::cerr << "Error: input requires an argument\n";
                     return error_marker_t::ERR_INCORRECTARG;
                 }
-                arguments.inputName = arg;
+                arguments.inputName = opt_argument;
                 break;
             case 'o':
-                if (!arg) {
+                if (!opt_argument) {
                     std::cerr << "Error: output requires an argument\n";
                     return error_marker_t::ERR_INCORRECTARG;
                 }
-                arguments.outputName = arg;
+                arguments.outputName = opt_argument;
                 break;
             case 'h':
-                res = check_operation(c, arguments, active_op_name);
+                parse_status = check_operation(current_opt, arguments, active_op_name);
                 break;
             case 'c':
             case 'O':
             case 'N':
-                handle_op('c', processing_color_flags);
+                process_flag_if_active('c', processing_color_flags);
                 break;
             case 'b':
             case 'l':
             case 'r':
             case 'd':
-                handle_op('b', processing_copy_flags);
+                process_flag_if_active('b', processing_copy_flags);
                 break;
             case 'm':
             case 'a':
-                handle_op('m', processing_mirror_flag);
+                process_flag_if_active('m', processing_mirror_flag);
                 break;
             case 's':
             case 'x':
             case 'y':
             case 't':
             case 'C':
-                handle_op('s', processing_split_flag);
+                process_flag_if_active('s', processing_split_flag);
                 break;
             case 'I':
-                res = check_operation(c, arguments, active_op_name);
+                parse_status = check_operation(current_opt, arguments, active_op_name);
                 break;
             default:
                 if (optopt) {
@@ -541,10 +543,10 @@ error_marker_t CLI(int argc, char *argv[], struct argument &arguments)
                 return error_marker_t::ERR_INCORRECTARG;
         }
 
-        if (res != error_marker_t::ERR_OK) {
-            return res;
+        if (parse_status != error_marker_t::ERR_OK) {
+            return parse_status;
         }
     }
 
-    return finalize_cli_parsing(optind, argc, argv, arguments, ignored_list, active_op_name);
+    return finalize_cli_parsing(optind, argc, argv, arguments, ignored_args, active_op_name);
 }
