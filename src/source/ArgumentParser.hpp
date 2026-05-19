@@ -35,7 +35,7 @@ bool check_valid_value(const std::string &values);
  *          the format is invalid, returns a default Coordinate and an error status.
  *
  * @param[in] str String containing coordinates in "x.y" format.
- * @return std::pair<Pixel , error_marker_t> A pair where:
+ * @return std::pair<Coordinate , error_marker_t> A pair where::
  *         - first: Parsed Coordinate (0.0 if invalid)
  *         - second: ERR_OK on success, ERR_INCORRECTARG on failure
  */
@@ -48,7 +48,7 @@ std::pair<Coordinate, error_marker_t> getCoordinate(const std::string &str);
  *          the format is invalid, returns a default Pixel and an error status.
  *
  * @param[in] str String containing Pixel in "r.g.b" format.
- * @return std::pair<Coordinate, error_marker_t> A pair where:
+ * @return std::pair<Pixel, error_marker_t> A pair where:
  *         - first: Parsed Pixel (0.0.0 if invalid)
  *         - second: ERR_OK on success, ERR_INCORRECTARG on failure
  */

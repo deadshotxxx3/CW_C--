@@ -163,18 +163,7 @@ public:
      * @param[in] thickness Width of the grid lines in pixels.
      * @param[in] colorLine RGB color used for drawing the grid lines.
      */
-    void split_image(int cntLineX, int cntLineY, int thickness, Pixel &colorLine);
-
-    /**
-     * @brief Draws a straight line between two coordinates using a specified thickness.
-     * @details Renders a line from <tt>pointA</tt> to <tt>pointB</tt> with thickness
-     *          expansion. Modifies pixel data in-place.
-     * @param[in] pointA Starting coordinate of the line segment.
-     * @param[in] pointB Ending coordinate of the line segment.
-     * @param[in] thickness Thickness of the line in pixels.
-     * @param[in] color_line RGB color used for rendering the line.
-     */
-    void draw_line(Coordinate &pointA, Coordinate &pointB, int thickness, Pixel &color_line);
+    void split_image(int cntLineX, int cntLineY, int thickness, const Pixel &colorLine);
 
     /**
      * @brief Outputs image metadata to the standard console.
